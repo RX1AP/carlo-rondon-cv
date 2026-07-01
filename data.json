@@ -1,0 +1,228 @@
+{
+  "persona": {
+    "nombre": "Carlo",
+    "apellido": "Rondón",
+    "titulo": "Ejecutivo Bancario · Datos & Estrategia",
+    "tagline": "Banca de Grandes Empresas en BBVA Perú. Formación sólida en datos, modelado financiero y tecnología aplicada al negocio bancario.",
+    "ubicacion": "Lima, Perú",
+    "email": "carlorndn@gmail.com",
+    "whatsapp": "+51936735897",
+    "whatsapp_link": "https://wa.me/51936735897",
+    "linkedin": "https://www.linkedin.com/in/carlo-rondon/",
+    "github": "https://github.com/RX1AP/carlo-rondon-cv"
+  },
+  "metricas": [
+    { "valor": "6+",   "label": "años en banca\ny consultoría" },
+    { "valor": "20K+", "label": "clientes\nimpactados" },
+    { "valor": "200%", "label": "↑ detección de\noportunidades" }
+  ],
+  "perfil": "Ejecutivo de Banca de Grandes Empresas en BBVA Perú con más de seis años de trayectoria en la intersección entre el negocio financiero, la estrategia comercial y los datos. Formado en marketing, con postgrado en management y certificaciones en ciencia de datos — aplico capacidades analíticas avanzadas para diseñar estrategias, construir modelos financieros y tomar decisiones de mayor precisión en entornos bancarios de alta complejidad.",
+  "experiencia": [
+    {
+      "empresa": "BBVA Perú",
+      "logo_url": "https://logo.clearbit.com/bbva.com",
+      "logo_fallback": "BB",
+      "logo_color": "rgba(0,115,207,0.15)",
+      "logo_text_color": "#4d9fe0",
+      "periodo": "Mayo 2022 – Actualidad",
+      "duracion": "3 años+",
+      "roles": [
+        {
+          "titulo": "Cash Management Executive",
+          "tag": "Banca Grandes Empresas",
+          "periodo": "Mar 2026 – Actualidad",
+          "metricas": [
+            { "valor": "PEN 70–250M", "label": "Cartera bajo gestión" },
+            { "valor": "3 estados",   "label": "Modelos financieros" },
+            { "valor": "C-level",     "label": "Nivel de interlocución" }
+          ],
+          "logros": [
+            "Diseño y construcción de **modelos financieros de tres estados** para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out para impulsar la digitalización e ingresos transaccionales.",
+            "Gestión ejecutiva de relación con empresas de alta facturación, presentando soluciones financieras integradas a comités directivos."
+          ]
+        },
+        {
+          "titulo": "Payments & Loyalty Associate",
+          "tag": null,
+          "periodo": "Dic 2025 – Mar 2026",
+          "metricas": [
+            { "valor": "+20,000",     "label": "Clientes activos" },
+            { "valor": "Exponencial", "label": "Crecimiento en cash in" },
+            { "valor": "Elasticidad", "label": "Análisis de pricing" }
+          ],
+          "logros": [
+            "Optimización del **modelo de precios y promociones** del negocio de payments mediante análisis de elasticidad de demanda y segmentación avanzada de clientes, maximizando conversión y activación."
+          ]
+        },
+        {
+          "titulo": "Senior Data & Commercial Analyst",
+          "tag": "Openpay",
+          "periodo": "Mar 2025 – Dic 2025",
+          "metricas": [],
+          "logros": [
+            "Elaboración de **business cases para clientes estratégicos** y presentaciones a directorios C-level locales e internacionales, sustentando decisiones de inversión y expansión del negocio fintech.",
+            "Coordinación autónoma de **equipos transversales** (tecnología, marketing, operaciones) para la ejecución de automatizaciones e iniciativas comerciales de alto impacto."
+          ]
+        },
+        {
+          "titulo": "Data & Commercial Analyst",
+          "tag": "Openpay",
+          "periodo": "Mayo 2022 – Mar 2025",
+          "metricas": [],
+          "logros": [
+            "Liderazgo autónomo del **proyecto de arquitectura de datos de Openpay**: diseño e implementación de pipelines ETL que cumplieron los estándares de gobierno de datos bancario, superando los tiempos de entrega durante una etapa de hipercrecimiento.",
+            "Automatización de procesos de datos que redujeron tiempos de reporte y habilitaron **análisis en tiempo real** para la toma de decisiones comerciales."
+          ]
+        }
+      ],
+      "skills": ["SQL", "Python", "Power BI", "AWS", "ETL", "Modelado financiero", "Pricing", "Salesforce"]
+    },
+    {
+      "empresa": "PwC Perú",
+      "logo_url": "https://logo.clearbit.com/pwc.com",
+      "logo_fallback": "PwC",
+      "logo_color": "rgba(208,74,2,0.12)",
+      "logo_text_color": "#d46a3a",
+      "periodo": "Septiembre 2019 – Mayo 2022",
+      "duracion": "2a 8m",
+      "roles": [
+        {
+          "titulo": "Business Intelligence Associate",
+          "tag": null,
+          "periodo": "Ago 2020 – Mayo 2022",
+          "metricas": [
+            { "valor": "+200%",  "label": "Detección de oportunidades" },
+            { "valor": "Top 10%","label": "Desempeño firme (2019–2020)" },
+            { "valor": "+10",    "label": "Iniciativas de datos lideradas" }
+          ],
+          "logros": [
+            "Liderazgo de **más de 10 iniciativas comerciales y de datos**, incrementando en 200% la detección de oportunidades para las líneas de servicio de la firma.",
+            "Soporte analítico y comercial a Auditoría, **principal línea de ingresos de PwC Perú**, en el diseño e implementación de estrategias de crecimiento.",
+            "Reconocido con **desempeño superior al percentil 90** de la firma durante dos años consecutivos (2019 y 2020)."
+          ]
+        },
+        {
+          "titulo": "Business Expansion Intern",
+          "tag": null,
+          "periodo": "Sep 2019 – Ago 2020",
+          "metricas": [
+            { "valor": "+700",    "label": "Colaboradores capacitados" },
+            { "valor": "Nacional","label": "Alcance del proyecto Salesforce" }
+          ],
+          "logros": [
+            "Liderazgo de la **migración a Salesforce** a nivel Perú, diseñando el plan de capacitación y formando a más de 700 colaboradores de la firma en el nuevo sistema CRM."
+          ]
+        }
+      ],
+      "skills": ["Business Intelligence", "Análisis comercial", "Salesforce", "Consultoría"]
+    },
+    {
+      "empresa": "Scotiabank Perú",
+      "logo_url": "https://logo.clearbit.com/scotiabank.com",
+      "logo_fallback": "SB",
+      "logo_color": "rgba(200,16,46,0.12)",
+      "logo_text_color": "#c84a62",
+      "periodo": "Febrero – Septiembre 2019",
+      "duracion": "7 meses",
+      "roles": [
+        {
+          "titulo": "Customer Experience Intern",
+          "tag": null,
+          "periodo": "Feb – Sep 2019",
+          "metricas": [
+            { "valor": "5",               "label": "Iniciativas de mejora CX" },
+            { "valor": "Retail & Wholesale","label": "Segmentos de clientes" }
+          ],
+          "logros": [
+            "Diseño de **métricas de fidelización** para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco.",
+            "Participación activa en **5 iniciativas exitosas** de mejora de experiencia del cliente."
+          ]
+        }
+      ],
+      "skills": []
+    }
+  ],
+  "competencias": [
+    {
+      "numero": "01",
+      "emoji": "📊",
+      "titulo": "Datos & Analítica",
+      "items": ["SQL, Python, R Studio", "Power BI, Looker Studio, DAX", "Excel avanzado", "Estadística aplicada"]
+    },
+    {
+      "numero": "02",
+      "emoji": "🏦",
+      "titulo": "Estrategia Financiera",
+      "items": ["Modelos financieros (3 estados)", "Pricing & análisis de elasticidad", "Business cases & ROI", "Segmentación de clientes", "Cash Management · Payments"]
+    },
+    {
+      "numero": "03",
+      "emoji": "☁️",
+      "titulo": "Cloud & Data Eng.",
+      "items": ["AWS (S3, Glue, Redshift)", "Arquitectura & automatización ETL", "Gobierno de datos bancario", "Pipelines de datos"]
+    },
+    {
+      "numero": "04",
+      "emoji": "🤝",
+      "titulo": "Liderazgo & Clientes",
+      "items": ["Banca de Grandes Empresas", "Presentaciones C-level internacionales", "Equipos transversales y stakeholders", "Salesforce CRM"]
+    }
+  ],
+  "educacion": [
+    {
+      "nivel": "Postgrado · 2024",
+      "titulo": "Master in Management",
+      "institucion": "Pacífico Business School · Lima, Perú",
+      "siglas": "UP"
+    },
+    {
+      "nivel": "Pregrado · 2021",
+      "titulo": "Bachiller en Marketing",
+      "institucion": "Universidad del Pacífico · Lima, Perú",
+      "siglas": "UP"
+    }
+  ],
+  "certificaciones": [
+    { "nombre": "Data Specialist",                                        "entidad": "BBVA University",      "año": "2024", "estado": "obtenida" },
+    { "nombre": "SQL for Data Science",                                   "entidad": "UCLA Extension",       "año": "2022", "estado": "obtenida" },
+    { "nombre": "Professional Certificate in Data Science",               "entidad": "IBM",                  "año": "2020", "estado": "obtenida" },
+    { "nombre": "Big Data & Cloud Analytics",                             "entidad": "Kedge Business School","año": "2020", "estado": "obtenida" },
+    { "nombre": "Microsoft PL-300 · Power BI Data Analyst Associate",    "entidad": "Microsoft",            "año": "2025", "estado": "en_curso" },
+    { "nombre": "Google Analytics 4",                                     "entidad": "Google Skillshop",     "año": "2025", "estado": "en_curso" },
+    { "nombre": "AWS Certified Data Engineer – Associate (DEA-C01)",     "entidad": "Amazon",               "año": "2025", "estado": "en_curso" }
+  ],
+  "idiomas": [
+    { "nombre": "Español", "nivel": "Nativo",        "porcentaje": 100, "nota": null },
+    { "nombre": "Inglés",  "nivel": "Profesional",   "porcentaje": 88,  "nota": "IELTS Academic Band 7.0" },
+    { "nombre": "Italiano","nivel": "Conversacional", "porcentaje": 52,  "nota": null }
+  ],
+  "proyectos": [
+    {
+      "numero": "01",
+      "emoji": "📈",
+      "titulo": "Pagos Digitales en Perú — BCRP",
+      "descripcion": "Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.",
+      "estado": "en_construccion",
+      "skills": ["Power BI", "Python", "DAX"],
+      "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)"
+    },
+    {
+      "numero": "02",
+      "emoji": "🗺️",
+      "titulo": "Inclusión Financiera por Región",
+      "descripcion": "Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.",
+      "estado": "proximamente",
+      "skills": ["Power BI Maps", "SQL"],
+      "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)"
+    },
+    {
+      "numero": "03",
+      "emoji": "🔮",
+      "titulo": "Predicción de Churn — Fintech",
+      "descripcion": "Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.",
+      "estado": "proximamente",
+      "skills": ["Python", "Scikit-learn", "Power BI"],
+      "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)"
+    }
+  ]
+}

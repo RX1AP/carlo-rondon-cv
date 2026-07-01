@@ -2,8 +2,8 @@
   "persona": {
     "nombre": "Carlo",
     "apellido": "Rondón",
-    "titulo": "Ejecutivo Bancario · Datos & Estrategia",
-    "tagline": "Banca de Grandes Empresas en BBVA Perú. Formación sólida en datos, modelado financiero y tecnología aplicada al negocio bancario.",
+    "titulo": "Data · Growth · Micro SaaS · IA",
+    "tagline": "Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.",
     "ubicacion": "Lima, Perú",
     "email": "carlorndn@gmail.com",
     "whatsapp": "+51936735897",
@@ -11,12 +11,8 @@
     "linkedin": "https://www.linkedin.com/in/carlo-rondon/",
     "github": "https://github.com/RX1AP/carlo-rondon-cv"
   },
-  "metricas": [
-    { "valor": "6+",   "label": "años en banca\ny consultoría" },
-    { "valor": "20K+", "label": "clientes\nimpactados" },
-    { "valor": "200%", "label": "↑ detección de\noportunidades" }
-  ],
-  "perfil": "Ejecutivo de Banca de Grandes Empresas en BBVA Perú con más de seis años de trayectoria en la intersección entre el negocio financiero, la estrategia comercial y los datos. Formado en marketing, con postgrado en management y certificaciones en ciencia de datos — aplico capacidades analíticas avanzadas para diseñar estrategias, construir modelos financieros y tomar decisiones de mayor precisión en entornos bancarios de alta complejidad.",
+  "metricas": [],
+  "perfil": "Actualmente, Ejecutivo de Banca de Grandes Empresas en BBVA Perú, opero en la intersección entre datos, tecnología y negocio financiero. Diseño arquitecturas de datos y pipelines ETL sobre la nube, construyo modelos financieros y de pricing, y traduzco esa capacidad analítica en decisiones de producto y crecimiento. Con más de seis años entre banca, fintech y consultoría —y postgrado en management más certificaciones en ciencia de datos e ingeniería de datos en AWS— entiendo el negocio tan bien como el stack que lo sostiene. En paralelo desarrollo micro-SaaS y herramientas con inteligencia artificial: automatizo procesos, integro APIs y LLMs, y lanzo soluciones digitales escalables en mercados donde la tecnología financiera aún tiene todo por construir.",
   "experiencia": [
     {
       "empresa": "BBVA Perú",
@@ -32,13 +28,13 @@
           "tag": "Banca Grandes Empresas",
           "periodo": "Mar 2026 – Actualidad",
           "metricas": [
-            { "valor": "PEN 70–250M", "label": "Cartera bajo gestión" },
-            { "valor": "3 estados",   "label": "Modelos financieros" },
+            { "valor": "Corporativo", "label": "Grandes empresas del Perú" },
+            { "valor": "Modelos",     "label": "Financieros avanzados" },
             { "valor": "C-level",     "label": "Nivel de interlocución" }
           ],
           "logros": [
-            "Diseño y construcción de **modelos financieros de tres estados** para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out para impulsar la digitalización e ingresos transaccionales.",
-            "Gestión ejecutiva de relación con empresas de alta facturación, presentando soluciones financieras integradas a comités directivos."
+            "Diseño y construcción de **modelos financieros** para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales.",
+            "Gestión ejecutiva de relación con las principales empresas del mercado peruano, presentando soluciones financieras integradas a comités directivos."
           ]
         },
         {
@@ -91,12 +87,11 @@
           "tag": null,
           "periodo": "Ago 2020 – Mayo 2022",
           "metricas": [
-            { "valor": "+200%",  "label": "Detección de oportunidades" },
-            { "valor": "Top 10%","label": "Desempeño firme (2019–2020)" },
+            { "valor": "Top 10%","label": "Desempeño firma (2019–2020)" },
             { "valor": "+10",    "label": "Iniciativas de datos lideradas" }
           ],
           "logros": [
-            "Liderazgo de **más de 10 iniciativas comerciales y de datos**, incrementando en 200% la detección de oportunidades para las líneas de servicio de la firma.",
+            "Liderazgo de **más de 10 iniciativas comerciales y de datos**, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma.",
             "Soporte analítico y comercial a Auditoría, **principal línea de ingresos de PwC Perú**, en el diseño e implementación de estrategias de crecimiento.",
             "Reconocido con **desempeño superior al percentil 90** de la firma durante dos años consecutivos (2019 y 2020)."
           ]
@@ -122,16 +117,16 @@
       "logo_fallback": "SB",
       "logo_color": "rgba(200,16,46,0.12)",
       "logo_text_color": "#c84a62",
-      "periodo": "Febrero – Septiembre 2019",
-      "duracion": "7 meses",
+      "periodo": "Febrero – Octubre 2019",
+      "duracion": "9 meses",
       "roles": [
         {
           "titulo": "Customer Experience Intern",
           "tag": null,
-          "periodo": "Feb – Sep 2019",
+          "periodo": "Feb – Oct 2019",
           "metricas": [
-            { "valor": "5",               "label": "Iniciativas de mejora CX" },
-            { "valor": "Retail & Wholesale","label": "Segmentos de clientes" }
+            { "valor": "5",                 "label": "Iniciativas de mejora CX" },
+            { "valor": "Retail & Wholesale", "label": "Segmentos de clientes" }
           ],
           "logros": [
             "Diseño de **métricas de fidelización** para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco.",
@@ -153,7 +148,7 @@
       "numero": "02",
       "emoji": "🏦",
       "titulo": "Estrategia Financiera",
-      "items": ["Modelos financieros (3 estados)", "Pricing & análisis de elasticidad", "Business cases & ROI", "Segmentación de clientes", "Cash Management · Payments"]
+      "items": ["Modelos financieros avanzados", "Pricing & análisis de elasticidad", "Business cases & ROI", "Segmentación de clientes", "Cash Management · Payments"]
     },
     {
       "numero": "03",
@@ -166,6 +161,18 @@
       "emoji": "🤝",
       "titulo": "Liderazgo & Clientes",
       "items": ["Banca de Grandes Empresas", "Presentaciones C-level internacionales", "Equipos transversales y stakeholders", "Salesforce CRM"]
+    },
+    {
+      "numero": "05",
+      "emoji": "🚀",
+      "titulo": "Micro SaaS & Producto",
+      "items": ["Desarrollo de micro-SaaS", "Product strategy & monetización", "Automatización con APIs y webhooks", "Lanzamiento y crecimiento digital", "No-code & low-code tools"]
+    },
+    {
+      "numero": "06",
+      "emoji": "🤖",
+      "titulo": "Inteligencia Artificial",
+      "items": ["Prompting & agentes con IA", "Workflows automatizados con LLMs", "Integración APIs OpenAI / Anthropic", "Aplicaciones IA en finanzas y negocio", "Análisis de datos con ML"]
     }
   ],
   "educacion": [
@@ -199,30 +206,53 @@
   "proyectos": [
     {
       "numero": "01",
+      "emoji": "🎨",
+      "titulo": "Latrue",
+      "descripcion": "Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.",
+      "estado": "activo",
+      "skills": ["Editorial", "Community", "Curaduría"],
+      "gradient": "linear-gradient(135deg,#1a0808 0%,#2d1010 100%)",
+      "link": null
+    },
+    {
+      "numero": "02",
+      "emoji": "🚗",
+      "titulo": "Consulta Vehicular",
+      "descripcion": "SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.",
+      "estado": "activo",
+      "skills": ["SaaS", "Python", "API"],
+      "gradient": "linear-gradient(135deg,#080f1a 0%,#101828 100%)",
+      "link": "https://consultavehicular.pe"
+    },
+    {
+      "numero": "03",
       "emoji": "📈",
       "titulo": "Pagos Digitales en Perú — BCRP",
       "descripcion": "Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.",
       "estado": "en_construccion",
       "skills": ["Power BI", "Python", "DAX"],
-      "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)"
+      "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)",
+      "link": null
     },
     {
-      "numero": "02",
+      "numero": "04",
       "emoji": "🗺️",
       "titulo": "Inclusión Financiera por Región",
       "descripcion": "Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.",
-      "estado": "proximamente",
+      "estado": "en_construccion",
       "skills": ["Power BI Maps", "SQL"],
-      "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)"
+      "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)",
+      "link": null
     },
     {
-      "numero": "03",
+      "numero": "05",
       "emoji": "🔮",
       "titulo": "Predicción de Churn — Fintech",
       "descripcion": "Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.",
-      "estado": "proximamente",
+      "estado": "en_construccion",
       "skills": ["Python", "Scikit-learn", "Power BI"],
-      "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)"
+      "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)",
+      "link": null
     }
   ]
 }

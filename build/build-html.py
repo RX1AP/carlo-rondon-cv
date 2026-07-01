@@ -166,10 +166,15 @@ def render_proyectos(proyectos):
     html = ""
     for p in proyectos:
         if p["estado"] == "en_construccion":
-            estado_html = '<span class="proj-status proj-status--wip">🔨 En construcción</span>'
+            estado_html = '<span class="proj-status proj-status--wip">En construccion</span>'
+        elif p["estado"] == "activo":
+            estado_html = '<span class="proj-status proj-status--live">Live</span>'
         else:
-            estado_html = '<span class="proj-status proj-status--soon">Próximamente</span>'
+            estado_html = '<span class="proj-status proj-status--soon">Proximamente</span>'
         skills_html = "".join(f'<span class="skill-tag">{s}</span>' for s in p["skills"])
+        link_html = ""
+        if p.get("link"):
+            link_html = f'<a href="{p["link"]}" target="_blank" class="proj-link">Ver proyecto ↗</a>'
         html += f"""
       <div class="proj-card cs" data-delay-idx="{p['numero']}" style="background:{p['gradient']}">
         <div class="proj-num">{p['numero']}</div>
@@ -178,7 +183,10 @@ def render_proyectos(proyectos):
         <p class="proj-desc">{p['descripcion']}</p>
         <div class="proj-footer">
           <div class="skills-row">{skills_html}</div>
-          {estado_html}
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            {estado_html}
+            {link_html}
+          </div>
         </div>
       </div>"""
     return html
@@ -302,13 +310,13 @@ strong {{ color: var(--cream); font-weight: 700; }}
   z-index: 100;
   background: #000;
   border-radius: 0 0 20px 20px;
-  padding: 12px 28px;
-  display: flex; gap: 28px; align-items: center;
+  padding: 10px 20px;
+  display: flex; gap: 24px; align-items: center;
   border: 1px solid var(--border);
   border-top: none;
 }}
 .nav-pill a {{
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -316,6 +324,14 @@ strong {{ color: var(--cream); font-weight: 700; }}
   transition: color 0.2s;
 }}
 .nav-pill a:hover {{ color: var(--cream); }}
+.nav-cta {{
+  background: var(--cream-2);
+  color: #000 !important;
+  border-radius: 9999px;
+  padding: 6px 16px !important;
+  letter-spacing: 0.06em;
+}}
+.nav-cta:hover {{ opacity: 0.88; color: #000 !important; }}
 
 /* ─── BUTTONS ────────────────────────────────────────────────── */
 .btn-cream {{
@@ -398,25 +414,27 @@ strong {{ color: var(--cream); font-weight: 700; }}
 }}
 .hero-name-first {{
   display: block;
-  font-size: clamp(34px, 7vw, 105px);
+  font-size: clamp(30px, 6vw, 92px);
   font-weight: 300;
   color: rgba(225,224,204,0.45);
   letter-spacing: -0.02em;
 }}
 .hero-name-last {{
   display: block;
-  font-size: clamp(62px, 17vw, 265px);
+  font-size: clamp(54px, 14.5vw, 220px);
   font-weight: 800;
   color: var(--cream);
   letter-spacing: -0.055em;
   line-height: 0.86;
 }}
 .hero-titulo {{
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: clamp(16px, 2.5vw, 22px);
-  color: rgba(222,219,200,0.55);
-  margin-bottom: 12px;
+  font-family: 'Almarai', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(12px, 1.4vw, 15px);
+  color: rgba(222,219,200,0.45);
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
   position: relative; z-index: 3;
 }}
 .hero-tagline {{
@@ -733,9 +751,9 @@ strong {{ color: var(--cream); font-weight: 700; }}
 }}
 .wa-btn:hover {{ background: rgba(37,211,102,0.2); }}
 
-/* ─── PROYECTOS ──────────────────────────────────────────────── */
-#proyectos {{ padding: 100px 5vw; }}
-#proyectos .section-inner {{ max-width: 860px; margin: 0 auto; }}
+/* ─── PORTAFOLIO ─────────────────────────────────────────────── */
+#portafolio {{ padding: 100px 5vw; }}
+#portafolio .section-inner {{ max-width: 860px; margin: 0 auto; }}
 .proj-grid {{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -761,6 +779,17 @@ strong {{ color: var(--cream); font-weight: 700; }}
 }}
 .proj-status--wip {{ background: rgba(251,191,36,0.1); color: #fbbf24; }}
 .proj-status--soon {{ background: rgba(255,255,255,0.05); color: var(--muted); }}
+.proj-status--live {{ background: rgba(34,197,94,0.1); color: #4ade80; }}
+.proj-link {{
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(222,219,200,0.5);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(222,219,200,0.15);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}}
+.proj-link:hover {{ color: var(--cream); border-color: rgba(222,219,200,0.4); }}
 
 /* ─── CONTACTO ───────────────────────────────────────────────── */
 #contacto {{
@@ -842,7 +871,7 @@ strong {{ color: var(--cream); font-weight: 700; }}
   <a href="#trayectoria">Trayectoria</a>
   <a href="#competencias">Skills</a>
   <a href="#formacion">Formación</a>
-  <a href="#proyectos">Proyectos</a>
+  <a href="#portafolio">Proyectos</a>
   <a href="#contacto">Contacto</a>
 </nav>
 
@@ -859,32 +888,6 @@ strong {{ color: var(--cream); font-weight: 700; }}
   <p class="hero-titulo pu-word"><span class="pu-inner">{p['titulo']}</span></p>
   <p class="hero-tagline">{p['tagline']}</p>
 
-  <div class="hero-ctas">
-    <a href="#contacto" class="btn-cream">
-      Contactar
-      <span class="btn-circle">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M2 12L12 2M12 2H6M12 2v6"/>
-        </svg>
-      </span>
-    </a>
-    <a href="Carlo Rondon CV.docx" download class="btn-outline">
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
-        <path d="M7 1v8M4 6l3 3 3-3M2 11h10"/>
-      </svg>
-      Descargar CV
-    </a>
-    <a href="{p['whatsapp_link']}" target="_blank" class="btn-outline" style="border-color:rgba(37,211,102,0.2);color:rgba(37,211,102,0.7)">
-      <svg viewBox="0 0 14 14" fill="currentColor" style="width:13px;height:13px">
-        <path d="M7 0C3.13 0 0 3.13 0 7c0 1.23.32 2.39.88 3.39L0 14l3.7-.86A6.96 6.96 0 007 14c3.87 0 7-3.13 7-7s-3.13-7-7-7zm3.56 9.72c-.15.42-1.46.82-1.78.82-.07 0-.13 0-.2-.02-.32-.05-1.47-.58-2.47-1.43a7.2 7.2 0 01-1.63-2.16c-.28-.63-.09-1.08.05-1.31.14-.24.34-.44.52-.6.16-.13.22-.15.32-.15.09 0 .32.09.47.42l.6 1.34c.07.16.03.22-.03.32l-.22.28c-.07.09-.15.19-.06.37.09.18.41.74.9 1.2.5.47 1.07.72 1.25.8.18.08.29.07.39-.04l.28-.32c.11-.13.19-.11.32-.06l1.3.61c.32.15.32.3.23.73z"/>
-      </svg>
-      WhatsApp
-    </a>
-  </div>
-
-  <div class="hero-metrics-row">
-    {hero_metrics}
-  </div>
 </section>
 
 <!-- TRAYECTORIA -->
@@ -948,10 +951,10 @@ strong {{ color: var(--cream); font-weight: 700; }}
   </div>
 </section>
 
-<!-- PROYECTOS -->
-<section id="proyectos">
+<!-- PORTAFOLIO -->
+<section id="portafolio">
   <div class="section-inner">
-    <p class="section-label">Proyectos de datos</p>
+    <p class="section-label">Portafolio</p>
     <div class="proj-grid">
       {proyectos}
     </div>

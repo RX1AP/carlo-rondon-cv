@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlo Rondón — Ejecutivo Bancario · Datos & Estrategia</title>
-<meta name="description" content="Banca de Grandes Empresas en BBVA Perú. Formación sólida en datos, modelado financiero y tecnología aplicada al negocio bancario.">
+<title>Carlo Rondón — Data · Growth · Micro SaaS · IA</title>
+<meta name="description" content="Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
@@ -88,13 +88,13 @@ strong { color: var(--cream); font-weight: 700; }
   z-index: 100;
   background: #000;
   border-radius: 0 0 20px 20px;
-  padding: 12px 28px;
-  display: flex; gap: 28px; align-items: center;
+  padding: 10px 20px;
+  display: flex; gap: 24px; align-items: center;
   border: 1px solid var(--border);
   border-top: none;
 }
 .nav-pill a {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -102,6 +102,14 @@ strong { color: var(--cream); font-weight: 700; }
   transition: color 0.2s;
 }
 .nav-pill a:hover { color: var(--cream); }
+.nav-cta {
+  background: var(--cream-2);
+  color: #000 !important;
+  border-radius: 9999px;
+  padding: 6px 16px !important;
+  letter-spacing: 0.06em;
+}
+.nav-cta:hover { opacity: 0.88; color: #000 !important; }
 
 /* ─── BUTTONS ────────────────────────────────────────────────── */
 .btn-cream {
@@ -184,25 +192,27 @@ strong { color: var(--cream); font-weight: 700; }
 }
 .hero-name-first {
   display: block;
-  font-size: clamp(34px, 7vw, 105px);
+  font-size: clamp(30px, 6vw, 92px);
   font-weight: 300;
   color: rgba(225,224,204,0.45);
   letter-spacing: -0.02em;
 }
 .hero-name-last {
   display: block;
-  font-size: clamp(62px, 17vw, 265px);
+  font-size: clamp(54px, 14.5vw, 220px);
   font-weight: 800;
   color: var(--cream);
   letter-spacing: -0.055em;
   line-height: 0.86;
 }
 .hero-titulo {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: clamp(16px, 2.5vw, 22px);
-  color: rgba(222,219,200,0.55);
-  margin-bottom: 12px;
+  font-family: 'Almarai', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(12px, 1.4vw, 15px);
+  color: rgba(222,219,200,0.45);
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
   position: relative; z-index: 3;
 }
 .hero-tagline {
@@ -519,9 +529,9 @@ strong { color: var(--cream); font-weight: 700; }
 }
 .wa-btn:hover { background: rgba(37,211,102,0.2); }
 
-/* ─── PROYECTOS ──────────────────────────────────────────────── */
-#proyectos { padding: 100px 5vw; }
-#proyectos .section-inner { max-width: 860px; margin: 0 auto; }
+/* ─── PORTAFOLIO ─────────────────────────────────────────────── */
+#portafolio { padding: 100px 5vw; }
+#portafolio .section-inner { max-width: 860px; margin: 0 auto; }
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -547,6 +557,17 @@ strong { color: var(--cream); font-weight: 700; }
 }
 .proj-status--wip { background: rgba(251,191,36,0.1); color: #fbbf24; }
 .proj-status--soon { background: rgba(255,255,255,0.05); color: var(--muted); }
+.proj-status--live { background: rgba(34,197,94,0.1); color: #4ade80; }
+.proj-link {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(222,219,200,0.5);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(222,219,200,0.15);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.proj-link:hover { color: var(--cream); border-color: rgba(222,219,200,0.4); }
 
 /* ─── CONTACTO ───────────────────────────────────────────────── */
 #contacto {
@@ -628,7 +649,7 @@ strong { color: var(--cream); font-weight: 700; }
   <a href="#trayectoria">Trayectoria</a>
   <a href="#competencias">Skills</a>
   <a href="#formacion">Formación</a>
-  <a href="#proyectos">Proyectos</a>
+  <a href="#portafolio">Proyectos</a>
   <a href="#contacto">Contacto</a>
 </nav>
 
@@ -642,54 +663,16 @@ strong { color: var(--cream); font-weight: 700; }
     <span class="hero-name-last pu-word"><span class="pu-inner">Rondón</span></span>
   </div>
 
-  <p class="hero-titulo pu-word"><span class="pu-inner">Ejecutivo Bancario · Datos & Estrategia</span></p>
-  <p class="hero-tagline">Banca de Grandes Empresas en BBVA Perú. Formación sólida en datos, modelado financiero y tecnología aplicada al negocio bancario.</p>
+  <p class="hero-titulo pu-word"><span class="pu-inner">Data · Growth · Micro SaaS · IA</span></p>
+  <p class="hero-tagline">Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.</p>
 
-  <div class="hero-ctas">
-    <a href="#contacto" class="btn-cream">
-      Contactar
-      <span class="btn-circle">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M2 12L12 2M12 2H6M12 2v6"/>
-        </svg>
-      </span>
-    </a>
-    <a href="Carlo Rondon CV.docx" download class="btn-outline">
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
-        <path d="M7 1v8M4 6l3 3 3-3M2 11h10"/>
-      </svg>
-      Descargar CV
-    </a>
-    <a href="https://wa.me/51936735897" target="_blank" class="btn-outline" style="border-color:rgba(37,211,102,0.2);color:rgba(37,211,102,0.7)">
-      <svg viewBox="0 0 14 14" fill="currentColor" style="width:13px;height:13px">
-        <path d="M7 0C3.13 0 0 3.13 0 7c0 1.23.32 2.39.88 3.39L0 14l3.7-.86A6.96 6.96 0 007 14c3.87 0 7-3.13 7-7s-3.13-7-7-7zm3.56 9.72c-.15.42-1.46.82-1.78.82-.07 0-.13 0-.2-.02-.32-.05-1.47-.58-2.47-1.43a7.2 7.2 0 01-1.63-2.16c-.28-.63-.09-1.08.05-1.31.14-.24.34-.44.52-.6.16-.13.22-.15.32-.15.09 0 .32.09.47.42l.6 1.34c.07.16.03.22-.03.32l-.22.28c-.07.09-.15.19-.06.37.09.18.41.74.9 1.2.5.47 1.07.72 1.25.8.18.08.29.07.39-.04l.28-.32c.11-.13.19-.11.32-.06l1.3.61c.32.15.32.3.23.73z"/>
-      </svg>
-      WhatsApp
-    </a>
-  </div>
-
-  <div class="hero-metrics-row">
-    
-        <div class="hero-metric">
-          <span class="hero-metric-val">6+</span>
-          <span class="hero-metric-label">años en banca<br>y consultoría</span>
-        </div>
-        <div class="hero-metric">
-          <span class="hero-metric-val">20K+</span>
-          <span class="hero-metric-label">clientes<br>impactados</span>
-        </div>
-        <div class="hero-metric">
-          <span class="hero-metric-val">200%</span>
-          <span class="hero-metric-label">↑ detección de<br>oportunidades</span>
-        </div>
-  </div>
 </section>
 
 <!-- TRAYECTORIA -->
 <section id="trayectoria">
   <p class="section-label">Trayectoria profesional</p>
   <div class="bio-wrap">
-    <p class="bio-text" id="bio-text"><span class="ch-span">E</span><span class="ch-span">j</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">u</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">v</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">G</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">m</span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">B</span><span class="ch-span">V</span><span class="ch-span">A</span><span class="ch-span ch-sp"> </span><span class="ch-span">P</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">ú</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">á</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">ñ</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">y</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">ó</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">F</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">k</span><span class="ch-span">e</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">g</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">g</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">—</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">p</span><span class="ch-span">l</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">í</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">v</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">z</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">ñ</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">u</span><span class="ch-span">i</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">y</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">i</span><span class="ch-span">ó</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span">n</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">b</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">p</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">j</span><span class="ch-span">i</span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">.</span></p>
+    <p class="bio-text" id="bio-text"><span class="ch-span">A</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">u</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">j</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">u</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">v</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">G</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">m</span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">B</span><span class="ch-span">V</span><span class="ch-span">A</span><span class="ch-span ch-sp"> </span><span class="ch-span">P</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">ú</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">o</span><span class="ch-span">p</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">ó</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">n</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">g</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">D</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">ñ</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">q</span><span class="ch-span">u</span><span class="ch-span">i</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">u</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">i</span><span class="ch-span">p</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">T</span><span class="ch-span">L</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">b</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">u</span><span class="ch-span">b</span><span class="ch-span">e</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">u</span><span class="ch-span">y</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">g</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">u</span><span class="ch-span">z</span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">í</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">u</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">C</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">á</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">ñ</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">b</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">h</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">u</span><span class="ch-span">l</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">—</span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">g</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">á</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">A</span><span class="ch-span">W</span><span class="ch-span">S</span><span class="ch-span">—</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">b</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">k</span><span class="ch-span ch-sp"> </span><span class="ch-span">q</span><span class="ch-span">u</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">-</span><span class="ch-span">S</span><span class="ch-span">a</span><span class="ch-span">a</span><span class="ch-span">S</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">h</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">i</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">:</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">u</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">z</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">A</span><span class="ch-span">P</span><span class="ch-span">I</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">L</span><span class="ch-span">L</span><span class="ch-span">M</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">z</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">u</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">i</span><span class="ch-span">g</span><span class="ch-span">i</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span">b</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">n</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">g</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">ú</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">u</span><span class="ch-span">i</span><span class="ch-span">r</span><span class="ch-span">.</span></p>
   </div>
 
   <!-- Accordions -->
@@ -723,12 +706,12 @@ strong { color: var(--cream); font-weight: 700; }
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">PEN 70–250M</div>
-          <div class="metric-label">Cartera bajo gestión</div>
+          <div class="metric-num">Corporativo</div>
+          <div class="metric-label">Grandes empresas del Perú</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">3 estados</div>
-          <div class="metric-label">Modelos financieros</div>
+          <div class="metric-num">Modelos</div>
+          <div class="metric-label">Financieros avanzados</div>
         </div>
         <div class="metric-card">
           <div class="metric-num">C-level</div>
@@ -736,8 +719,8 @@ strong { color: var(--cream); font-weight: 700; }
         </div>
         </div>
           <ul class="logros-list">
-            <li>Diseño y construcción de <strong>modelos financieros de tres estados</strong> para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out para impulsar la digitalización e ingresos transaccionales.</li>
-<li>Gestión ejecutiva de relación con empresas de alta facturación, presentando soluciones financieras integradas a comités directivos.</li>
+            <li>Diseño y construcción de <strong>modelos financieros</strong> para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales.</li>
+<li>Gestión ejecutiva de relación con las principales empresas del mercado peruano, presentando soluciones financieras integradas a comités directivos.</li>
 
           </ul>
         </div>
@@ -824,12 +807,8 @@ strong { color: var(--cream); font-weight: 700; }
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">+200%</div>
-          <div class="metric-label">Detección de oportunidades</div>
-        </div>
-        <div class="metric-card">
           <div class="metric-num">Top 10%</div>
-          <div class="metric-label">Desempeño firme (2019–2020)</div>
+          <div class="metric-label">Desempeño firma (2019–2020)</div>
         </div>
         <div class="metric-card">
           <div class="metric-num">+10</div>
@@ -837,7 +816,7 @@ strong { color: var(--cream); font-weight: 700; }
         </div>
         </div>
           <ul class="logros-list">
-            <li>Liderazgo de <strong>más de 10 iniciativas comerciales y de datos</strong>, incrementando en 200% la detección de oportunidades para las líneas de servicio de la firma.</li>
+            <li>Liderazgo de <strong>más de 10 iniciativas comerciales y de datos</strong>, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma.</li>
 <li>Soporte analítico y comercial a Auditoría, <strong>principal línea de ingresos de PwC Perú</strong>, en el diseño e implementación de estrategias de crecimiento.</li>
 <li>Reconocido con <strong>desempeño superior al percentil 90</strong> de la firma durante dos años consecutivos (2019 y 2020).</li>
 
@@ -878,7 +857,7 @@ strong { color: var(--cream); font-weight: 700; }
             </div>
             <div class="acc-company-text">
               <span class="company-name">Scotiabank Perú</span>
-              <span class="company-meta">Febrero – Septiembre 2019 · 7 meses</span>
+              <span class="company-meta">Febrero – Octubre 2019 · 9 meses</span>
             </div>
           </div>
           <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -892,7 +871,7 @@ strong { color: var(--cream); font-weight: 700; }
           <div class="role-header">
             <span class="role-title">Customer Experience Intern</span>
             
-            <span class="role-period">Feb – Sep 2019</span>
+            <span class="role-period">Feb – Oct 2019</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
@@ -933,7 +912,7 @@ strong { color: var(--cream); font-weight: 700; }
         <div class="comp-num">02</div>
         <div class="comp-emoji">🏦</div>
         <h3 class="comp-title">Estrategia Financiera</h3>
-        <ul class="comp-items"><li>Modelos financieros (3 estados)</li><li>Pricing & análisis de elasticidad</li><li>Business cases & ROI</li><li>Segmentación de clientes</li><li>Cash Management · Payments</li></ul>
+        <ul class="comp-items"><li>Modelos financieros avanzados</li><li>Pricing & análisis de elasticidad</li><li>Business cases & ROI</li><li>Segmentación de clientes</li><li>Cash Management · Payments</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="2">
         <div class="comp-num">03</div>
@@ -946,6 +925,18 @@ strong { color: var(--cream); font-weight: 700; }
         <div class="comp-emoji">🤝</div>
         <h3 class="comp-title">Liderazgo & Clientes</h3>
         <ul class="comp-items"><li>Banca de Grandes Empresas</li><li>Presentaciones C-level internacionales</li><li>Equipos transversales y stakeholders</li><li>Salesforce CRM</li></ul>
+      </div>
+      <div class="comp-card cs" data-delay-idx="4">
+        <div class="comp-num">05</div>
+        <div class="comp-emoji">🚀</div>
+        <h3 class="comp-title">Micro SaaS & Producto</h3>
+        <ul class="comp-items"><li>Desarrollo de micro-SaaS</li><li>Product strategy & monetización</li><li>Automatización con APIs y webhooks</li><li>Lanzamiento y crecimiento digital</li><li>No-code & low-code tools</li></ul>
+      </div>
+      <div class="comp-card cs" data-delay-idx="5">
+        <div class="comp-num">06</div>
+        <div class="comp-emoji">🤖</div>
+        <h3 class="comp-title">Inteligencia Artificial</h3>
+        <ul class="comp-items"><li>Prompting & agentes con IA</li><li>Workflows automatizados con LLMs</li><li>Integración APIs OpenAI / Anthropic</li><li>Aplicaciones IA en finanzas y negocio</li><li>Análisis de datos con ML</li></ul>
       </div>
     </div>
   </div>
@@ -1084,40 +1075,75 @@ strong { color: var(--cream); font-weight: 700; }
   </div>
 </section>
 
-<!-- PROYECTOS -->
-<section id="proyectos">
+<!-- PORTAFOLIO -->
+<section id="portafolio">
   <div class="section-inner">
-    <p class="section-label">Proyectos de datos</p>
+    <p class="section-label">Portafolio</p>
     <div class="proj-grid">
       
-      <div class="proj-card cs" data-delay-idx="01" style="background:linear-gradient(135deg,#080f20 0%,#10193a 100%)">
+      <div class="proj-card cs" data-delay-idx="01" style="background:linear-gradient(135deg,#1a0808 0%,#2d1010 100%)">
         <div class="proj-num">01</div>
+        <div class="proj-emoji">🎨</div>
+        <h3 class="proj-title">Latrue</h3>
+        <p class="proj-desc">Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.</p>
+        <div class="proj-footer">
+          <div class="skills-row"><span class="skill-tag">Editorial</span><span class="skill-tag">Community</span><span class="skill-tag">Curaduría</span></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--live">Live</span>
+            
+          </div>
+        </div>
+      </div>
+      <div class="proj-card cs" data-delay-idx="02" style="background:linear-gradient(135deg,#080f1a 0%,#101828 100%)">
+        <div class="proj-num">02</div>
+        <div class="proj-emoji">🚗</div>
+        <h3 class="proj-title">Consulta Vehicular</h3>
+        <p class="proj-desc">SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.</p>
+        <div class="proj-footer">
+          <div class="skills-row"><span class="skill-tag">SaaS</span><span class="skill-tag">Python</span><span class="skill-tag">API</span></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--live">Live</span>
+            <a href="https://consultavehicular.pe" target="_blank" class="proj-link">Ver proyecto ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card cs" data-delay-idx="03" style="background:linear-gradient(135deg,#080f20 0%,#10193a 100%)">
+        <div class="proj-num">03</div>
         <div class="proj-emoji">📈</div>
         <h3 class="proj-title">Pagos Digitales en Perú — BCRP</h3>
         <p class="proj-desc">Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.</p>
         <div class="proj-footer">
           <div class="skills-row"><span class="skill-tag">Power BI</span><span class="skill-tag">Python</span><span class="skill-tag">DAX</span></div>
-          <span class="proj-status proj-status--wip">🔨 En construcción</span>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--wip">En construccion</span>
+            
+          </div>
         </div>
       </div>
-      <div class="proj-card cs" data-delay-idx="02" style="background:linear-gradient(135deg,#081408 0%,#102014 100%)">
-        <div class="proj-num">02</div>
+      <div class="proj-card cs" data-delay-idx="04" style="background:linear-gradient(135deg,#081408 0%,#102014 100%)">
+        <div class="proj-num">04</div>
         <div class="proj-emoji">🗺️</div>
         <h3 class="proj-title">Inclusión Financiera por Región</h3>
         <p class="proj-desc">Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.</p>
         <div class="proj-footer">
           <div class="skills-row"><span class="skill-tag">Power BI Maps</span><span class="skill-tag">SQL</span></div>
-          <span class="proj-status proj-status--soon">Próximamente</span>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--wip">En construccion</span>
+            
+          </div>
         </div>
       </div>
-      <div class="proj-card cs" data-delay-idx="03" style="background:linear-gradient(135deg,#0e0e18 0%,#161626 100%)">
-        <div class="proj-num">03</div>
+      <div class="proj-card cs" data-delay-idx="05" style="background:linear-gradient(135deg,#0e0e18 0%,#161626 100%)">
+        <div class="proj-num">05</div>
         <div class="proj-emoji">🔮</div>
         <h3 class="proj-title">Predicción de Churn — Fintech</h3>
         <p class="proj-desc">Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.</p>
         <div class="proj-footer">
           <div class="skills-row"><span class="skill-tag">Python</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Power BI</span></div>
-          <span class="proj-status proj-status--soon">Próximamente</span>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--wip">En construccion</span>
+            
+          </div>
         </div>
       </div>
     </div>

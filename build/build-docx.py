@@ -1,5 +1,7 @@
 """
-build-docx.py — Genera 'Carlo Rondon CV.docx' desde data.json
+build-docx.py — Genera los CV en Word desde data.json (EN + ES)
+  - Carlo Rondon CV.docx      (inglés, default)
+  - Carlo Rondon CV ES.docx   (español)
 Ejecutar desde la raíz del proyecto: python build/build-docx.py
 Requiere: pip install python-docx
 """
@@ -8,24 +10,33 @@ import json
 import re
 from pathlib import Path
 from docx import Document
-from docx.shared import Pt, RGBColor, Inches, Cm
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Pt, RGBColor, Cm
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 ROOT = Path(__file__).parent.parent
 DATA_PATH = ROOT / "data.json"
-OUT_PATH = ROOT / "Carlo Rondon CV.docx"
+OUT_EN = ROOT / "Carlo Rondon CV.docx"
+OUT_ES = ROOT / "Carlo Rondon CV ES.docx"
 
 # ─── COLORES ───────────────────────────────────────────────────
-C_BLACK    = RGBColor(0x0a, 0x0a, 0x0a)
-C_DARK     = RGBColor(0x1a, 0x1a, 0x1a)
-C_ACCENT   = RGBColor(0x33, 0x33, 0x55)
-C_MUTED    = RGBColor(0x55, 0x55, 0x66)
-C_BODY     = RGBColor(0x22, 0x22, 0x33)
-C_GREEN    = RGBColor(0x16, 0xa3, 0x4a)
-C_GOLD     = RGBColor(0xb4, 0x5e, 0x09)
+C_BLACK = RGBColor(0x0a, 0x0a, 0x0a)
+C_MUTED = RGBColor(0x55, 0x55, 0x66)
+C_BODY  = RGBColor(0x22, 0x22, 0x33)
+C_GREEN = RGBColor(0x16, 0xa3, 0x4a)
+C_GOLD  = RGBColor(0xb4, 0x5e, 0x09)
+
+# ─── Encabezados de sección por idioma ─────────────────────────
+UI = {
+    "perfil":      {"en": "Profile",              "es": "Perfil"},
+    "experiencia": {"en": "Professional Experience", "es": "Experiencia Profesional"},
+    "educacion":   {"en": "Education",            "es": "Educación"},
+    "certs":       {"en": "Certifications",       "es": "Certificaciones"},
+    "idiomas":     {"en": "Languages",            "es": "Idiomas"},
+    "skills":      {"en": "Skills: ",             "es": "Skills: "},
+    "cert_curso":  {"en": "In progress",          "es": "En curso"},
+}
 
 
 def load():
@@ -33,13 +44,14 @@ def load():
         return json.load(f)
 
 
-def strip_bold(text):
-    """Devuelve texto plano sin marcadores **...**."""
-    return re.sub(r"\*\*(.+?)\*\*", r"\1", text)
+def L(v, lang):
+    """Escoge el idioma de un valor bilingüe {en, es}; pasa plano tal cual."""
+    if isinstance(v, dict) and lang in v:
+        return v[lang]
+    return v
 
 
 def add_bold_run(para, text):
-    """Añade texto con **negrita** como múltiples runs en el párrafo."""
     parts = re.split(r"(\*\*.*?\*\*)", text)
     for part in parts:
         if part.startswith("**") and part.endswith("**"):
@@ -61,22 +73,12 @@ def set_font(run, size=10, bold=False, color=None, italic=False):
         run.font.color.rgb = color
 
 
-def h1(doc, text):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(0)
-    p.paragraph_format.space_after = Pt(4)
-    run = p.add_run(text)
-    set_font(run, size=22, bold=True, color=C_BLACK)
-    return p
-
-
 def h2(doc, text):
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(14)
     p.paragraph_format.space_after = Pt(4)
     run = p.add_run(text.upper())
     set_font(run, size=8, bold=True, color=C_MUTED)
-    # Borde inferior
     pPr = p._p.get_or_add_pPr()
     pBdr = OxmlElement('w:pBdr')
     bottom = OxmlElement('w:bottom')
@@ -125,7 +127,7 @@ def bullet(doc, text):
     return p
 
 
-def metrics_table(doc, metrics):
+def metrics_table(doc, metrics, lang):
     if not metrics:
         return
     table = doc.add_table(rows=1, cols=len(metrics))
@@ -134,29 +136,24 @@ def metrics_table(doc, metrics):
     for i, m in enumerate(metrics):
         cell = table.rows[0].cells[i]
         cell._tc.get_or_add_tcPr()
-        # Valor
         vp = cell.paragraphs[0]
         vp.paragraph_format.space_after = Pt(0)
-        vrun = vp.add_run(m["valor"])
+        vrun = vp.add_run(L(m["valor"], lang))
         set_font(vrun, size=11, bold=True, color=C_BLACK)
-        # Label
-        lp = cell.add_paragraph(m["label"])
+        lp = cell.add_paragraph(L(m["label"], lang))
         lrun = lp.runs[0]
         set_font(lrun, size=8, color=C_MUTED)
         lp.paragraph_format.space_before = Pt(1)
         lp.paragraph_format.space_after = Pt(0)
-    # Quitar bordes visibles
     for row in table.rows:
         for cell in row.cells:
-            tc = cell._tc
-            tcPr = tc.get_or_add_tcPr()
+            tcPr = cell._tc.get_or_add_tcPr()
             tcBorders = OxmlElement('w:tcBorders')
             for side in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
                 el = OxmlElement(f'w:{side}')
                 el.set(qn('w:val'), 'none')
                 tcBorders.append(el)
             tcPr.append(tcBorders)
-            # Fondo
             shd = OxmlElement('w:shd')
             shd.set(qn('w:val'), 'clear')
             shd.set(qn('w:color'), 'auto')
@@ -165,10 +162,8 @@ def metrics_table(doc, metrics):
     doc.add_paragraph()
 
 
-def build(d):
+def build(d, lang, out_path):
     doc = Document()
-
-    # ─── Márgenes ───────────────────────────────────────────────
     for section in doc.sections:
         section.top_margin    = Cm(2.0)
         section.bottom_margin = Cm(2.0)
@@ -177,7 +172,7 @@ def build(d):
 
     p = d["persona"]
 
-    # ─── HEADER ─────────────────────────────────────────────────
+    # ─── HEADER ───
     name_p = doc.add_paragraph()
     name_p.paragraph_format.space_after = Pt(2)
     nr = name_p.add_run(f"{p['nombre']} {p['apellido']}")
@@ -185,102 +180,102 @@ def build(d):
 
     title_p = doc.add_paragraph()
     title_p.paragraph_format.space_after = Pt(6)
-    tr = title_p.add_run(p["titulo"])
+    tr = title_p.add_run(L(p["titulo"], lang))
     set_font(tr, size=12, color=C_MUTED, italic=True)
 
     contact_p = doc.add_paragraph()
     contact_p.paragraph_format.space_after = Pt(2)
     cr = contact_p.add_run(
-        f"{p['ubicacion']}  ·  {p['email']}  ·  {p['whatsapp']}  ·  linkedin.com/in/carlo-rondon"
+        f"{L(p['ubicacion'], lang)}  ·  {p['email']}  ·  {p['whatsapp']}  ·  linkedin.com/in/carlo-rondon"
     )
     set_font(cr, size=9, color=C_MUTED)
 
-    # ─── PERFIL ─────────────────────────────────────────────────
-    h2(doc, "Perfil")
-    body(doc, d["perfil"])
+    # ─── PERFIL ───
+    h2(doc, L(UI["perfil"], lang))
+    body(doc, L(d["perfil"], lang))
 
-    # ─── EXPERIENCIA ─────────────────────────────────────────────
-    h2(doc, "Experiencia Profesional")
-
+    # ─── EXPERIENCIA ───
+    h2(doc, L(UI["experiencia"], lang))
     for exp in d["experiencia"]:
-        # Empresa
         ep = doc.add_paragraph()
         ep.paragraph_format.space_before = Pt(10)
         ep.paragraph_format.space_after  = Pt(2)
-        er = ep.add_run(exp["empresa"])
+        er = ep.add_run(L(exp["empresa"], lang))
         set_font(er, size=12, bold=True, color=C_BLACK)
-        pr = ep.add_run(f"   {exp['periodo']}  ·  {exp['duracion']}")
+        pr = ep.add_run(f"   {L(exp['periodo'], lang)}  ·  {L(exp['duracion'], lang)}")
         set_font(pr, size=9, color=C_MUTED)
 
         for role in exp["roles"]:
-            h3(doc, role["titulo"], role.get("tag") or role["periodo"])
+            sub = role.get("tag") or L(role["periodo"], lang)
+            h3(doc, L(role["titulo"], lang), sub)
             if role.get("tag"):
                 pp = doc.add_paragraph()
                 pp.paragraph_format.space_before = Pt(0)
                 pp.paragraph_format.space_after  = Pt(4)
-                pr2 = pp.add_run(role["periodo"])
+                pr2 = pp.add_run(L(role["periodo"], lang))
                 set_font(pr2, size=9, color=C_MUTED)
 
             if role["metricas"]:
-                metrics_table(doc, role["metricas"])
+                metrics_table(doc, role["metricas"], lang)
 
             for logro in role["logros"]:
-                bullet(doc, logro)
+                bullet(doc, L(logro, lang))
 
         if exp["skills"]:
             sp = doc.add_paragraph()
             sp.paragraph_format.space_before = Pt(6)
             sp.paragraph_format.space_after  = Pt(2)
-            sr = sp.add_run("Skills: ")
+            sr = sp.add_run(L(UI["skills"], lang))
             set_font(sr, size=9, bold=True, color=C_MUTED)
-            sr2 = sp.add_run("  ·  ".join(exp["skills"]))
+            sr2 = sp.add_run("  ·  ".join(L(s, lang) for s in exp["skills"]))
             set_font(sr2, size=9, color=C_MUTED)
 
-    # ─── EDUCACIÓN ───────────────────────────────────────────────
-    h2(doc, "Educación")
+    # ─── EDUCACIÓN ───
+    h2(doc, L(UI["educacion"], lang))
     for edu in d["educacion"]:
         ep = doc.add_paragraph()
         ep.paragraph_format.space_before = Pt(6)
         ep.paragraph_format.space_after  = Pt(1)
-        er = ep.add_run(edu["titulo"])
+        er = ep.add_run(L(edu["titulo"], lang))
         set_font(er, size=11, bold=True, color=C_BLACK)
         ip = doc.add_paragraph()
         ip.paragraph_format.space_before = Pt(0)
         ip.paragraph_format.space_after  = Pt(2)
-        ir = ip.add_run(f"{edu['institucion']}  ·  {edu['nivel']}")
+        ir = ip.add_run(f"{L(edu['institucion'], lang)}  ·  {L(edu['nivel'], lang)}")
         set_font(ir, size=9, color=C_MUTED)
 
-    # ─── CERTIFICACIONES ─────────────────────────────────────────
-    h2(doc, "Certificaciones")
+    # ─── CERTIFICACIONES ───
+    h2(doc, L(UI["certs"], lang))
     for cert in d["certificaciones"]:
-        estado = "En curso" if cert["estado"] == "en_curso" else "✓"
+        en_curso = cert["estado"] == "en_curso"
+        estado = L(UI["cert_curso"], lang) if en_curso else "✓"
         cp = doc.add_paragraph()
         cp.paragraph_format.space_before = Pt(3)
         cp.paragraph_format.space_after  = Pt(1)
         cr2 = cp.add_run(f"[{estado}]  ")
-        color = C_GOLD if cert["estado"] == "en_curso" else C_GREEN
-        set_font(cr2, size=9, bold=True, color=color)
+        set_font(cr2, size=9, bold=True, color=(C_GOLD if en_curso else C_GREEN))
         nr2 = cp.add_run(cert["nombre"])
         set_font(nr2, size=10, bold=True, color=C_BLACK)
         er2 = cp.add_run(f"  —  {cert['entidad']} · {cert['año']}")
         set_font(er2, size=9, color=C_MUTED)
 
-    # ─── IDIOMAS ─────────────────────────────────────────────────
-    h2(doc, "Idiomas")
-    for lang in d["idiomas"]:
+    # ─── IDIOMAS ───
+    h2(doc, L(UI["idiomas"], lang))
+    for lg in d["idiomas"]:
         lp = doc.add_paragraph()
         lp.paragraph_format.space_before = Pt(4)
         lp.paragraph_format.space_after  = Pt(1)
-        lr = lp.add_run(f"{lang['nombre']}  —  {lang['nivel']}")
+        lr = lp.add_run(f"{L(lg['nombre'], lang)}  —  {L(lg['nivel'], lang)}")
         set_font(lr, size=10, bold=True, color=C_BLACK)
-        if lang.get("nota"):
-            lr2 = lp.add_run(f"  ({lang['nota']})")
+        if lg.get("nota"):
+            lr2 = lp.add_run(f"  ({L(lg['nota'], lang)})")
             set_font(lr2, size=9, color=C_MUTED, italic=True)
 
-    # ─── GUARDAR ─────────────────────────────────────────────────
-    doc.save(OUT_PATH)
-    print(f"[OK] Carlo Rondon CV.docx generado ({OUT_PATH.stat().st_size // 1024} KB)")
+    doc.save(out_path)
+    print(f"[OK] {out_path.name} generado ({out_path.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":
-    build(load())
+    data = load()
+    build(data, "en", OUT_EN)
+    build(data, "es", OUT_ES)

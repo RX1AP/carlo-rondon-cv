@@ -2,9 +2,12 @@
   "persona": {
     "nombre": "Carlo",
     "apellido": "Rondón",
-    "titulo": "Data · Growth · Micro SaaS · IA",
-    "tagline": "Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.",
-    "ubicacion": "Lima, Perú",
+    "titulo": { "en": "Data · Growth · Micro SaaS · AI", "es": "Data · Growth · Micro SaaS · IA" },
+    "tagline": {
+      "en": "I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking.",
+      "es": "Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca."
+    },
+    "ubicacion": { "en": "Lima, Peru", "es": "Lima, Perú" },
     "email": "carlorndn@gmail.com",
     "whatsapp": "+51936735897",
     "whatsapp_link": "https://wa.me/51936735897",
@@ -12,125 +15,179 @@
     "github": "https://github.com/RX1AP/carlo-rondon-cv"
   },
   "metricas": [],
-  "perfil": "Actualmente, Ejecutivo de Banca de Grandes Empresas en BBVA Perú, opero en la intersección entre datos, tecnología y negocio financiero. Diseño arquitecturas de datos y pipelines ETL sobre la nube, construyo modelos financieros y de pricing, y traduzco esa capacidad analítica en decisiones de producto y crecimiento. Con más de seis años entre banca, fintech y consultoría —y postgrado en management más certificaciones en ciencia de datos e ingeniería de datos en AWS— entiendo el negocio tan bien como el stack que lo sostiene. En paralelo desarrollo micro-SaaS y herramientas con inteligencia artificial: automatizo procesos, integro APIs y LLMs, y lanzo soluciones digitales escalables en mercados donde la tecnología financiera aún tiene todo por construir.",
+  "perfil": {
+    "en": "I'm a technical profile operating inside the financial world. Currently, as a Corporate & Large-Enterprise Banking Executive at BBVA Peru, I design data architectures and cloud ETL pipelines, integrate and sell banking connectivity APIs that link corporate clients' systems to the bank's core, and automate processes with artificial intelligence. My edge isn't just understanding the business —I do, with over six years across banking, fintech and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS— but mastering the stack that makes it run: SQL, Python, cloud, APIs and LLMs. In parallel I build micro-SaaS and AI-powered tools, shipping scalable digital solutions in markets where financial technology still has everything left to build.",
+    "es": "Soy un perfil técnico que opera dentro del mundo financiero. Actualmente, como Ejecutivo de Corporate & Large-Enterprise Banking en BBVA Perú, diseño arquitecturas de datos y pipelines ETL en la nube, integro y comercializo APIs de conectividad bancaria que enlazan los sistemas de clientes corporativos con el core del banco, y automatizo procesos con inteligencia artificial. Mi ventaja no es solo entender el negocio —lo entiendo, con más de seis años entre banca, fintech y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS—, sino dominar el stack que lo hace funcionar: SQL, Python, cloud, APIs y LLMs. En paralelo desarrollo micro-SaaS y herramientas con IA, lanzando soluciones digitales escalables en mercados donde la tecnología financiera aún tiene todo por construir."
+  },
   "experiencia": [
     {
-      "empresa": "BBVA Perú",
+      "empresa": { "en": "BBVA Peru", "es": "BBVA Perú" },
       "logo_url": "https://logo.clearbit.com/bbva.com",
       "logo_fallback": "BB",
       "logo_color": "rgba(0,115,207,0.15)",
       "logo_text_color": "#4d9fe0",
-      "periodo": "Mayo 2022 – Actualidad",
-      "duracion": "3 años+",
+      "periodo": { "en": "May 2022 – Present", "es": "Mayo 2022 – Actualidad" },
+      "duracion": { "en": "3+ years", "es": "3 años+" },
       "roles": [
         {
           "titulo": "Cash Management Executive",
-          "tag": "Banca Grandes Empresas",
-          "periodo": "Mar 2026 – Actualidad",
+          "tag": "Corporate & Large-Enterprise Banking",
+          "periodo": { "en": "Mar 2026 – Present", "es": "Mar 2026 – Actualidad" },
           "metricas": [
-            { "valor": "Corporativo", "label": "Grandes empresas del Perú" },
-            { "valor": "Modelos",     "label": "Financieros avanzados" },
-            { "valor": "C-level",     "label": "Nivel de interlocución" }
+            { "valor": "APIs",      "label": { "en": "Banking interconnection", "es": "Interconexión bancaria" } },
+            { "valor": "Real-time", "label": { "en": "Payments, collections & reconciliation", "es": "Pagos, cobros y conciliación" } },
+            { "valor": "C-level",   "label": { "en": "Level of engagement", "es": "Nivel de interlocución" } }
           ],
           "logros": [
-            "Diseño y construcción de **modelos financieros** para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales.",
-            "Gestión ejecutiva de relación con las principales empresas del mercado peruano, presentando soluciones financieras integradas a comités directivos."
+            {
+              "en": "Sale and implementation of **banking connectivity APIs** (host-to-host, ERP-to-bank integration and open banking) that interconnect corporate clients' treasury systems with the bank's core, automating payments, collections and reconciliation in real time.",
+              "es": "Venta e implementación de **APIs de conectividad bancaria** (host-to-host, integración ERP-banco y open banking) que interconectan los sistemas de tesorería de clientes corporativos con el core del banco, automatizando pagos, cobros y conciliación en tiempo real."
+            },
+            {
+              "en": "Design and construction of **financial models** for the corporate-client portfolio, projecting ROI scenarios and cash in/out product placement that drive digitalization and transactional revenue.",
+              "es": "Diseño y construcción de **modelos financieros** para cartera de clientes corporativos, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales."
+            },
+            {
+              "en": "Executive relationship management with Peru's leading corporations, driving the adoption of digital and connectivity solutions before executive committees.",
+              "es": "Gestión ejecutiva de relación con las principales empresas del mercado peruano, liderando la adopción de soluciones digitales y de conectividad ante comités directivos."
+            }
           ]
         },
         {
           "titulo": "Payments & Loyalty Associate",
           "tag": null,
-          "periodo": "Dic 2025 – Mar 2026",
+          "periodo": { "en": "Dec 2025 – Mar 2026", "es": "Dic 2025 – Mar 2026" },
           "metricas": [
-            { "valor": "+20,000",     "label": "Clientes activos" },
-            { "valor": "Exponencial", "label": "Crecimiento en cash in" },
-            { "valor": "Elasticidad", "label": "Análisis de pricing" }
+            { "valor": "+20,000",                                       "label": { "en": "Active clients", "es": "Clientes activos" } },
+            { "valor": { "en": "Exponential", "es": "Exponencial" },     "label": { "en": "Cash-in growth", "es": "Crecimiento en cash in" } },
+            { "valor": { "en": "Elasticity", "es": "Elasticidad" },      "label": { "en": "Pricing analysis", "es": "Análisis de pricing" } }
           ],
           "logros": [
-            "Optimización del **modelo de precios y promociones** del negocio de payments mediante análisis de elasticidad de demanda y segmentación avanzada de clientes, maximizando conversión y activación."
+            {
+              "en": "Optimization of the payments business **pricing and promotions model** through demand-elasticity analysis and advanced customer segmentation, maximizing conversion and activation.",
+              "es": "Optimización del **modelo de precios y promociones** del negocio de payments mediante análisis de elasticidad de demanda y segmentación avanzada de clientes, maximizando conversión y activación."
+            }
           ]
         },
         {
           "titulo": "Senior Data & Commercial Analyst",
           "tag": "Openpay",
-          "periodo": "Mar 2025 – Dic 2025",
-          "metricas": [],
+          "periodo": { "en": "Mar 2025 – Dec 2025", "es": "Mar 2025 – Dic 2025" },
+          "metricas": [
+            { "valor": { "en": "12 months", "es": "12 meses" },             "label": { "en": "Rollout to 3 areas", "es": "Extensión a 3 áreas" } },
+            { "valor": { "en": "In production", "es": "En producción" },     "label": { "en": "Model still live today", "es": "Modelo aún vigente hoy" } },
+            { "valor": { "en": "International HQ", "es": "Matriz internacional" }, "label": { "en": "Model adoption", "es": "Adopción del modelo" } }
+          ],
           "logros": [
-            "Elaboración de **business cases para clientes estratégicos** y presentaciones a directorios C-level locales e internacionales, sustentando decisiones de inversión y expansión del negocio fintech.",
-            "Coordinación autónoma de **equipos transversales** (tecnología, marketing, operaciones) para la ejecución de automatizaciones e iniciativas comerciales de alto impacto."
+            {
+              "en": "Rolled the framework out over 12 months to **Operations** (post-sale prioritization by transaction value and growth projection), **Marketing** (segment focus on e-commerce) and **Fraud** (commercial signals the detection engine hadn't mapped yet), with Peru's country manager as executive sponsor.",
+              "es": "Extensión del framework durante 12 meses a **Operaciones** (priorización post-venta por valor transaccional y proyección de crecimiento), **Marketing** (foco de segmento en e-commerce) y **Fraude** (señales comerciales que el motor de detección aún no había mapeado), con el country manager de Perú como sponsor ejecutivo."
+            },
+            {
+              "en": "The model **remains in production today** and was adopted by the international HQ in Mexico, whose fraud team requested the commercial dataset.",
+              "es": "El modelo **sigue en producción hoy** y fue adoptado por la matriz internacional en México, cuyo equipo de fraude solicitó el dataset comercial."
+            }
           ]
         },
         {
           "titulo": "Data & Commercial Analyst",
           "tag": "Openpay",
-          "periodo": "Mayo 2022 – Mar 2025",
-          "metricas": [],
+          "periodo": { "en": "May 2022 – Mar 2025", "es": "Mayo 2022 – Mar 2025" },
+          "metricas": [
+            { "valor": "<100 → 40K+", "label": { "en": "Merchants as it scaled", "es": "Comercios al escalar" } },
+            { "valor": "2% → 8%",     "label": { "en": "Lead conversion", "es": "Conversión de leads" } },
+            { "valor": "19% → 42%",   "label": { "en": "Junk-lead rejection", "es": "Rechazo de leads basura" } }
+          ],
           "logros": [
-            "Liderazgo autónomo del **proyecto de arquitectura de datos de Openpay**: diseño e implementación de pipelines ETL que cumplieron los estándares de gobierno de datos bancario, superando los tiempos de entrega durante una etapa de hipercrecimiento.",
-            "Automatización de procesos de datos que redujeron tiempos de reporte y habilitaron **análisis en tiempo real** para la toma de decisiones comerciales."
+            {
+              "en": "Joined a **BBVA payments fintech** serving fewer than 100 merchants with no defined data processes: decisions ran on a weekly spreadsheet and a monthly results deck. I built **predictive models and daily-cut reporting** that became the decision layer for four teams as the business scaled past 40,000 merchants.",
+              "es": "Ingreso a una **fintech de pagos de BBVA** con menos de 100 comercios y sin procesos de datos definidos: las decisiones corrían sobre un Excel semanal y un deck mensual de resultados. Construí **modelos predictivos y reportería de corte diario** que se volvieron la capa de decisión de cuatro equipos mientras el negocio escalaba más allá de 40,000 comercios."
+            },
+            {
+              "en": "Lifted **commercial lead conversion from 2% to 8%** in under three months by scoring lead quality, raising junk-lead rejection from 19% to 42% and refocusing sales effort on winnable accounts.",
+              "es": "Elevé la **conversión de leads comerciales de 2% a 8%** en menos de tres meses calificando la calidad de cada lead, subiendo el rechazo de leads basura de 19% a 42% y reenfocando el esfuerzo de ventas en las cuentas ganables."
+            }
           ]
         }
       ],
-      "skills": ["SQL", "Python", "Power BI", "AWS", "ETL", "Modelado financiero", "Pricing", "Salesforce"]
+      "skills": ["SQL", "Python", "Power BI", "AWS", "ETL", { "en": "Financial modeling", "es": "Modelado financiero" }, "Pricing", "Salesforce"]
     },
     {
-      "empresa": "PwC Perú",
+      "empresa": { "en": "PwC Peru", "es": "PwC Perú" },
       "logo_url": "https://logo.clearbit.com/pwc.com",
       "logo_fallback": "PwC",
       "logo_color": "rgba(208,74,2,0.12)",
       "logo_text_color": "#d46a3a",
-      "periodo": "Septiembre 2019 – Mayo 2022",
-      "duracion": "2a 8m",
+      "periodo": { "en": "September 2019 – May 2022", "es": "Septiembre 2019 – Mayo 2022" },
+      "duracion": { "en": "2y 8m", "es": "2a 8m" },
       "roles": [
         {
           "titulo": "Business Intelligence Associate",
           "tag": null,
-          "periodo": "Ago 2020 – Mayo 2022",
+          "periodo": { "en": "Aug 2020 – May 2022", "es": "Ago 2020 – Mayo 2022" },
           "metricas": [
-            { "valor": "Top 10%","label": "Desempeño firma (2019–2020)" },
-            { "valor": "+10",    "label": "Iniciativas de datos lideradas" }
+            { "valor": "Top 10%", "label": { "en": "Firm performance (2019–2020)", "es": "Desempeño firma (2019–2020)" } },
+            { "valor": "+10",     "label": { "en": "Data initiatives led", "es": "Iniciativas de datos lideradas" } }
           ],
           "logros": [
-            "Liderazgo de **más de 10 iniciativas comerciales y de datos**, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma.",
-            "Soporte analítico y comercial a Auditoría, **principal línea de ingresos de PwC Perú**, en el diseño e implementación de estrategias de crecimiento.",
-            "Reconocido con **desempeño superior al percentil 90** de la firma durante dos años consecutivos (2019 y 2020)."
+            {
+              "en": "Led **10+ commercial and data initiatives**, significantly increasing opportunity detection across the firm's service lines.",
+              "es": "Liderazgo de **más de 10 iniciativas comerciales y de datos**, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma."
+            },
+            {
+              "en": "Analytical and commercial support to Audit, **PwC Peru's main revenue line**, in designing and implementing growth strategies.",
+              "es": "Soporte analítico y comercial a Auditoría, **principal línea de ingresos de PwC Perú**, en el diseño e implementación de estrategias de crecimiento."
+            },
+            {
+              "en": "Recognized with **performance above the 90th percentile** of the firm for two consecutive years (2019 and 2020).",
+              "es": "Reconocido con **desempeño superior al percentil 90** de la firma durante dos años consecutivos (2019 y 2020)."
+            }
           ]
         },
         {
           "titulo": "Business Expansion Intern",
           "tag": null,
-          "periodo": "Sep 2019 – Ago 2020",
+          "periodo": { "en": "Sep 2019 – Aug 2020", "es": "Sep 2019 – Ago 2020" },
           "metricas": [
-            { "valor": "+700",    "label": "Colaboradores capacitados" },
-            { "valor": "Nacional","label": "Alcance del proyecto Salesforce" }
+            { "valor": "+700",                                       "label": { "en": "Staff trained", "es": "Colaboradores capacitados" } },
+            { "valor": { "en": "Nationwide", "es": "Nacional" },     "label": { "en": "Salesforce project scope", "es": "Alcance del proyecto Salesforce" } }
           ],
           "logros": [
-            "Liderazgo de la **migración a Salesforce** a nivel Perú, diseñando el plan de capacitación y formando a más de 700 colaboradores de la firma en el nuevo sistema CRM."
+            {
+              "en": "Led the **Salesforce migration** across Peru, designing the training plan and onboarding 700+ of the firm's staff onto the new CRM system.",
+              "es": "Liderazgo de la **migración a Salesforce** a nivel Perú, diseñando el plan de capacitación y formando a más de 700 colaboradores de la firma en el nuevo sistema CRM."
+            }
           ]
         }
       ],
-      "skills": ["Business Intelligence", "Análisis comercial", "Salesforce", "Consultoría"]
+      "skills": ["Business Intelligence", { "en": "Commercial analysis", "es": "Análisis comercial" }, "Salesforce", { "en": "Consulting", "es": "Consultoría" }]
     },
     {
-      "empresa": "Scotiabank Perú",
+      "empresa": { "en": "Scotiabank Peru", "es": "Scotiabank Perú" },
       "logo_url": "https://logo.clearbit.com/scotiabank.com",
       "logo_fallback": "SB",
       "logo_color": "rgba(200,16,46,0.12)",
       "logo_text_color": "#c84a62",
-      "periodo": "Febrero – Octubre 2019",
-      "duracion": "9 meses",
+      "periodo": { "en": "February – October 2019", "es": "Febrero – Octubre 2019" },
+      "duracion": { "en": "9 months", "es": "9 meses" },
       "roles": [
         {
           "titulo": "Customer Experience Intern",
           "tag": null,
-          "periodo": "Feb – Oct 2019",
+          "periodo": { "en": "Feb – Oct 2019", "es": "Feb – Oct 2019" },
           "metricas": [
-            { "valor": "5",                 "label": "Iniciativas de mejora CX" },
-            { "valor": "Retail & Wholesale", "label": "Segmentos de clientes" }
+            { "valor": "5",                 "label": { "en": "CX improvement initiatives", "es": "Iniciativas de mejora CX" } },
+            { "valor": "Retail & Wholesale", "label": { "en": "Customer segments", "es": "Segmentos de clientes" } }
           ],
           "logros": [
-            "Diseño de **métricas de fidelización** para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco.",
-            "Participación activa en **5 iniciativas exitosas** de mejora de experiencia del cliente."
+            {
+              "en": "Designed **loyalty metrics** for retail and wholesale segments, assessing campaign impact on the bank's customer base.",
+              "es": "Diseño de **métricas de fidelización** para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco."
+            },
+            {
+              "en": "Active participation in **5 successful initiatives** to improve customer experience.",
+              "es": "Participación activa en **5 iniciativas exitosas** de mejora de experiencia del cliente."
+            }
           ]
         }
       ],
@@ -141,76 +198,112 @@
     {
       "numero": "01",
       "emoji": "📊",
-      "titulo": "Datos & Analítica",
-      "items": ["SQL, Python, R Studio", "Power BI, Looker Studio, DAX", "Excel avanzado", "Estadística aplicada"]
+      "titulo": { "en": "Data & Analytics", "es": "Datos & Analítica" },
+      "items": [
+        "SQL, Python, R Studio",
+        "Power BI, Looker Studio, DAX",
+        { "en": "Advanced Excel", "es": "Excel avanzado" },
+        { "en": "Applied statistics", "es": "Estadística aplicada" }
+      ]
     },
     {
       "numero": "02",
       "emoji": "🏦",
-      "titulo": "Estrategia Financiera",
-      "items": ["Modelos financieros avanzados", "Pricing & análisis de elasticidad", "Business cases & ROI", "Segmentación de clientes", "Cash Management · Payments"]
+      "titulo": { "en": "Financial Strategy", "es": "Estrategia Financiera" },
+      "items": [
+        { "en": "Advanced financial models", "es": "Modelos financieros avanzados" },
+        { "en": "Pricing & elasticity analysis", "es": "Pricing & análisis de elasticidad" },
+        "Business cases & ROI",
+        { "en": "Customer segmentation", "es": "Segmentación de clientes" },
+        "Cash Management · Payments"
+      ]
     },
     {
       "numero": "03",
       "emoji": "☁️",
-      "titulo": "Cloud & Data Eng.",
-      "items": ["AWS (S3, Glue, Redshift)", "Arquitectura & automatización ETL", "Gobierno de datos bancario", "Pipelines de datos"]
+      "titulo": { "en": "Cloud & Data Eng.", "es": "Cloud & Data Eng." },
+      "items": [
+        "AWS (S3, Glue, Redshift)",
+        { "en": "ETL architecture & automation", "es": "Arquitectura & automatización ETL" },
+        { "en": "Banking data governance", "es": "Gobierno de datos bancario" },
+        { "en": "Data pipelines", "es": "Pipelines de datos" }
+      ]
     },
     {
       "numero": "04",
       "emoji": "🤝",
-      "titulo": "Liderazgo & Clientes",
-      "items": ["Banca de Grandes Empresas", "Presentaciones C-level internacionales", "Equipos transversales y stakeholders", "Salesforce CRM"]
+      "titulo": { "en": "Leadership & Clients", "es": "Liderazgo & Clientes" },
+      "items": [
+        "Corporate & Large-Enterprise Banking",
+        { "en": "International C-level presentations", "es": "Presentaciones C-level internacionales" },
+        { "en": "Cross-functional teams & stakeholders", "es": "Equipos transversales y stakeholders" },
+        "Salesforce CRM"
+      ]
     },
     {
       "numero": "05",
       "emoji": "🚀",
-      "titulo": "Micro SaaS & Producto",
-      "items": ["Desarrollo de micro-SaaS", "Product strategy & monetización", "Automatización con APIs y webhooks", "Lanzamiento y crecimiento digital", "No-code & low-code tools"]
+      "titulo": { "en": "Micro SaaS & Product", "es": "Micro SaaS & Producto" },
+      "items": [
+        { "en": "Micro-SaaS development", "es": "Desarrollo de micro-SaaS" },
+        { "en": "Product strategy & monetization", "es": "Product strategy & monetización" },
+        { "en": "Automation with APIs & webhooks", "es": "Automatización con APIs y webhooks" },
+        { "en": "Digital launch & growth", "es": "Lanzamiento y crecimiento digital" },
+        "No-code & low-code tools"
+      ]
     },
     {
       "numero": "06",
       "emoji": "🤖",
-      "titulo": "Inteligencia Artificial",
-      "items": ["Prompting & agentes con IA", "Workflows automatizados con LLMs", "Integración APIs OpenAI / Anthropic", "Aplicaciones IA en finanzas y negocio", "Análisis de datos con ML"]
+      "titulo": { "en": "Artificial Intelligence", "es": "Inteligencia Artificial" },
+      "items": [
+        { "en": "Prompting & AI agents", "es": "Prompting & agentes con IA" },
+        { "en": "Automated LLM workflows", "es": "Workflows automatizados con LLMs" },
+        { "en": "OpenAI / Anthropic API integration", "es": "Integración APIs OpenAI / Anthropic" },
+        { "en": "AI applications in finance & business", "es": "Aplicaciones IA en finanzas y negocio" },
+        { "en": "Data analysis with ML", "es": "Análisis de datos con ML" }
+      ]
     }
   ],
   "educacion": [
     {
-      "nivel": "Postgrado · 2024",
+      "nivel": { "en": "Postgraduate · 2024", "es": "Postgrado · 2024" },
       "titulo": "Master in Management",
-      "institucion": "Pacífico Business School · Lima, Perú",
+      "institucion": { "en": "Pacífico Business School · Lima, Peru", "es": "Pacífico Business School · Lima, Perú" },
       "siglas": "UP"
     },
     {
-      "nivel": "Pregrado · 2021",
-      "titulo": "Bachiller en Marketing",
-      "institucion": "Universidad del Pacífico · Lima, Perú",
+      "nivel": { "en": "Undergraduate · 2021", "es": "Pregrado · 2021" },
+      "titulo": { "en": "Bachelor in Marketing", "es": "Bachiller en Marketing" },
+      "institucion": { "en": "Universidad del Pacífico · Lima, Peru", "es": "Universidad del Pacífico · Lima, Perú" },
       "siglas": "UP"
     }
   ],
   "certificaciones": [
-    { "nombre": "Data Specialist",                                        "entidad": "BBVA University",      "año": "2024", "estado": "obtenida" },
-    { "nombre": "SQL for Data Science",                                   "entidad": "UCLA Extension",       "año": "2022", "estado": "obtenida" },
-    { "nombre": "Professional Certificate in Data Science",               "entidad": "IBM",                  "año": "2020", "estado": "obtenida" },
-    { "nombre": "Big Data & Cloud Analytics",                             "entidad": "Kedge Business School","año": "2020", "estado": "obtenida" },
-    { "nombre": "Microsoft PL-300 · Power BI Data Analyst Associate",    "entidad": "Microsoft",            "año": "2025", "estado": "en_curso" },
-    { "nombre": "Google Analytics 4",                                     "entidad": "Google Skillshop",     "año": "2025", "estado": "en_curso" },
-    { "nombre": "AWS Certified Data Engineer – Associate (DEA-C01)",     "entidad": "Amazon",               "año": "2025", "estado": "en_curso" }
+    { "nombre": "Data Specialist",                                     "entidad": "BBVA University",       "año": "2024", "estado": "obtenida" },
+    { "nombre": "SQL for Data Science",                                "entidad": "UCLA Extension",        "año": "2022", "estado": "obtenida" },
+    { "nombre": "Professional Certificate in Data Science",            "entidad": "IBM",                   "año": "2020", "estado": "obtenida" },
+    { "nombre": "Big Data & Cloud Analytics",                          "entidad": "Kedge Business School", "año": "2020", "estado": "obtenida" },
+    { "nombre": "Microsoft PL-300 · Power BI Data Analyst Associate", "entidad": "Microsoft",             "año": "2025", "estado": "en_curso" },
+    { "nombre": "Google Analytics 4",                                  "entidad": "Google Skillshop",      "año": "2025", "estado": "en_curso" },
+    { "nombre": "AWS Certified Data Engineer – Associate (DEA-C01)",  "entidad": "Amazon",                "año": "2025", "estado": "en_curso" }
   ],
   "idiomas": [
-    { "nombre": "Español", "nivel": "Nativo",        "porcentaje": 100, "nota": null },
-    { "nombre": "Inglés",  "nivel": "Profesional",   "porcentaje": 88,  "nota": "IELTS Academic Band 7.0" },
-    { "nombre": "Italiano","nivel": "Conversacional", "porcentaje": 52,  "nota": null }
+    { "nombre": { "en": "Spanish", "es": "Español" }, "nivel": { "en": "Native", "es": "Nativo" },              "porcentaje": 100, "nota": null },
+    { "nombre": { "en": "English", "es": "Inglés" },  "nivel": { "en": "Professional", "es": "Profesional" },   "porcentaje": 88,  "nota": "IELTS Academic Band 7.0" },
+    { "nombre": { "en": "Italian", "es": "Italiano" },"nivel": { "en": "Conversational", "es": "Conversacional" }, "porcentaje": 52, "nota": null }
   ],
   "proyectos": [
     {
       "numero": "01",
       "emoji": "🎨",
       "titulo": "Latrue",
-      "descripcion": "Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.",
+      "descripcion": {
+        "en": "Social project: a digital magazine boosting emerging Latin American art. 150+ artists supported across the region with editorial content, outreach and community.",
+        "es": "Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad."
+      },
       "estado": "activo",
-      "skills": ["Editorial", "Community", "Curaduría"],
+      "skills": ["Editorial", "Community", { "en": "Curation", "es": "Curaduría" }],
       "gradient": "linear-gradient(135deg,#1a0808 0%,#2d1010 100%)",
       "link": null
     },
@@ -218,7 +311,10 @@
       "numero": "02",
       "emoji": "🚗",
       "titulo": "Consulta Vehicular",
-      "descripcion": "SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.",
+      "descripcion": {
+        "en": "Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms.",
+        "es": "SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech."
+      },
       "estado": "activo",
       "skills": ["SaaS", "Python", "API"],
       "gradient": "linear-gradient(135deg,#080f1a 0%,#101828 100%)",
@@ -227,8 +323,11 @@
     {
       "numero": "03",
       "emoji": "📈",
-      "titulo": "Pagos Digitales en Perú — BCRP",
-      "descripcion": "Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.",
+      "titulo": { "en": "Digital Payments in Peru — BCRP", "es": "Pagos Digitales en Perú — BCRP" },
+      "descripcion": {
+        "en": "Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX.",
+        "es": "Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX."
+      },
       "estado": "en_construccion",
       "skills": ["Power BI", "Python", "DAX"],
       "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)",
@@ -237,8 +336,11 @@
     {
       "numero": "04",
       "emoji": "🗺️",
-      "titulo": "Inclusión Financiera por Región",
-      "descripcion": "Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.",
+      "titulo": { "en": "Financial Inclusion by Region", "es": "Inclusión Financiera por Región" },
+      "descripcion": {
+        "en": "Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024.",
+        "es": "Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024."
+      },
       "estado": "en_construccion",
       "skills": ["Power BI Maps", "SQL"],
       "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)",
@@ -247,8 +349,11 @@
     {
       "numero": "05",
       "emoji": "🔮",
-      "titulo": "Predicción de Churn — Fintech",
-      "descripcion": "Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.",
+      "titulo": { "en": "Churn Prediction — Fintech", "es": "Predicción de Churn — Fintech" },
+      "descripcion": {
+        "en": "Predictive churn model for payments products with an executive monitoring dashboard.",
+        "es": "Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo."
+      },
       "estado": "en_construccion",
       "skills": ["Python", "Scikit-learn", "Power BI"],
       "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)",

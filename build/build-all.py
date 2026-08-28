@@ -17,5 +17,5 @@ def run(script):
 
 run(ROOT / "build" / "build-html.py")
 run(ROOT / "build" / "build-docx.py")
-print("\n[DONE] carlo-rondon.html y Carlo Rondon CV.docx actualizados.")
+print("\n[DONE] carlo-rondon.html + CV .docx (EN y ES) actualizados.")
 print("       Flujo: editar data.json -> py build/build-all.py -> git push")

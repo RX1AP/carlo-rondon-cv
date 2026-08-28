@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlo Rondón — Data · Growth · Micro SaaS · IA</title>
-<meta name="description" content="Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.">
+<title>Carlo Rondón — Data · Growth · Micro SaaS · AI</title>
+<meta name="description" content="I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-/* ─── RESET & BASE ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --bg: #000000;
@@ -37,7 +36,6 @@ body {
 a { color: inherit; text-decoration: none; }
 strong { color: var(--cream); font-weight: 700; }
 
-/* ─── NOISE OVERLAY ──────────────────────────────────────────── */
 .noise-overlay { position: relative; }
 .noise-overlay::after {
   content: '';
@@ -46,7 +44,6 @@ strong { color: var(--cream); font-weight: 700; }
   opacity: 0.6; mix-blend-mode: overlay; pointer-events: none;
 }
 
-/* ─── PULL-UP ANIMATION ─────────────────────────────────────── */
 .pu-word  { display: inline-block; overflow: hidden; vertical-align: bottom; }
 .pu-inner { display: inline-block; transform: translateY(110%); opacity: 0; will-change: transform, opacity; }
 .pu-inner.in {
@@ -54,7 +51,6 @@ strong { color: var(--cream); font-weight: 700; }
   transform: translateY(0); opacity: 1;
 }
 
-/* ─── CARDS FADE-IN ──────────────────────────────────────────── */
 .cs {
   opacity: 0;
   transform: scale(0.96) translateY(10px);
@@ -62,26 +58,20 @@ strong { color: var(--cream); font-weight: 700; }
 }
 .cs.in { opacity: 1; transform: scale(1) translateY(0); }
 
-/* ─── CHAR REVEAL ────────────────────────────────────────────── */
 .ch-span { opacity: 0.1; transition: opacity 0.1s; }
 
-/* ─── LANGUAGE BARS ──────────────────────────────────────────── */
 .lbar-track {
-  height: 3px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 99px;
-  margin-top: 8px;
-  overflow: hidden;
+  height: 3px; background: rgba(255,255,255,0.06);
+  border-radius: 99px; margin-top: 8px; overflow: hidden;
 }
 .lbar-fill {
-  height: 100%;
-  width: 0;
+  height: 100%; width: 0;
   background: linear-gradient(90deg, var(--muted), var(--cream-2));
   border-radius: 99px;
   transition: width 1.4s cubic-bezier(0.22,1,0.36,1);
 }
 
-/* ─── NAV ────────────────────────────────────────────────────── */
+/* ─── NAV ─── */
 .nav-pill {
   position: fixed;
   top: 0; left: 50%; transform: translateX(-50%);
@@ -89,412 +79,137 @@ strong { color: var(--cream); font-weight: 700; }
   background: #000;
   border-radius: 0 0 20px 20px;
   padding: 10px 20px;
-  display: flex; gap: 24px; align-items: center;
+  display: flex; gap: 22px; align-items: center;
   border: 1px solid var(--border);
   border-top: none;
 }
 .nav-pill a {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(222,219,200,0.45);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(222,219,200,0.45);
   transition: color 0.2s;
 }
 .nav-pill a:hover { color: var(--cream); }
-.nav-cta {
-  background: var(--cream-2);
-  color: #000 !important;
-  border-radius: 9999px;
-  padding: 6px 16px !important;
-  letter-spacing: 0.06em;
+.lang-switch {
+  display: flex; gap: 2px; margin-left: 4px;
+  border: 1px solid var(--border); border-radius: 9999px; padding: 2px;
 }
-.nav-cta:hover { opacity: 0.88; color: #000 !important; }
+.lang-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Almarai', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; color: rgba(222,219,200,0.4);
+  padding: 4px 9px; border-radius: 9999px; transition: background 0.2s, color 0.2s;
+}
+.lang-btn.active { background: var(--cream-2); color: #000; }
+.lang-btn:hover:not(.active) { color: var(--cream); }
 
-/* ─── BUTTONS ────────────────────────────────────────────────── */
-.btn-cream {
-  display: inline-flex; align-items: center;
-  background: var(--cream-2);
-  color: #000;
-  font-family: 'Almarai', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  border-radius: 9999px;
-  padding: 10px 10px 10px 20px;
-  gap: 8px;
-  border: none; cursor: pointer;
-  transition: gap 0.25s ease;
-}
-.btn-cream:hover { gap: 13px; }
-.btn-cream .btn-circle {
-  width: 30px; height: 30px;
-  background: #000;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.btn-cream .btn-circle svg { width: 14px; height: 14px; }
-
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1.5px solid rgba(222,219,200,0.18);
-  border-radius: 9999px;
-  padding: 10px 20px;
-  color: rgba(222,219,200,0.65);
-  font-family: 'Almarai', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
-.btn-outline:hover {
-  border-color: rgba(222,219,200,0.4);
-  color: var(--cream);
-}
-
-/* ─── SECTION LABELS ─────────────────────────────────────────── */
 .section-label {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 700;
-  margin-bottom: 32px;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; margin-bottom: 32px;
   display: flex; align-items: center; gap: 12px;
 }
 .section-label::before {
-  content: '';
-  display: inline-block;
-  width: 24px; height: 1px;
-  background: var(--muted-2);
+  content: ''; display: inline-block; width: 24px; height: 1px; background: var(--muted-2);
 }
 
-/* ─── HERO ───────────────────────────────────────────────────── */
+/* ─── HERO ─── */
 #hero {
   min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 120px 5vw 80px;
-  position: relative;
-  overflow: hidden;
+  padding: 120px 5vw 80px; position: relative; overflow: hidden;
 }
 .hero-glow {
-  position: absolute;
-  width: 600px; height: 600px;
-  border-radius: 50%;
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
   background: radial-gradient(circle, rgba(78,78,120,0.12) 0%, transparent 70%);
-  top: -100px; right: -100px;
-  pointer-events: none;
+  top: -100px; right: -100px; pointer-events: none;
 }
-.hero-name-block {
-  line-height: 0.86;
-  margin-bottom: 40px;
-  position: relative; z-index: 3;
-}
+.hero-name-block { line-height: 0.86; margin-bottom: 40px; position: relative; z-index: 3; }
 .hero-name-first {
-  display: block;
-  font-size: clamp(30px, 6vw, 92px);
-  font-weight: 300;
-  color: rgba(225,224,204,0.45);
-  letter-spacing: -0.02em;
+  display: block; font-size: clamp(30px, 6vw, 92px); font-weight: 300;
+  color: rgba(225,224,204,0.45); letter-spacing: -0.02em;
 }
 .hero-name-last {
-  display: block;
-  font-size: clamp(54px, 14.5vw, 220px);
-  font-weight: 800;
-  color: var(--cream);
-  letter-spacing: -0.055em;
-  line-height: 0.86;
+  display: block; font-size: clamp(54px, 14.5vw, 220px); font-weight: 800;
+  color: var(--cream); letter-spacing: -0.055em; line-height: 0.86;
 }
 .hero-titulo {
-  font-family: 'Almarai', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: clamp(12px, 1.4vw, 15px);
-  color: rgba(222,219,200,0.45);
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-  position: relative; z-index: 3;
+  font-family: 'Almarai', sans-serif; font-weight: 400;
+  font-size: clamp(12px, 1.4vw, 15px); color: rgba(222,219,200,0.45);
+  letter-spacing: 0.06em; margin-bottom: 20px; position: relative; z-index: 3;
 }
 .hero-tagline {
-  font-size: clamp(13px, 1.5vw, 15px);
-  color: rgba(222,219,200,0.35);
-  max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: 40px;
+  font-size: clamp(13px, 1.5vw, 15px); color: rgba(222,219,200,0.35);
+  max-width: 480px; line-height: 1.7; margin-bottom: 40px;
   position: relative; z-index: 3;
-}
-.hero-ctas {
-  display: flex; gap: 12px; flex-wrap: wrap;
-  position: relative; z-index: 3;
-}
-.hero-metrics-row {
-  display: flex; gap: 32px; flex-wrap: wrap;
-  margin-top: 64px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-  position: relative; z-index: 3;
-}
-.hero-metric {
-  display: flex; flex-direction: column; gap: 4px;
-}
-.hero-metric-val {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--cream);
-  letter-spacing: -0.03em;
-}
-.hero-metric-label {
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.4;
 }
 
-/* ─── TRAYECTORIA ────────────────────────────────────────────── */
-#trayectoria {
-  padding: 100px 5vw;
-  max-width: 860px;
-  margin: 0 auto;
-}
+/* ─── TRAYECTORIA ─── */
+#trayectoria { padding: 100px 5vw; max-width: 860px; margin: 0 auto; }
 .bio-wrap { margin-bottom: 64px; }
-.bio-text {
-  font-size: clamp(14px, 1.8vw, 17px);
-  line-height: 1.9;
-  color: var(--cream-2);
-  cursor: default;
-}
+.bio-text { font-size: clamp(14px, 1.8vw, 17px); line-height: 1.9; color: var(--cream-2); cursor: default; }
 
-/* ─── ACCORDION ──────────────────────────────────────────────── */
-.acc-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 12px;
-  overflow: hidden;
-}
-.acc-header {
-  width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  color: var(--cream);
-}
+/* ─── ACCORDION ─── */
+.acc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; overflow: hidden; }
+.acc-header { width: 100%; background: none; border: none; cursor: pointer; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--cream); }
 .acc-company-info { display: flex; align-items: center; gap: 16px; }
-.company-logo-wrap {
-  width: 48px; height: 48px;
-  border-radius: 10px;
-  background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  padding: 5px;
-  flex-shrink: 0;
-  overflow: hidden;
-}
+.company-logo-wrap { width: 48px; height: 48px; border-radius: 10px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 5px; flex-shrink: 0; overflow: hidden; }
 .company-logo { width: 100%; height: 100%; object-fit: contain; }
-.company-logo-fallback {
-  width: 100%; height: 100%;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
+.company-logo-fallback { width: 100%; height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; letter-spacing: -0.02em; }
 .acc-company-text { display: flex; flex-direction: column; gap: 3px; text-align: left; }
 .company-name { font-size: 15px; font-weight: 700; color: var(--cream); }
 .company-meta { font-size: 11px; color: var(--muted); }
-.acc-chevron {
-  width: 18px; height: 18px;
-  color: var(--muted);
-  flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
-}
+.acc-chevron { width: 18px; height: 18px; color: var(--muted); flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
 .acc-card.open .acc-chevron { transform: rotate(180deg); }
 .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.22,1,0.36,1); }
-.acc-card.open .acc-body { max-height: 1200px; padding-bottom: 24px; }
+.acc-card.open .acc-body { max-height: 1400px; padding-bottom: 24px; }
 .acc-body-inner { padding: 0 24px; }
 
-/* ─── ROLES ──────────────────────────────────────────────────── */
-.role-block {
-  padding: 20px 0;
-  border-top: 1px solid var(--border-2);
-}
+.role-block { padding: 20px 0; border-top: 1px solid var(--border-2); }
 .role-block:first-child { border-top: none; }
-.role-header {
-  display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 12px;
-}
+.role-header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .role-title { font-size: 14px; font-weight: 700; color: var(--cream); }
-.role-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 2px 7px;
-}
-.role-period {
-  font-size: 11px;
-  color: var(--muted);
-  margin-left: auto;
-  white-space: nowrap;
-}
-.metrics-row {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-.metric-card {
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 10px 14px;
-  min-width: 90px;
-}
+.role-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; }
+.role-period { font-size: 11px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+.metrics-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.metric-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 10px 14px; min-width: 90px; }
 .metric-num { font-size: 14px; font-weight: 800; color: var(--cream); line-height: 1; }
 .metric-label { font-size: 9px; color: var(--muted); margin-top: 4px; line-height: 1.3; }
-.logros-list {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.logros-list li {
-  font-size: 13px;
-  color: rgba(222,219,200,0.7);
-  padding-left: 16px;
-  position: relative;
-  line-height: 1.7;
-}
-.logros-list li::before {
-  content: '–';
-  position: absolute; left: 0;
-  color: var(--muted-2);
-}
-.skills-row {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 16px;
-}
-.skill-tag {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--muted);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 10px;
-  letter-spacing: 0.04em;
-}
+.logros-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.logros-list li { font-size: 13px; color: rgba(222,219,200,0.7); padding-left: 16px; position: relative; line-height: 1.7; }
+.logros-list li::before { content: '–'; position: absolute; left: 0; color: var(--muted-2); }
+.skills-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.skill-tag { font-size: 10px; font-weight: 700; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; letter-spacing: 0.04em; }
 
-/* ─── COMPETENCIAS ───────────────────────────────────────────── */
+/* ─── COMPETENCIAS ─── */
 #competencias { padding: 100px 5vw; }
 #competencias .section-inner { max-width: 860px; margin: 0 auto; }
-.comp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-}
-.comp-card {
-  background: var(--bg-card-2);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-}
-.comp-num {
-  font-size: 10px;
-  color: var(--muted-2);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 12px;
-}
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.comp-card { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
+.comp-num { font-size: 10px; color: var(--muted-2); font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px; }
 .comp-emoji { font-size: 24px; margin-bottom: 12px; }
-.comp-title {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--cream);
-  margin-bottom: 16px;
-}
-.comp-items {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 6px;
-}
-.comp-items li {
-  font-size: 12px;
-  color: rgba(222,219,200,0.55);
-  padding-left: 12px;
-  position: relative;
-  line-height: 1.5;
-}
-.comp-items li::before {
-  content: '·';
-  position: absolute; left: 0;
-  color: var(--muted-2);
-}
+.comp-title { font-size: 14px; font-weight: 800; color: var(--cream); margin-bottom: 16px; }
+.comp-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.comp-items li { font-size: 12px; color: rgba(222,219,200,0.55); padding-left: 12px; position: relative; line-height: 1.5; }
+.comp-items li::before { content: '·'; position: absolute; left: 0; color: var(--muted-2); }
 
-/* ─── FORMACIÓN ──────────────────────────────────────────────── */
+/* ─── FORMACIÓN ─── */
 #formacion { padding: 100px 5vw; }
 #formacion .section-inner { max-width: 860px; margin: 0 auto; }
-.formacion-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-@media (max-width: 640px) {
-  .formacion-grid { grid-template-columns: 1fr; }
-  .comp-grid { grid-template-columns: 1fr 1fr; }
-}
-.formacion-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-}
-.formacion-card-title {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.edu-item {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-2);
-}
+.formacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .formacion-grid { grid-template-columns: 1fr; } .comp-grid { grid-template-columns: 1fr 1fr; } }
+.formacion-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.formacion-card-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.edu-item { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-2); }
 .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.edu-siglas {
-  width: 40px; height: 40px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 800; color: var(--muted);
-  flex-shrink: 0;
-}
+.edu-siglas { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: var(--muted); flex-shrink: 0; }
 .edu-nivel { font-size: 10px; color: var(--muted); margin-bottom: 3px; }
 .edu-titulo { font-size: 13px; font-weight: 700; color: var(--cream); margin-bottom: 3px; }
 .edu-inst { font-size: 11px; color: rgba(222,219,200,0.4); }
-.cert-item {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-2);
-}
+.cert-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-2); }
 .cert-item:last-child { border-bottom: none; }
 .cert-info { display: flex; flex-direction: column; gap: 2px; }
 .cert-nombre { font-size: 11px; font-weight: 700; color: var(--cream-2); line-height: 1.4; }
 .cert-entidad { font-size: 10px; color: var(--muted); }
-.cert-badge {
-  font-size: 9px;
-  font-weight: 700;
-  border-radius: 6px;
-  padding: 3px 8px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+.cert-badge { font-size: 9px; font-weight: 700; border-radius: 6px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0; }
 .cert-badge--ok { background: rgba(34,197,94,0.1); color: #4ade80; }
 .cert-badge--curso { background: rgba(250,204,21,0.1); color: #fbbf24; }
 .lang-item { padding: 12px 0; border-bottom: 1px solid var(--border-2); }
@@ -503,142 +218,47 @@ strong { color: var(--cream); font-weight: 700; }
 .lang-nombre { font-size: 13px; font-weight: 700; color: var(--cream); }
 .lang-nivel { font-size: 11px; color: var(--muted); }
 .lang-nota { font-size: 10px; color: rgba(222,219,200,0.35); display: block; margin-bottom: 4px; }
-.wa-card {
-  margin-top: 16px;
-  background: rgba(37,211,102,0.06);
-  border: 1px solid rgba(37,211,102,0.15);
-  border-radius: 16px;
-  padding: 20px 24px;
-  display: flex; align-items: center; gap: 16px;
-}
+.wa-card { margin-top: 16px; background: rgba(37,211,102,0.06); border: 1px solid rgba(37,211,102,0.15); border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 16px; }
 .wa-icon { font-size: 22px; }
 .wa-text { flex: 1; }
 .wa-text-label { font-size: 10px; color: rgba(37,211,102,0.6); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .wa-text-num { font-size: 15px; font-weight: 700; color: rgba(37,211,102,0.9); }
-.wa-btn {
-  background: rgba(37,211,102,0.12);
-  border: 1px solid rgba(37,211,102,0.25);
-  border-radius: 9999px;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(37,211,102,0.85);
-  cursor: pointer;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
+.wa-btn { background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.25); border-radius: 9999px; padding: 8px 16px; font-size: 12px; font-weight: 700; color: rgba(37,211,102,0.85); cursor: pointer; transition: background 0.2s; white-space: nowrap; }
 .wa-btn:hover { background: rgba(37,211,102,0.2); }
 
-/* ─── PORTAFOLIO ─────────────────────────────────────────────── */
+/* ─── PORTAFOLIO ─── */
 #portafolio { padding: 100px 5vw; }
 #portafolio .section-inner { max-width: 860px; margin: 0 auto; }
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-}
-.proj-card {
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px 28px;
-  display: flex; flex-direction: column; gap: 12px;
-}
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.proj-card { border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; }
 .proj-num { font-size: 10px; color: rgba(222,219,200,0.25); font-weight: 700; letter-spacing: 0.1em; }
 .proj-emoji { font-size: 28px; }
 .proj-title { font-size: 15px; font-weight: 800; color: var(--cream); line-height: 1.3; }
 .proj-desc { font-size: 12px; color: rgba(222,219,200,0.5); line-height: 1.7; flex: 1; }
 .proj-footer { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
-.proj-status {
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 6px;
-  padding: 4px 10px;
-  align-self: flex-start;
-}
+.proj-status { font-size: 10px; font-weight: 700; border-radius: 6px; padding: 4px 10px; align-self: flex-start; }
 .proj-status--wip { background: rgba(251,191,36,0.1); color: #fbbf24; }
 .proj-status--soon { background: rgba(255,255,255,0.05); color: var(--muted); }
 .proj-status--live { background: rgba(34,197,94,0.1); color: #4ade80; }
-.proj-link {
-  font-size: 10px;
-  font-weight: 700;
-  color: rgba(222,219,200,0.5);
-  letter-spacing: 0.06em;
-  border-bottom: 1px solid rgba(222,219,200,0.15);
-  padding-bottom: 1px;
-  transition: color 0.2s, border-color 0.2s;
-}
+.proj-link { font-size: 10px; font-weight: 700; color: rgba(222,219,200,0.5); letter-spacing: 0.06em; border-bottom: 1px solid rgba(222,219,200,0.15); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
 .proj-link:hover { color: var(--cream); border-color: rgba(222,219,200,0.4); }
 
-/* ─── CONTACTO ───────────────────────────────────────────────── */
-#contacto {
-  padding: 120px 5vw 100px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.contacto-glow {
-  position: absolute;
-  width: 700px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,60,100,0.15) 0%, transparent 70%);
-  bottom: -100px; left: 50%; transform: translateX(-50%);
-  pointer-events: none;
-}
-.contacto-title {
-  font-size: clamp(52px, 12vw, 140px);
-  font-weight: 800;
-  color: var(--cream);
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-  margin-bottom: 24px;
-  position: relative; z-index: 3;
-}
-.contacto-sub {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: clamp(16px, 2vw, 20px);
-  color: rgba(222,219,200,0.45);
-  margin-bottom: 48px;
-  position: relative; z-index: 3;
-}
-.contacto-links {
-  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-  position: relative; z-index: 3;
-}
-.contact-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  padding: 12px 22px;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(222,219,200,0.55);
-  letter-spacing: 0.06em;
-  transition: border-color 0.2s, color 0.2s;
-}
+/* ─── CONTACTO ─── */
+#contacto { padding: 120px 5vw 100px; text-align: center; position: relative; overflow: hidden; }
+.contacto-glow { position: absolute; width: 700px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(60,60,100,0.15) 0%, transparent 70%); bottom: -100px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+.contacto-title { font-size: clamp(52px, 12vw, 140px); font-weight: 800; color: var(--cream); letter-spacing: -0.05em; line-height: 0.9; margin-bottom: 24px; position: relative; z-index: 3; }
+.contacto-sub { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(16px, 2vw, 20px); color: rgba(222,219,200,0.45); margin-bottom: 48px; position: relative; z-index: 3; }
+.contacto-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 3; }
+.contact-link { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: 9999px; padding: 12px 22px; font-size: 12px; font-weight: 700; color: rgba(222,219,200,0.55); letter-spacing: 0.06em; transition: border-color 0.2s, color 0.2s; }
 .contact-link:hover { border-color: rgba(222,219,200,0.3); color: var(--cream); }
 .contact-link svg { width: 14px; height: 14px; }
-.wa-contact-link {
-  border-color: rgba(37,211,102,0.2);
-  color: rgba(37,211,102,0.7);
-}
-.wa-contact-link:hover {
-  border-color: rgba(37,211,102,0.5);
-  color: rgba(37,211,102,0.95);
-}
-.footer-note {
-  margin-top: 80px;
-  font-size: 10px;
-  color: var(--muted-2);
-  letter-spacing: 0.1em;
-  position: relative; z-index: 3;
-}
+.wa-contact-link { border-color: rgba(37,211,102,0.2); color: rgba(37,211,102,0.7); }
+.wa-contact-link:hover { border-color: rgba(37,211,102,0.5); color: rgba(37,211,102,0.95); }
+.footer-note { margin-top: 80px; font-size: 10px; color: var(--muted-2); letter-spacing: 0.1em; position: relative; z-index: 3; }
 
-/* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .nav-pill { gap: 16px; padding: 10px 16px; }
+  .nav-pill { gap: 14px; padding: 10px 14px; }
   .formacion-grid { grid-template-columns: 1fr; }
-  .hero-metrics-row { gap: 20px; }
 }
 </style>
 </head>
@@ -646,49 +266,48 @@ strong { color: var(--cream); font-weight: 700; }
 
 <!-- NAV -->
 <nav class="nav-pill">
-  <a href="#trayectoria">Trayectoria</a>
-  <a href="#competencias">Skills</a>
-  <a href="#formacion">Formación</a>
-  <a href="#portafolio">Proyectos</a>
-  <a href="#contacto">Contacto</a>
+  <a href="#trayectoria" data-en="Experience" data-es="Trayectoria">Experience</a>
+  <a href="#competencias" data-en="Skills" data-es="Skills">Skills</a>
+  <a href="#formacion" data-en="Education" data-es="Formación">Education</a>
+  <a href="#portafolio" data-en="Projects" data-es="Proyectos">Projects</a>
+  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero" class="noise-overlay">
   <div class="hero-glow"></div>
-
   <div class="hero-name-block">
     <span class="hero-name-first pu-word"><span class="pu-inner">Carlo</span></span>
     <br>
     <span class="hero-name-last pu-word"><span class="pu-inner">Rondón</span></span>
   </div>
-
-  <p class="hero-titulo pu-word"><span class="pu-inner">Data · Growth · Micro SaaS · IA</span></p>
-  <p class="hero-tagline">Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.</p>
-
+  <p class="hero-titulo pu-word"><span class="pu-inner" data-en="Data · Growth · Micro SaaS · AI" data-es="Data · Growth · Micro SaaS · IA">Data · Growth · Micro SaaS · AI</span></p>
+  <p class="hero-tagline" data-en="I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking." data-es="Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca.">I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking.</p>
 </section>
 
 <!-- TRAYECTORIA -->
 <section id="trayectoria">
-  <p class="section-label">Trayectoria profesional</p>
+  <p class="section-label"><span data-en="Professional experience" data-es="Trayectoria profesional">Professional experience</span></p>
   <div class="bio-wrap">
-    <p class="bio-text" id="bio-text"><span class="ch-span">A</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">u</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">j</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">u</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">v</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">G</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">m</span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">B</span><span class="ch-span">B</span><span class="ch-span">V</span><span class="ch-span">A</span><span class="ch-span ch-sp"> </span><span class="ch-span">P</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">ú</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">o</span><span class="ch-span">p</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">ó</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">n</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">g</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">D</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">ñ</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">q</span><span class="ch-span">u</span><span class="ch-span">i</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">u</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">i</span><span class="ch-span">p</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">T</span><span class="ch-span">L</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">b</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">u</span><span class="ch-span">b</span><span class="ch-span">e</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">u</span><span class="ch-span">y</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">g</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">u</span><span class="ch-span">z</span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">í</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">u</span><span class="ch-span">c</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">C</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">á</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">e</span><span class="ch-span">i</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">ñ</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">b</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">h</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">u</span><span class="ch-span">l</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">—</span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">g</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">á</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">A</span><span class="ch-span">W</span><span class="ch-span">S</span><span class="ch-span">—</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">b</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">c</span><span class="ch-span">k</span><span class="ch-span ch-sp"> </span><span class="ch-span">q</span><span class="ch-span">u</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">.</span><span class="ch-span ch-sp"> </span><span class="ch-span">E</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">-</span><span class="ch-span">S</span><span class="ch-span">a</span><span class="ch-span">a</span><span class="ch-span">S</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">h</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span">m</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">l</span><span class="ch-span">i</span><span class="ch-span">g</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">r</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">:</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">u</span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">m</span><span class="ch-span">a</span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">z</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span">c</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">g</span><span class="ch-span">r</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">A</span><span class="ch-span">P</span><span class="ch-span">I</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">L</span><span class="ch-span">L</span><span class="ch-span">M</span><span class="ch-span">s</span><span class="ch-span">,</span><span class="ch-span ch-sp"> </span><span class="ch-span">y</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">z</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">s</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">u</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">i</span><span class="ch-span">g</span><span class="ch-span">i</span><span class="ch-span">t</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span">b</span><span class="ch-span">l</span><span class="ch-span">e</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">m</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">c</span><span class="ch-span">a</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span">s</span><span class="ch-span ch-sp"> </span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">d</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">l</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">e</span><span class="ch-span">c</span><span class="ch-span">n</span><span class="ch-span">o</span><span class="ch-span">l</span><span class="ch-span">o</span><span class="ch-span">g</span><span class="ch-span">í</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">f</span><span class="ch-span">i</span><span class="ch-span">n</span><span class="ch-span">a</span><span class="ch-span">n</span><span class="ch-span">c</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">r</span><span class="ch-span">a</span><span class="ch-span ch-sp"> </span><span class="ch-span">a</span><span class="ch-span">ú</span><span class="ch-span">n</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">i</span><span class="ch-span">e</span><span class="ch-span">n</span><span class="ch-span">e</span><span class="ch-span ch-sp"> </span><span class="ch-span">t</span><span class="ch-span">o</span><span class="ch-span">d</span><span class="ch-span">o</span><span class="ch-span ch-sp"> </span><span class="ch-span">p</span><span class="ch-span">o</span><span class="ch-span">r</span><span class="ch-span ch-sp"> </span><span class="ch-span">c</span><span class="ch-span">o</span><span class="ch-span">n</span><span class="ch-span">s</span><span class="ch-span">t</span><span class="ch-span">r</span><span class="ch-span">u</span><span class="ch-span">i</span><span class="ch-span">r</span><span class="ch-span">.</span></p>
+    <p class="bio-text" id="bio-text" data-en="I'm a technical profile operating inside the financial world. Currently, as a Corporate &amp; Large-Enterprise Banking Executive at BBVA Peru, I design data architectures and cloud ETL pipelines, integrate and sell banking connectivity APIs that link corporate clients' systems to the bank's core, and automate processes with artificial intelligence. My edge isn't just understanding the business —I do, with over six years across banking, fintech and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS— but mastering the stack that makes it run: SQL, Python, cloud, APIs and LLMs. In parallel I build micro-SaaS and AI-powered tools, shipping scalable digital solutions in markets where financial technology still has everything left to build." data-es="Soy un perfil técnico que opera dentro del mundo financiero. Actualmente, como Ejecutivo de Corporate &amp; Large-Enterprise Banking en BBVA Perú, diseño arquitecturas de datos y pipelines ETL en la nube, integro y comercializo APIs de conectividad bancaria que enlazan los sistemas de clientes corporativos con el core del banco, y automatizo procesos con inteligencia artificial. Mi ventaja no es solo entender el negocio —lo entiendo, con más de seis años entre banca, fintech y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS—, sino dominar el stack que lo hace funcionar: SQL, Python, cloud, APIs y LLMs. En paralelo desarrollo micro-SaaS y herramientas con IA, lanzando soluciones digitales escalables en mercados donde la tecnología financiera aún tiene todo por construir."></p>
   </div>
-
-  <!-- Accordions -->
   <div id="accordion-list">
     
       <div class="acc-card cs open" data-delay-idx="0">
         <button class="acc-header" onclick="toggleAcc(this)">
           <div class="acc-company-info">
             <div class="company-logo-wrap">
-              <img src="https://logo.clearbit.com/bbva.com" alt="BBVA Perú" class="company-logo"
+              <img src="https://logo.clearbit.com/bbva.com" alt="BBVA Peru" class="company-logo"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="company-logo-fallback" style="background:rgba(0,115,207,0.15);color:#4d9fe0;display:none">BB</div>
             </div>
             <div class="acc-company-text">
-              <span class="company-name">BBVA Perú</span>
-              <span class="company-meta">Mayo 2022 – Actualidad · 3 años+</span>
+              <span class="company-name" data-en="BBVA Peru" data-es="BBVA Perú">BBVA Peru</span>
+              <span class="company-meta" data-en="May 2022 – Present · 3+ years" data-es="Mayo 2022 – Actualidad · 3 años+">May 2022 – Present · 3+ years</span>
             </div>
           </div>
           <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -700,82 +319,109 @@ strong { color: var(--cream); font-weight: 700; }
             
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Cash Management Executive</span>
-            <span class="role-tag">Banca Grandes Empresas</span>
-            <span class="role-period">Mar 2026 – Actualidad</span>
+            <span class="role-title" data-en="Cash Management Executive" data-es="Cash Management Executive">Cash Management Executive</span>
+            <span class="role-tag" data-en="Corporate &amp; Large-Enterprise Banking" data-es="Corporate &amp; Large-Enterprise Banking">Corporate &amp; Large-Enterprise Banking</span>
+            <span class="role-period" data-en="Mar 2026 – Present" data-es="Mar 2026 – Actualidad">Mar 2026 – Present</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">Corporativo</div>
-          <div class="metric-label">Grandes empresas del Perú</div>
+          <div class="metric-num" data-en="APIs" data-es="APIs">APIs</div>
+          <div class="metric-label" data-en="Banking interconnection" data-es="Interconexión bancaria">Banking interconnection</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">Modelos</div>
-          <div class="metric-label">Financieros avanzados</div>
+          <div class="metric-num" data-en="Real-time" data-es="Real-time">Real-time</div>
+          <div class="metric-label" data-en="Payments, collections &amp; reconciliation" data-es="Pagos, cobros y conciliación">Payments, collections &amp; reconciliation</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">C-level</div>
-          <div class="metric-label">Nivel de interlocución</div>
+          <div class="metric-num" data-en="C-level" data-es="C-level">C-level</div>
+          <div class="metric-label" data-en="Level of engagement" data-es="Nivel de interlocución">Level of engagement</div>
         </div>
         </div>
           <ul class="logros-list">
-            <li>Diseño y construcción de <strong>modelos financieros</strong> para cartera Gran Empresa, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales.</li>
-<li>Gestión ejecutiva de relación con las principales empresas del mercado peruano, presentando soluciones financieras integradas a comités directivos.</li>
+            <li data-en="Sale and implementation of <strong>banking connectivity APIs</strong> (host-to-host, ERP-to-bank integration and open banking) that interconnect corporate clients' treasury systems with the bank's core, automating payments, collections and reconciliation in real time." data-es="Venta e implementación de <strong>APIs de conectividad bancaria</strong> (host-to-host, integración ERP-banco y open banking) que interconectan los sistemas de tesorería de clientes corporativos con el core del banco, automatizando pagos, cobros y conciliación en tiempo real.">Sale and implementation of <strong>banking connectivity APIs</strong> (host-to-host, ERP-to-bank integration and open banking) that interconnect corporate clients' treasury systems with the bank's core, automating payments, collections and reconciliation in real time.</li>
+<li data-en="Design and construction of <strong>financial models</strong> for the corporate-client portfolio, projecting ROI scenarios and cash in/out product placement that drive digitalization and transactional revenue." data-es="Diseño y construcción de <strong>modelos financieros</strong> para cartera de clientes corporativos, proyectando escenarios de ROI y colocación de productos cash in/out que impulsan la digitalización e ingresos transaccionales.">Design and construction of <strong>financial models</strong> for the corporate-client portfolio, projecting ROI scenarios and cash in/out product placement that drive digitalization and transactional revenue.</li>
+<li data-en="Executive relationship management with Peru's leading corporations, driving the adoption of digital and connectivity solutions before executive committees." data-es="Gestión ejecutiva de relación con las principales empresas del mercado peruano, liderando la adopción de soluciones digitales y de conectividad ante comités directivos.">Executive relationship management with Peru's leading corporations, driving the adoption of digital and connectivity solutions before executive committees.</li>
 
           </ul>
         </div>
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Payments & Loyalty Associate</span>
+            <span class="role-title" data-en="Payments &amp; Loyalty Associate" data-es="Payments &amp; Loyalty Associate">Payments &amp; Loyalty Associate</span>
             
-            <span class="role-period">Dic 2025 – Mar 2026</span>
+            <span class="role-period" data-en="Dec 2025 – Mar 2026" data-es="Dic 2025 – Mar 2026">Dec 2025 – Mar 2026</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">+20,000</div>
-          <div class="metric-label">Clientes activos</div>
+          <div class="metric-num" data-en="+20,000" data-es="+20,000">+20,000</div>
+          <div class="metric-label" data-en="Active clients" data-es="Clientes activos">Active clients</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">Exponencial</div>
-          <div class="metric-label">Crecimiento en cash in</div>
+          <div class="metric-num" data-en="Exponential" data-es="Exponencial">Exponential</div>
+          <div class="metric-label" data-en="Cash-in growth" data-es="Crecimiento en cash in">Cash-in growth</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">Elasticidad</div>
-          <div class="metric-label">Análisis de pricing</div>
+          <div class="metric-num" data-en="Elasticity" data-es="Elasticidad">Elasticity</div>
+          <div class="metric-label" data-en="Pricing analysis" data-es="Análisis de pricing">Pricing analysis</div>
         </div>
         </div>
           <ul class="logros-list">
-            <li>Optimización del <strong>modelo de precios y promociones</strong> del negocio de payments mediante análisis de elasticidad de demanda y segmentación avanzada de clientes, maximizando conversión y activación.</li>
+            <li data-en="Optimization of the payments business <strong>pricing and promotions model</strong> through demand-elasticity analysis and advanced customer segmentation, maximizing conversion and activation." data-es="Optimización del <strong>modelo de precios y promociones</strong> del negocio de payments mediante análisis de elasticidad de demanda y segmentación avanzada de clientes, maximizando conversión y activación.">Optimization of the payments business <strong>pricing and promotions model</strong> through demand-elasticity analysis and advanced customer segmentation, maximizing conversion and activation.</li>
 
           </ul>
         </div>
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Senior Data & Commercial Analyst</span>
-            <span class="role-tag">Openpay</span>
-            <span class="role-period">Mar 2025 – Dic 2025</span>
+            <span class="role-title" data-en="Senior Data &amp; Commercial Analyst" data-es="Senior Data &amp; Commercial Analyst">Senior Data &amp; Commercial Analyst</span>
+            <span class="role-tag" data-en="Openpay" data-es="Openpay">Openpay</span>
+            <span class="role-period" data-en="Mar 2025 – Dec 2025" data-es="Mar 2025 – Dic 2025">Mar 2025 – Dec 2025</span>
           </div>
-          
+          <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-num" data-en="12 months" data-es="12 meses">12 months</div>
+          <div class="metric-label" data-en="Rollout to 3 areas" data-es="Extensión a 3 áreas">Rollout to 3 areas</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-en="In production" data-es="En producción">In production</div>
+          <div class="metric-label" data-en="Model still live today" data-es="Modelo aún vigente hoy">Model still live today</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-en="International HQ" data-es="Matriz internacional">International HQ</div>
+          <div class="metric-label" data-en="Model adoption" data-es="Adopción del modelo">Model adoption</div>
+        </div>
+        </div>
           <ul class="logros-list">
-            <li>Elaboración de <strong>business cases para clientes estratégicos</strong> y presentaciones a directorios C-level locales e internacionales, sustentando decisiones de inversión y expansión del negocio fintech.</li>
-<li>Coordinación autónoma de <strong>equipos transversales</strong> (tecnología, marketing, operaciones) para la ejecución de automatizaciones e iniciativas comerciales de alto impacto.</li>
+            <li data-en="Rolled the framework out over 12 months to <strong>Operations</strong> (post-sale prioritization by transaction value and growth projection), <strong>Marketing</strong> (segment focus on e-commerce) and <strong>Fraud</strong> (commercial signals the detection engine hadn't mapped yet), with Peru's country manager as executive sponsor." data-es="Extensión del framework durante 12 meses a <strong>Operaciones</strong> (priorización post-venta por valor transaccional y proyección de crecimiento), <strong>Marketing</strong> (foco de segmento en e-commerce) y <strong>Fraude</strong> (señales comerciales que el motor de detección aún no había mapeado), con el country manager de Perú como sponsor ejecutivo.">Rolled the framework out over 12 months to <strong>Operations</strong> (post-sale prioritization by transaction value and growth projection), <strong>Marketing</strong> (segment focus on e-commerce) and <strong>Fraud</strong> (commercial signals the detection engine hadn't mapped yet), with Peru's country manager as executive sponsor.</li>
+<li data-en="The model <strong>remains in production today</strong> and was adopted by the international HQ in Mexico, whose fraud team requested the commercial dataset." data-es="El modelo <strong>sigue en producción hoy</strong> y fue adoptado por la matriz internacional en México, cuyo equipo de fraude solicitó el dataset comercial.">The model <strong>remains in production today</strong> and was adopted by the international HQ in Mexico, whose fraud team requested the commercial dataset.</li>
 
           </ul>
         </div>
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Data & Commercial Analyst</span>
-            <span class="role-tag">Openpay</span>
-            <span class="role-period">Mayo 2022 – Mar 2025</span>
+            <span class="role-title" data-en="Data &amp; Commercial Analyst" data-es="Data &amp; Commercial Analyst">Data &amp; Commercial Analyst</span>
+            <span class="role-tag" data-en="Openpay" data-es="Openpay">Openpay</span>
+            <span class="role-period" data-en="May 2022 – Mar 2025" data-es="Mayo 2022 – Mar 2025">May 2022 – Mar 2025</span>
           </div>
-          
+          <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-num" data-en="<100 → 40K+" data-es="<100 → 40K+"><100 → 40K+</div>
+          <div class="metric-label" data-en="Merchants as it scaled" data-es="Comercios al escalar">Merchants as it scaled</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-en="2% → 8%" data-es="2% → 8%">2% → 8%</div>
+          <div class="metric-label" data-en="Lead conversion" data-es="Conversión de leads">Lead conversion</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" data-en="19% → 42%" data-es="19% → 42%">19% → 42%</div>
+          <div class="metric-label" data-en="Junk-lead rejection" data-es="Rechazo de leads basura">Junk-lead rejection</div>
+        </div>
+        </div>
           <ul class="logros-list">
-            <li>Liderazgo autónomo del <strong>proyecto de arquitectura de datos de Openpay</strong>: diseño e implementación de pipelines ETL que cumplieron los estándares de gobierno de datos bancario, superando los tiempos de entrega durante una etapa de hipercrecimiento.</li>
-<li>Automatización de procesos de datos que redujeron tiempos de reporte y habilitaron <strong>análisis en tiempo real</strong> para la toma de decisiones comerciales.</li>
+            <li data-en="Joined a <strong>BBVA payments fintech</strong> serving fewer than 100 merchants with no defined data processes: decisions ran on a weekly spreadsheet and a monthly results deck. I built <strong>predictive models and daily-cut reporting</strong> that became the decision layer for four teams as the business scaled past 40,000 merchants." data-es="Ingreso a una <strong>fintech de pagos de BBVA</strong> con menos de 100 comercios y sin procesos de datos definidos: las decisiones corrían sobre un Excel semanal y un deck mensual de resultados. Construí <strong>modelos predictivos y reportería de corte diario</strong> que se volvieron la capa de decisión de cuatro equipos mientras el negocio escalaba más allá de 40,000 comercios.">Joined a <strong>BBVA payments fintech</strong> serving fewer than 100 merchants with no defined data processes: decisions ran on a weekly spreadsheet and a monthly results deck. I built <strong>predictive models and daily-cut reporting</strong> that became the decision layer for four teams as the business scaled past 40,000 merchants.</li>
+<li data-en="Lifted <strong>commercial lead conversion from 2% to 8%</strong> in under three months by scoring lead quality, raising junk-lead rejection from 19% to 42% and refocusing sales effort on winnable accounts." data-es="Elevé la <strong>conversión de leads comerciales de 2% a 8%</strong> en menos de tres meses calificando la calidad de cada lead, subiendo el rechazo de leads basura de 19% a 42% y reenfocando el esfuerzo de ventas en las cuentas ganables.">Lifted <strong>commercial lead conversion from 2% to 8%</strong> in under three months by scoring lead quality, raising junk-lead rejection from 19% to 42% and refocusing sales effort on winnable accounts.</li>
 
           </ul>
         </div>
-            <div class="skills-row"><span class="skill-tag">SQL</span><span class="skill-tag">Python</span><span class="skill-tag">Power BI</span><span class="skill-tag">AWS</span><span class="skill-tag">ETL</span><span class="skill-tag">Modelado financiero</span><span class="skill-tag">Pricing</span><span class="skill-tag">Salesforce</span></div>
+            <div class="skills-row"><span class="skill-tag" data-en="SQL" data-es="SQL">SQL</span><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="Power BI" data-es="Power BI">Power BI</span><span class="skill-tag" data-en="AWS" data-es="AWS">AWS</span><span class="skill-tag" data-en="ETL" data-es="ETL">ETL</span><span class="skill-tag" data-en="Financial modeling" data-es="Modelado financiero">Financial modeling</span><span class="skill-tag" data-en="Pricing" data-es="Pricing">Pricing</span><span class="skill-tag" data-en="Salesforce" data-es="Salesforce">Salesforce</span></div>
           </div>
         </div>
       </div>
@@ -783,13 +429,13 @@ strong { color: var(--cream); font-weight: 700; }
         <button class="acc-header" onclick="toggleAcc(this)">
           <div class="acc-company-info">
             <div class="company-logo-wrap">
-              <img src="https://logo.clearbit.com/pwc.com" alt="PwC Perú" class="company-logo"
+              <img src="https://logo.clearbit.com/pwc.com" alt="PwC Peru" class="company-logo"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="company-logo-fallback" style="background:rgba(208,74,2,0.12);color:#d46a3a;display:none">PwC</div>
             </div>
             <div class="acc-company-text">
-              <span class="company-name">PwC Perú</span>
-              <span class="company-meta">Septiembre 2019 – Mayo 2022 · 2a 8m</span>
+              <span class="company-name" data-en="PwC Peru" data-es="PwC Perú">PwC Peru</span>
+              <span class="company-meta" data-en="September 2019 – May 2022 · 2y 8m" data-es="Septiembre 2019 – Mayo 2022 · 2a 8m">September 2019 – May 2022 · 2y 8m</span>
             </div>
           </div>
           <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -801,49 +447,49 @@ strong { color: var(--cream); font-weight: 700; }
             
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Business Intelligence Associate</span>
+            <span class="role-title" data-en="Business Intelligence Associate" data-es="Business Intelligence Associate">Business Intelligence Associate</span>
             
-            <span class="role-period">Ago 2020 – Mayo 2022</span>
+            <span class="role-period" data-en="Aug 2020 – May 2022" data-es="Ago 2020 – Mayo 2022">Aug 2020 – May 2022</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">Top 10%</div>
-          <div class="metric-label">Desempeño firma (2019–2020)</div>
+          <div class="metric-num" data-en="Top 10%" data-es="Top 10%">Top 10%</div>
+          <div class="metric-label" data-en="Firm performance (2019–2020)" data-es="Desempeño firma (2019–2020)">Firm performance (2019–2020)</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">+10</div>
-          <div class="metric-label">Iniciativas de datos lideradas</div>
+          <div class="metric-num" data-en="+10" data-es="+10">+10</div>
+          <div class="metric-label" data-en="Data initiatives led" data-es="Iniciativas de datos lideradas">Data initiatives led</div>
         </div>
         </div>
           <ul class="logros-list">
-            <li>Liderazgo de <strong>más de 10 iniciativas comerciales y de datos</strong>, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma.</li>
-<li>Soporte analítico y comercial a Auditoría, <strong>principal línea de ingresos de PwC Perú</strong>, en el diseño e implementación de estrategias de crecimiento.</li>
-<li>Reconocido con <strong>desempeño superior al percentil 90</strong> de la firma durante dos años consecutivos (2019 y 2020).</li>
+            <li data-en="Led <strong>10+ commercial and data initiatives</strong>, significantly increasing opportunity detection across the firm's service lines." data-es="Liderazgo de <strong>más de 10 iniciativas comerciales y de datos</strong>, incrementando significativamente la detección de oportunidades para las líneas de servicio de la firma.">Led <strong>10+ commercial and data initiatives</strong>, significantly increasing opportunity detection across the firm's service lines.</li>
+<li data-en="Analytical and commercial support to Audit, <strong>PwC Peru's main revenue line</strong>, in designing and implementing growth strategies." data-es="Soporte analítico y comercial a Auditoría, <strong>principal línea de ingresos de PwC Perú</strong>, en el diseño e implementación de estrategias de crecimiento.">Analytical and commercial support to Audit, <strong>PwC Peru's main revenue line</strong>, in designing and implementing growth strategies.</li>
+<li data-en="Recognized with <strong>performance above the 90th percentile</strong> of the firm for two consecutive years (2019 and 2020)." data-es="Reconocido con <strong>desempeño superior al percentil 90</strong> de la firma durante dos años consecutivos (2019 y 2020).">Recognized with <strong>performance above the 90th percentile</strong> of the firm for two consecutive years (2019 and 2020).</li>
 
           </ul>
         </div>
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Business Expansion Intern</span>
+            <span class="role-title" data-en="Business Expansion Intern" data-es="Business Expansion Intern">Business Expansion Intern</span>
             
-            <span class="role-period">Sep 2019 – Ago 2020</span>
+            <span class="role-period" data-en="Sep 2019 – Aug 2020" data-es="Sep 2019 – Ago 2020">Sep 2019 – Aug 2020</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">+700</div>
-          <div class="metric-label">Colaboradores capacitados</div>
+          <div class="metric-num" data-en="+700" data-es="+700">+700</div>
+          <div class="metric-label" data-en="Staff trained" data-es="Colaboradores capacitados">Staff trained</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">Nacional</div>
-          <div class="metric-label">Alcance del proyecto Salesforce</div>
+          <div class="metric-num" data-en="Nationwide" data-es="Nacional">Nationwide</div>
+          <div class="metric-label" data-en="Salesforce project scope" data-es="Alcance del proyecto Salesforce">Salesforce project scope</div>
         </div>
         </div>
           <ul class="logros-list">
-            <li>Liderazgo de la <strong>migración a Salesforce</strong> a nivel Perú, diseñando el plan de capacitación y formando a más de 700 colaboradores de la firma en el nuevo sistema CRM.</li>
+            <li data-en="Led the <strong>Salesforce migration</strong> across Peru, designing the training plan and onboarding 700+ of the firm's staff onto the new CRM system." data-es="Liderazgo de la <strong>migración a Salesforce</strong> a nivel Perú, diseñando el plan de capacitación y formando a más de 700 colaboradores de la firma en el nuevo sistema CRM.">Led the <strong>Salesforce migration</strong> across Peru, designing the training plan and onboarding 700+ of the firm's staff onto the new CRM system.</li>
 
           </ul>
         </div>
-            <div class="skills-row"><span class="skill-tag">Business Intelligence</span><span class="skill-tag">Análisis comercial</span><span class="skill-tag">Salesforce</span><span class="skill-tag">Consultoría</span></div>
+            <div class="skills-row"><span class="skill-tag" data-en="Business Intelligence" data-es="Business Intelligence">Business Intelligence</span><span class="skill-tag" data-en="Commercial analysis" data-es="Análisis comercial">Commercial analysis</span><span class="skill-tag" data-en="Salesforce" data-es="Salesforce">Salesforce</span><span class="skill-tag" data-en="Consulting" data-es="Consultoría">Consulting</span></div>
           </div>
         </div>
       </div>
@@ -851,13 +497,13 @@ strong { color: var(--cream); font-weight: 700; }
         <button class="acc-header" onclick="toggleAcc(this)">
           <div class="acc-company-info">
             <div class="company-logo-wrap">
-              <img src="https://logo.clearbit.com/scotiabank.com" alt="Scotiabank Perú" class="company-logo"
+              <img src="https://logo.clearbit.com/scotiabank.com" alt="Scotiabank Peru" class="company-logo"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="company-logo-fallback" style="background:rgba(200,16,46,0.12);color:#c84a62;display:none">SB</div>
             </div>
             <div class="acc-company-text">
-              <span class="company-name">Scotiabank Perú</span>
-              <span class="company-meta">Febrero – Octubre 2019 · 9 meses</span>
+              <span class="company-name" data-en="Scotiabank Peru" data-es="Scotiabank Perú">Scotiabank Peru</span>
+              <span class="company-meta" data-en="February – October 2019 · 9 months" data-es="Febrero – Octubre 2019 · 9 meses">February – October 2019 · 9 months</span>
             </div>
           </div>
           <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -869,23 +515,23 @@ strong { color: var(--cream); font-weight: 700; }
             
         <div class="role-block">
           <div class="role-header">
-            <span class="role-title">Customer Experience Intern</span>
+            <span class="role-title" data-en="Customer Experience Intern" data-es="Customer Experience Intern">Customer Experience Intern</span>
             
-            <span class="role-period">Feb – Oct 2019</span>
+            <span class="role-period" data-en="Feb – Oct 2019" data-es="Feb – Oct 2019">Feb – Oct 2019</span>
           </div>
           <div class="metrics-row">
         <div class="metric-card">
-          <div class="metric-num">5</div>
-          <div class="metric-label">Iniciativas de mejora CX</div>
+          <div class="metric-num" data-en="5" data-es="5">5</div>
+          <div class="metric-label" data-en="CX improvement initiatives" data-es="Iniciativas de mejora CX">CX improvement initiatives</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">Retail & Wholesale</div>
-          <div class="metric-label">Segmentos de clientes</div>
+          <div class="metric-num" data-en="Retail &amp; Wholesale" data-es="Retail &amp; Wholesale">Retail &amp; Wholesale</div>
+          <div class="metric-label" data-en="Customer segments" data-es="Segmentos de clientes">Customer segments</div>
         </div>
         </div>
           <ul class="logros-list">
-            <li>Diseño de <strong>métricas de fidelización</strong> para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco.</li>
-<li>Participación activa en <strong>5 iniciativas exitosas</strong> de mejora de experiencia del cliente.</li>
+            <li data-en="Designed <strong>loyalty metrics</strong> for retail and wholesale segments, assessing campaign impact on the bank's customer base." data-es="Diseño de <strong>métricas de fidelización</strong> para segmentos retail y wholesale, evaluando el impacto de campañas sobre la base de clientes del banco.">Designed <strong>loyalty metrics</strong> for retail and wholesale segments, assessing campaign impact on the bank's customer base.</li>
+<li data-en="Active participation in <strong>5 successful initiatives</strong> to improve customer experience." data-es="Participación activa en <strong>5 iniciativas exitosas</strong> de mejora de experiencia del cliente.">Active participation in <strong>5 successful initiatives</strong> to improve customer experience.</li>
 
           </ul>
         </div>
@@ -899,44 +545,44 @@ strong { color: var(--cream); font-weight: 700; }
 <!-- COMPETENCIAS -->
 <section id="competencias">
   <div class="section-inner">
-    <p class="section-label">Competencias</p>
+    <p class="section-label"><span data-en="Skills" data-es="Competencias">Skills</span></p>
     <div class="comp-grid">
       
       <div class="comp-card cs" data-delay-idx="0">
         <div class="comp-num">01</div>
         <div class="comp-emoji">📊</div>
-        <h3 class="comp-title">Datos & Analítica</h3>
-        <ul class="comp-items"><li>SQL, Python, R Studio</li><li>Power BI, Looker Studio, DAX</li><li>Excel avanzado</li><li>Estadística aplicada</li></ul>
+        <h3 class="comp-title" data-en="Data &amp; Analytics" data-es="Datos &amp; Analítica">Data &amp; Analytics</h3>
+        <ul class="comp-items"><li data-en="SQL, Python, R Studio" data-es="SQL, Python, R Studio">SQL, Python, R Studio</li><li data-en="Power BI, Looker Studio, DAX" data-es="Power BI, Looker Studio, DAX">Power BI, Looker Studio, DAX</li><li data-en="Advanced Excel" data-es="Excel avanzado">Advanced Excel</li><li data-en="Applied statistics" data-es="Estadística aplicada">Applied statistics</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="1">
         <div class="comp-num">02</div>
         <div class="comp-emoji">🏦</div>
-        <h3 class="comp-title">Estrategia Financiera</h3>
-        <ul class="comp-items"><li>Modelos financieros avanzados</li><li>Pricing & análisis de elasticidad</li><li>Business cases & ROI</li><li>Segmentación de clientes</li><li>Cash Management · Payments</li></ul>
+        <h3 class="comp-title" data-en="Financial Strategy" data-es="Estrategia Financiera">Financial Strategy</h3>
+        <ul class="comp-items"><li data-en="Advanced financial models" data-es="Modelos financieros avanzados">Advanced financial models</li><li data-en="Pricing &amp; elasticity analysis" data-es="Pricing &amp; análisis de elasticidad">Pricing &amp; elasticity analysis</li><li data-en="Business cases &amp; ROI" data-es="Business cases &amp; ROI">Business cases &amp; ROI</li><li data-en="Customer segmentation" data-es="Segmentación de clientes">Customer segmentation</li><li data-en="Cash Management · Payments" data-es="Cash Management · Payments">Cash Management · Payments</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="2">
         <div class="comp-num">03</div>
         <div class="comp-emoji">☁️</div>
-        <h3 class="comp-title">Cloud & Data Eng.</h3>
-        <ul class="comp-items"><li>AWS (S3, Glue, Redshift)</li><li>Arquitectura & automatización ETL</li><li>Gobierno de datos bancario</li><li>Pipelines de datos</li></ul>
+        <h3 class="comp-title" data-en="Cloud &amp; Data Eng." data-es="Cloud &amp; Data Eng.">Cloud &amp; Data Eng.</h3>
+        <ul class="comp-items"><li data-en="AWS (S3, Glue, Redshift)" data-es="AWS (S3, Glue, Redshift)">AWS (S3, Glue, Redshift)</li><li data-en="ETL architecture &amp; automation" data-es="Arquitectura &amp; automatización ETL">ETL architecture &amp; automation</li><li data-en="Banking data governance" data-es="Gobierno de datos bancario">Banking data governance</li><li data-en="Data pipelines" data-es="Pipelines de datos">Data pipelines</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="3">
         <div class="comp-num">04</div>
         <div class="comp-emoji">🤝</div>
-        <h3 class="comp-title">Liderazgo & Clientes</h3>
-        <ul class="comp-items"><li>Banca de Grandes Empresas</li><li>Presentaciones C-level internacionales</li><li>Equipos transversales y stakeholders</li><li>Salesforce CRM</li></ul>
+        <h3 class="comp-title" data-en="Leadership &amp; Clients" data-es="Liderazgo &amp; Clientes">Leadership &amp; Clients</h3>
+        <ul class="comp-items"><li data-en="Corporate &amp; Large-Enterprise Banking" data-es="Corporate &amp; Large-Enterprise Banking">Corporate &amp; Large-Enterprise Banking</li><li data-en="International C-level presentations" data-es="Presentaciones C-level internacionales">International C-level presentations</li><li data-en="Cross-functional teams &amp; stakeholders" data-es="Equipos transversales y stakeholders">Cross-functional teams &amp; stakeholders</li><li data-en="Salesforce CRM" data-es="Salesforce CRM">Salesforce CRM</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="4">
         <div class="comp-num">05</div>
         <div class="comp-emoji">🚀</div>
-        <h3 class="comp-title">Micro SaaS & Producto</h3>
-        <ul class="comp-items"><li>Desarrollo de micro-SaaS</li><li>Product strategy & monetización</li><li>Automatización con APIs y webhooks</li><li>Lanzamiento y crecimiento digital</li><li>No-code & low-code tools</li></ul>
+        <h3 class="comp-title" data-en="Micro SaaS &amp; Product" data-es="Micro SaaS &amp; Producto">Micro SaaS &amp; Product</h3>
+        <ul class="comp-items"><li data-en="Micro-SaaS development" data-es="Desarrollo de micro-SaaS">Micro-SaaS development</li><li data-en="Product strategy &amp; monetization" data-es="Product strategy &amp; monetización">Product strategy &amp; monetization</li><li data-en="Automation with APIs &amp; webhooks" data-es="Automatización con APIs y webhooks">Automation with APIs &amp; webhooks</li><li data-en="Digital launch &amp; growth" data-es="Lanzamiento y crecimiento digital">Digital launch &amp; growth</li><li data-en="No-code &amp; low-code tools" data-es="No-code &amp; low-code tools">No-code &amp; low-code tools</li></ul>
       </div>
       <div class="comp-card cs" data-delay-idx="5">
         <div class="comp-num">06</div>
         <div class="comp-emoji">🤖</div>
-        <h3 class="comp-title">Inteligencia Artificial</h3>
-        <ul class="comp-items"><li>Prompting & agentes con IA</li><li>Workflows automatizados con LLMs</li><li>Integración APIs OpenAI / Anthropic</li><li>Aplicaciones IA en finanzas y negocio</li><li>Análisis de datos con ML</li></ul>
+        <h3 class="comp-title" data-en="Artificial Intelligence" data-es="Inteligencia Artificial">Artificial Intelligence</h3>
+        <ul class="comp-items"><li data-en="Prompting &amp; AI agents" data-es="Prompting &amp; agentes con IA">Prompting &amp; AI agents</li><li data-en="Automated LLM workflows" data-es="Workflows automatizados con LLMs">Automated LLM workflows</li><li data-en="OpenAI / Anthropic API integration" data-es="Integración APIs OpenAI / Anthropic">OpenAI / Anthropic API integration</li><li data-en="AI applications in finance &amp; business" data-es="Aplicaciones IA en finanzas y negocio">AI applications in finance &amp; business</li><li data-en="Data analysis with ML" data-es="Análisis de datos con ML">Data analysis with ML</li></ul>
       </div>
     </div>
   </div>
@@ -945,33 +591,31 @@ strong { color: var(--cream); font-weight: 700; }
 <!-- FORMACIÓN -->
 <section id="formacion">
   <div class="section-inner">
-    <p class="section-label">Formación & Certificaciones</p>
+    <p class="section-label"><span data-en="Education &amp; Certifications" data-es="Formación &amp; Certificaciones">Education &amp; Certifications</span></p>
     <div class="formacion-grid">
-
-      <!-- Educación + Certifs -->
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div class="formacion-card">
-          <p class="formacion-card-title">Educación</p>
+          <p class="formacion-card-title"><span data-en="Education" data-es="Educación">Education</span></p>
           
           <div class="edu-item">
             <div class="edu-siglas">UP</div>
             <div class="edu-text">
-              <div class="edu-nivel">Postgrado · 2024</div>
-              <div class="edu-titulo">Master in Management</div>
-              <div class="edu-inst">Pacífico Business School · Lima, Perú</div>
+              <div class="edu-nivel" data-en="Postgraduate · 2024" data-es="Postgrado · 2024">Postgraduate · 2024</div>
+              <div class="edu-titulo" data-en="Master in Management" data-es="Master in Management">Master in Management</div>
+              <div class="edu-inst" data-en="Pacífico Business School · Lima, Peru" data-es="Pacífico Business School · Lima, Perú">Pacífico Business School · Lima, Peru</div>
             </div>
           </div>
           <div class="edu-item">
             <div class="edu-siglas">UP</div>
             <div class="edu-text">
-              <div class="edu-nivel">Pregrado · 2021</div>
-              <div class="edu-titulo">Bachiller en Marketing</div>
-              <div class="edu-inst">Universidad del Pacífico · Lima, Perú</div>
+              <div class="edu-nivel" data-en="Undergraduate · 2021" data-es="Pregrado · 2021">Undergraduate · 2021</div>
+              <div class="edu-titulo" data-en="Bachelor in Marketing" data-es="Bachiller en Marketing">Bachelor in Marketing</div>
+              <div class="edu-inst" data-en="Universidad del Pacífico · Lima, Peru" data-es="Universidad del Pacífico · Lima, Perú">Universidad del Pacífico · Lima, Peru</div>
             </div>
           </div>
         </div>
         <div class="formacion-card">
-          <p class="formacion-card-title">Certificaciones</p>
+          <p class="formacion-card-title"><span data-en="Certifications" data-es="Certificaciones">Certifications</span></p>
           
           <div class="cert-item">
             <div class="cert-info">
@@ -1006,34 +650,32 @@ strong { color: var(--cream); font-weight: 700; }
               <span class="cert-nombre">Microsoft PL-300 · Power BI Data Analyst Associate</span>
               <span class="cert-entidad">Microsoft · 2025</span>
             </div>
-            <span class="cert-badge cert-badge--curso">En curso</span>
+            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
           </div>
           <div class="cert-item">
             <div class="cert-info">
               <span class="cert-nombre">Google Analytics 4</span>
               <span class="cert-entidad">Google Skillshop · 2025</span>
             </div>
-            <span class="cert-badge cert-badge--curso">En curso</span>
+            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
           </div>
           <div class="cert-item">
             <div class="cert-info">
               <span class="cert-nombre">AWS Certified Data Engineer – Associate (DEA-C01)</span>
               <span class="cert-entidad">Amazon · 2025</span>
             </div>
-            <span class="cert-badge cert-badge--curso">En curso</span>
+            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
           </div>
         </div>
       </div>
-
-      <!-- Idiomas + WhatsApp -->
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div class="formacion-card">
-          <p class="formacion-card-title">Idiomas</p>
+          <p class="formacion-card-title"><span data-en="Languages" data-es="Idiomas">Languages</span></p>
           
           <div class="lang-item">
             <div class="lang-top">
-              <span class="lang-nombre">Español</span>
-              <span class="lang-nivel">Nativo</span>
+              <span class="lang-nombre" data-en="Spanish" data-es="Español">Spanish</span>
+              <span class="lang-nivel" data-en="Native" data-es="Nativo">Native</span>
             </div>
             
             <div class="lbar-track">
@@ -1042,18 +684,18 @@ strong { color: var(--cream); font-weight: 700; }
           </div>
           <div class="lang-item">
             <div class="lang-top">
-              <span class="lang-nombre">Inglés</span>
-              <span class="lang-nivel">Profesional</span>
+              <span class="lang-nombre" data-en="English" data-es="Inglés">English</span>
+              <span class="lang-nivel" data-en="Professional" data-es="Profesional">Professional</span>
             </div>
-            <span class="lang-nota">IELTS Academic Band 7.0</span>
+            <span class="lang-nota" data-en="IELTS Academic Band 7.0" data-es="IELTS Academic Band 7.0">IELTS Academic Band 7.0</span>
             <div class="lbar-track">
               <div class="lbar-fill" data-w="88"></div>
             </div>
           </div>
           <div class="lang-item">
             <div class="lang-top">
-              <span class="lang-nombre">Italiano</span>
-              <span class="lang-nivel">Conversacional</span>
+              <span class="lang-nombre" data-en="Italian" data-es="Italiano">Italian</span>
+              <span class="lang-nivel" data-en="Conversational" data-es="Conversacional">Conversational</span>
             </div>
             
             <div class="lbar-track">
@@ -1064,13 +706,12 @@ strong { color: var(--cream); font-weight: 700; }
         <a href="https://wa.me/51936735897" target="_blank" class="wa-card" style="text-decoration:none;">
           <div class="wa-icon">💬</div>
           <div class="wa-text">
-            <div class="wa-text-label">WhatsApp directo</div>
+            <div class="wa-text-label"><span data-en="Direct WhatsApp" data-es="WhatsApp directo">Direct WhatsApp</span></div>
             <div class="wa-text-num">+51936735897</div>
           </div>
-          <div class="wa-btn">Escribir</div>
+          <div class="wa-btn"><span data-en="Message" data-es="Escribir">Message</span></div>
         </a>
       </div>
-
     </div>
   </div>
 </section>
@@ -1078,18 +719,18 @@ strong { color: var(--cream); font-weight: 700; }
 <!-- PORTAFOLIO -->
 <section id="portafolio">
   <div class="section-inner">
-    <p class="section-label">Portafolio</p>
+    <p class="section-label"><span data-en="Portfolio" data-es="Portafolio">Portfolio</span></p>
     <div class="proj-grid">
       
       <div class="proj-card cs" data-delay-idx="01" style="background:linear-gradient(135deg,#1a0808 0%,#2d1010 100%)">
         <div class="proj-num">01</div>
         <div class="proj-emoji">🎨</div>
-        <h3 class="proj-title">Latrue</h3>
-        <p class="proj-desc">Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.</p>
+        <h3 class="proj-title" data-en="Latrue" data-es="Latrue">Latrue</h3>
+        <p class="proj-desc" data-en="Social project: a digital magazine boosting emerging Latin American art. 150+ artists supported across the region with editorial content, outreach and community." data-es="Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.">Social project: a digital magazine boosting emerging Latin American art. 150+ artists supported across the region with editorial content, outreach and community.</p>
         <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag">Editorial</span><span class="skill-tag">Community</span><span class="skill-tag">Curaduría</span></div>
+          <div class="skills-row"><span class="skill-tag" data-en="Editorial" data-es="Editorial">Editorial</span><span class="skill-tag" data-en="Community" data-es="Community">Community</span><span class="skill-tag" data-en="Curation" data-es="Curaduría">Curation</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--live">Live</span>
+            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
             
           </div>
         </div>
@@ -1097,25 +738,25 @@ strong { color: var(--cream); font-weight: 700; }
       <div class="proj-card cs" data-delay-idx="02" style="background:linear-gradient(135deg,#080f1a 0%,#101828 100%)">
         <div class="proj-num">02</div>
         <div class="proj-emoji">🚗</div>
-        <h3 class="proj-title">Consulta Vehicular</h3>
-        <p class="proj-desc">SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.</p>
+        <h3 class="proj-title" data-en="Consulta Vehicular" data-es="Consulta Vehicular">Consulta Vehicular</h3>
+        <p class="proj-desc" data-en="Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms." data-es="SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.">Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms.</p>
         <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag">SaaS</span><span class="skill-tag">Python</span><span class="skill-tag">API</span></div>
+          <div class="skills-row"><span class="skill-tag" data-en="SaaS" data-es="SaaS">SaaS</span><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="API" data-es="API">API</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--live">Live</span>
-            <a href="https://consultavehicular.pe" target="_blank" class="proj-link">Ver proyecto ↗</a>
+            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
+            <a href="https://consultavehicular.pe" target="_blank" class="proj-link" data-en="View project ↗" data-es="Ver proyecto ↗">View project ↗</a>
           </div>
         </div>
       </div>
       <div class="proj-card cs" data-delay-idx="03" style="background:linear-gradient(135deg,#080f20 0%,#10193a 100%)">
         <div class="proj-num">03</div>
         <div class="proj-emoji">📈</div>
-        <h3 class="proj-title">Pagos Digitales en Perú — BCRP</h3>
-        <p class="proj-desc">Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.</p>
+        <h3 class="proj-title" data-en="Digital Payments in Peru — BCRP" data-es="Pagos Digitales en Perú — BCRP">Digital Payments in Peru — BCRP</h3>
+        <p class="proj-desc" data-en="Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX." data-es="Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.">Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX.</p>
         <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag">Power BI</span><span class="skill-tag">Python</span><span class="skill-tag">DAX</span></div>
+          <div class="skills-row"><span class="skill-tag" data-en="Power BI" data-es="Power BI">Power BI</span><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="DAX" data-es="DAX">DAX</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip">En construccion</span>
+            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
             
           </div>
         </div>
@@ -1123,12 +764,12 @@ strong { color: var(--cream); font-weight: 700; }
       <div class="proj-card cs" data-delay-idx="04" style="background:linear-gradient(135deg,#081408 0%,#102014 100%)">
         <div class="proj-num">04</div>
         <div class="proj-emoji">🗺️</div>
-        <h3 class="proj-title">Inclusión Financiera por Región</h3>
-        <p class="proj-desc">Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.</p>
+        <h3 class="proj-title" data-en="Financial Inclusion by Region" data-es="Inclusión Financiera por Región">Financial Inclusion by Region</h3>
+        <p class="proj-desc" data-en="Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024." data-es="Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.">Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024.</p>
         <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag">Power BI Maps</span><span class="skill-tag">SQL</span></div>
+          <div class="skills-row"><span class="skill-tag" data-en="Power BI Maps" data-es="Power BI Maps">Power BI Maps</span><span class="skill-tag" data-en="SQL" data-es="SQL">SQL</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip">En construccion</span>
+            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
             
           </div>
         </div>
@@ -1136,12 +777,12 @@ strong { color: var(--cream); font-weight: 700; }
       <div class="proj-card cs" data-delay-idx="05" style="background:linear-gradient(135deg,#0e0e18 0%,#161626 100%)">
         <div class="proj-num">05</div>
         <div class="proj-emoji">🔮</div>
-        <h3 class="proj-title">Predicción de Churn — Fintech</h3>
-        <p class="proj-desc">Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.</p>
+        <h3 class="proj-title" data-en="Churn Prediction — Fintech" data-es="Predicción de Churn — Fintech">Churn Prediction — Fintech</h3>
+        <p class="proj-desc" data-en="Predictive churn model for payments products with an executive monitoring dashboard." data-es="Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.">Predictive churn model for payments products with an executive monitoring dashboard.</p>
         <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag">Python</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Power BI</span></div>
+          <div class="skills-row"><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="Scikit-learn" data-es="Scikit-learn">Scikit-learn</span><span class="skill-tag" data-en="Power BI" data-es="Power BI">Power BI</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip">En construccion</span>
+            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
             
           </div>
         </div>
@@ -1153,97 +794,134 @@ strong { color: var(--cream); font-weight: 700; }
 <!-- CONTACTO -->
 <section id="contacto" class="noise-overlay">
   <div class="contacto-glow"></div>
-  <p class="section-label" style="justify-content:center">Contacto</p>
-  <h2 class="contacto-title">Hablemos.</h2>
-  <p class="contacto-sub">Disponible para oportunidades en banca, fintech y datos.</p>
+  <p class="section-label" style="justify-content:center"><span data-en="Contact" data-es="Contacto">Contact</span></p>
+  <h2 class="contacto-title"><span data-en="Let's talk." data-es="Hablemos.">Let's talk.</span></h2>
+  <p class="contacto-sub"><span data-en="Available for opportunities in banking, fintech and data." data-es="Disponible para oportunidades en banca, fintech y datos.">Available for opportunities in banking, fintech and data.</span></p>
   <div class="contacto-links">
     <a href="mailto:carlorndn@gmail.com" class="contact-link">
       <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="1" y="3" width="12" height="9" rx="2"/>
-        <path d="M1 5l6 4 6-4"/>
+        <rect x="1" y="3" width="12" height="9" rx="2"/><path d="M1 5l6 4 6-4"/>
       </svg>
-      carlorndn@gmail.com
+      <span>carlorndn@gmail.com</span>
     </a>
     <a href="https://wa.me/51936735897" target="_blank" class="contact-link wa-contact-link">
       <svg viewBox="0 0 14 14" fill="currentColor" style="width:14px;height:14px">
         <path d="M7 0C3.13 0 0 3.13 0 7c0 1.23.32 2.39.88 3.39L0 14l3.7-.86A6.96 6.96 0 007 14c3.87 0 7-3.13 7-7s-3.13-7-7-7zm3.56 9.72c-.15.42-1.46.82-1.78.82-.07 0-.13 0-.2-.02-.32-.05-1.47-.58-2.47-1.43a7.2 7.2 0 01-1.63-2.16c-.28-.63-.09-1.08.05-1.31.14-.24.34-.44.52-.6.16-.13.22-.15.32-.15.09 0 .32.09.47.42l.6 1.34c.07.16.03.22-.03.32l-.22.28c-.07.09-.15.19-.06.37.09.18.41.74.9 1.2.5.47 1.07.72 1.25.8.18.08.29.07.39-.04l.28-.32c.11-.13.19-.11.32-.06l1.3.61c.32.15.32.3.23.73z"/>
       </svg>
-      +51936735897
+      <span>+51936735897</span>
     </a>
     <a href="https://www.linkedin.com/in/carlo-rondon/" target="_blank" class="contact-link">
       <svg viewBox="0 0 14 14" fill="currentColor" style="width:14px;height:14px">
         <path d="M12.6 0H1.4C.63 0 0 .63 0 1.4v11.2C0 13.37.63 14 1.4 14h11.2c.77 0 1.4-.63 1.4-1.4V1.4C14 .63 13.37 0 12.6 0zM4.2 11.9H2.1V5.25h2.1V11.9zM3.15 4.34a1.22 1.22 0 110-2.44 1.22 1.22 0 010 2.44zM11.9 11.9H9.8V8.68c0-.78-.01-1.79-1.09-1.79-1.09 0-1.26.85-1.26 1.73V11.9H5.35V5.25h2.01v.92h.03c.28-.53.96-1.09 1.98-1.09 2.12 0 2.51 1.4 2.51 3.21V11.9z"/>
       </svg>
-      LinkedIn
+      <span>LinkedIn</span>
     </a>
-    <a href="Carlo Rondon CV.docx" download class="contact-link">
+    <a href="Carlo Rondon CV.docx" download class="contact-link" data-href-en="Carlo Rondon CV.docx" data-href-es="Carlo Rondon CV ES.docx">
       <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px">
         <path d="M7 1v8M4 6l3 3 3-3M2 11h10"/>
       </svg>
-      Descargar CV
+      <span data-en="Download CV" data-es="Descargar CV">Download CV</span>
     </a>
   </div>
-  <p class="footer-note">Lima, Perú · carlorndn@gmail.com</p>
+  <p class="footer-note"><span data-en="Lima, Peru" data-es="Lima, Perú">Lima, Peru</span> · carlorndn@gmail.com</p>
 </section>
 
 <script>
-// ─── PULL-UP WORDS ON LOAD ─────────────────────────────────────
+window.__META = {"en": {"title": "Carlo Rondón — Data · Growth · Micro SaaS · AI", "desc": "I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking."}, "es": {"title": "Carlo Rondón — Data · Growth · Micro SaaS · IA", "desc": "Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca."}};
+const LANG_KEY = 'cv-lang';
+
+function currentLang() {
+  try { return localStorage.getItem(LANG_KEY) || 'en'; } catch (e) { return 'en'; }
+}
+
+function buildBio(lang) {
+  const c = document.getElementById('bio-text');
+  if (!c) return;
+  const text = c.getAttribute('data-' + lang) || c.getAttribute('data-en') || '';
+  let html = '';
+  for (const ch of text) {
+    html += ch === ' '
+      ? '<span class="ch-span ch-sp"> </span>'
+      : '<span class="ch-span">' + ch + '</span>';
+  }
+  c.innerHTML = html;
+}
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(function (el) {
+    if (el.id === 'bio-text') return;
+    const v = el.getAttribute('data-' + lang);
+    if (v !== null) el.innerHTML = v;
+  });
+  buildBio(lang);
+  if (window.updateBio) window.updateBio();
+
+  const M = window.__META || {};
+  if (M[lang]) {
+    document.title = M[lang].title;
+    const md = document.querySelector('meta[name=description]');
+    if (md) md.setAttribute('content', M[lang].desc);
+  }
+  document.querySelectorAll('[data-href-en]').forEach(function (a) {
+    a.setAttribute('href', a.getAttribute('data-href-' + lang));
+  });
+  document.querySelectorAll('.lang-btn').forEach(function (b) {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+}
+
+function setLang(lang) { applyLang(lang); }
+
+// Aplica idioma ANTES de las animaciones de entrada
+applyLang(currentLang());
+
+// ─── PULL-UP WORDS ─── */
 (function () {
-  const els = document.querySelectorAll('.pu-inner');
-  els.forEach((el, i) => {
-    setTimeout(() => el.classList.add('in'), 120 + i * 90);
+  document.querySelectorAll('.pu-inner').forEach(function (el, i) {
+    setTimeout(function () { el.classList.add('in'); }, 120 + i * 90);
   });
 })();
 
-// ─── INTERSECTION OBSERVER HELPER ─────────────────────────────
-function onVisible(selector, callback, threshold = 0.15) {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        callback(entry.target);
-        obs.unobserve(entry.target);
-      }
+function onVisible(selector, callback, threshold) {
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { callback(entry.target); obs.unobserve(entry.target); }
     });
-  }, { threshold });
-  document.querySelectorAll(selector).forEach(el => obs.observe(el));
+  }, { threshold: threshold || 0.15 });
+  document.querySelectorAll(selector).forEach(function (el) { obs.observe(el); });
 }
 
-// ─── CARDS FADE-IN STAGGER ─────────────────────────────────────
-onVisible('.cs', el => {
+onVisible('.cs', function (el) {
   const idx = parseInt(el.dataset.delayIdx || 0);
-  setTimeout(() => el.classList.add('in'), idx * 130);
+  setTimeout(function () { el.classList.add('in'); }, idx * 130);
 });
 
-// ─── LANGUAGE BARS ─────────────────────────────────────────────
-onVisible('.lbar-fill', el => {
+onVisible('.lbar-fill', function (el) {
   const w = el.dataset.w;
-  setTimeout(() => el.style.width = w + '%', 200);
+  setTimeout(function () { el.style.width = w + '%'; }, 200);
 }, 0.3);
 
-// ─── CHAR REVEAL ON SCROLL ────────────────────────────────────
+// ─── CHAR REVEAL ON SCROLL ─── */
 (function () {
   const container = document.getElementById('bio-text');
   if (!container) return;
-  const spans = container.querySelectorAll('.ch-span');
-
-  function update() {
+  window.updateBio = function () {
+    const spans = container.querySelectorAll('.ch-span');
     const rect = container.getBoundingClientRect();
     const vh = window.innerHeight;
     const progress = 1 - (rect.top / vh);
     const ratio = Math.max(0, Math.min(1, progress * 1.4 - 0.2));
     const active = Math.floor(ratio * spans.length);
-    spans.forEach((s, i) => {
-      s.style.opacity = i < active ? '1' : '0.1';
-    });
-  }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
+    spans.forEach(function (s, i) { s.style.opacity = i < active ? '1' : '0.1'; });
+  };
+  window.addEventListener('scroll', window.updateBio, { passive: true });
+  window.updateBio();
 })();
 
-// ─── ACCORDION ────────────────────────────────────────────────
 function toggleAcc(btn) {
-  const card = btn.closest('.acc-card');
-  card.classList.toggle('open');
+  btn.closest('.acc-card').classList.toggle('open');
 }
 </script>
 </body>

@@ -4,8 +4,8 @@
     {
       "name": "cv-web",
       "runtimeExecutable": "py",
-      "runtimeArgs": ["-m", "http.server", "8341"],
-      "port": 8341
+      "runtimeArgs": ["-m", "http.server", "8342"],
+      "port": 8342
     }
   ]
 }

@@ -2,10 +2,10 @@
   "persona": {
     "nombre": "Carlo",
     "apellido": "Rondón",
-    "titulo": { "en": "Data · Growth · Micro SaaS · AI", "es": "Data · Growth · Micro SaaS · IA" },
+    "titulo": { "en": "Fintech & Payments Strategy", "es": "Estrategia Fintech & Payments" },
     "tagline": {
-      "en": "I build data products, micro-SaaS and applied AI for financial services. From data pipeline to pricing model — where technology creates an edge in fintech and banking.",
-      "es": "Construyo productos de datos, micro-SaaS e IA aplicada al negocio financiero. Del pipeline de datos al modelo de pricing — donde la tecnología crea ventaja en fintech y banca."
+      "en": "I turn payments into growth. Pricing, connectivity APIs and data-driven strategy for fintech and banking — from merchant conversion to real-time money movement.",
+      "es": "Convierto los pagos en crecimiento. Pricing, APIs de conectividad y estrategia basada en datos para fintech y banca — de la conversión de comercios al movimiento de dinero en tiempo real."
     },
     "ubicacion": { "en": "Lima, Peru", "es": "Lima, Perú" },
     "email": "carlorndn@gmail.com",
@@ -16,8 +16,8 @@
   },
   "metricas": [],
   "perfil": {
-    "en": "I'm a technical profile operating inside the financial world. Currently, as a Corporate & Large-Enterprise Banking Executive at BBVA Peru, I design data architectures and cloud ETL pipelines, integrate and sell banking connectivity APIs that link corporate clients' systems to the bank's core, and automate processes with artificial intelligence. My edge isn't just understanding the business —I do, with over six years across banking, fintech and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS— but mastering the stack that makes it run: SQL, Python, cloud, APIs and LLMs. In parallel I build micro-SaaS and AI-powered tools, shipping scalable digital solutions in markets where financial technology still has everything left to build.",
-    "es": "Soy un perfil técnico que opera dentro del mundo financiero. Actualmente, como Ejecutivo de Corporate & Large-Enterprise Banking en BBVA Perú, diseño arquitecturas de datos y pipelines ETL en la nube, integro y comercializo APIs de conectividad bancaria que enlazan los sistemas de clientes corporativos con el core del banco, y automatizo procesos con inteligencia artificial. Mi ventaja no es solo entender el negocio —lo entiendo, con más de seis años entre banca, fintech y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS—, sino dominar el stack que lo hace funcionar: SQL, Python, cloud, APIs y LLMs. En paralelo desarrollo micro-SaaS y herramientas con IA, lanzando soluciones digitales escalables en mercados donde la tecnología financiera aún tiene todo por construir."
+    "en": "Payments is where I've made my mark. I scaled a payments fintech from fewer than 100 merchants past 40,000, lifted merchant conversion from 2% to 8%, optimized pricing and promotions for a payments business with 20,000+ active clients, and today sell the banking connectivity APIs that move corporate money in real time. I pair that commercial track record with a technical edge —data architecture, pricing models, AI automation and the stack behind them (SQL, Python, cloud, APIs, LLMs)— so I don't just run payments strategy, I build it. Six-plus years across fintech, banking and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS. My focus now is the next frontier of payments in Latin America: faster money movement, smarter pricing and products that scale.",
+    "es": "En payments es donde me he hecho un nombre. Escalé una fintech de pagos de menos de 100 comercios a más de 40,000, elevé la conversión de comercios de 2% a 8%, optimicé el pricing y las promociones de un negocio de payments con más de 20,000 clientes activos y hoy comercializo las APIs de conectividad bancaria que mueven el dinero corporativo en tiempo real. Combino esa trayectoria comercial con un diferenciador técnico —arquitectura de datos, modelos de pricing, automatización con IA y el stack detrás (SQL, Python, cloud, APIs, LLMs)— así que no solo ejecuto estrategia de payments: la construyo. Más de seis años entre fintech, banca y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS. Mi foco ahora es la próxima frontera de los pagos en Latinoamérica: dinero más rápido, pricing más inteligente y productos que escalan."
   },
   "experiencia": [
     {
@@ -197,6 +197,18 @@
   "competencias": [
     {
       "numero": "01",
+      "emoji": "💳",
+      "titulo": { "en": "Payments & Pricing", "es": "Payments & Pricing" },
+      "items": [
+        { "en": "Cash-in / cash-out strategy", "es": "Estrategia de cash in / cash out" },
+        { "en": "Pricing & elasticity analysis", "es": "Pricing & análisis de elasticidad" },
+        { "en": "Merchant conversion & activation", "es": "Conversión y activación de comercios" },
+        { "en": "Connectivity APIs & open banking", "es": "APIs de conectividad & open banking" },
+        { "en": "Financial modeling & business cases", "es": "Modelos financieros & business cases" }
+      ]
+    },
+    {
+      "numero": "02",
       "emoji": "📊",
       "titulo": { "en": "Data & Analytics", "es": "Datos & Analítica" },
       "items": [
@@ -204,18 +216,6 @@
         "Power BI, Looker Studio, DAX",
         { "en": "Advanced Excel", "es": "Excel avanzado" },
         { "en": "Applied statistics", "es": "Estadística aplicada" }
-      ]
-    },
-    {
-      "numero": "02",
-      "emoji": "🏦",
-      "titulo": { "en": "Financial Strategy", "es": "Estrategia Financiera" },
-      "items": [
-        { "en": "Advanced financial models", "es": "Modelos financieros avanzados" },
-        { "en": "Pricing & elasticity analysis", "es": "Pricing & análisis de elasticidad" },
-        "Business cases & ROI",
-        { "en": "Customer segmentation", "es": "Segmentación de clientes" },
-        "Cash Management · Payments"
       ]
     },
     {
@@ -231,6 +231,29 @@
     },
     {
       "numero": "04",
+      "emoji": "🤖",
+      "titulo": { "en": "Artificial Intelligence", "es": "Inteligencia Artificial" },
+      "items": [
+        { "en": "Prompting & AI agents", "es": "Prompting & agentes con IA" },
+        { "en": "Automated LLM workflows", "es": "Workflows automatizados con LLMs" },
+        { "en": "OpenAI / Anthropic API integration", "es": "Integración APIs OpenAI / Anthropic" },
+        { "en": "AI applications in payments", "es": "Aplicaciones de IA en payments" },
+        { "en": "Data analysis with ML", "es": "Análisis de datos con ML" }
+      ]
+    },
+    {
+      "numero": "05",
+      "emoji": "🚀",
+      "titulo": { "en": "Fintech Product & Growth", "es": "Producto Fintech & Growth" },
+      "items": [
+        { "en": "Micro-SaaS development", "es": "Desarrollo de micro-SaaS" },
+        { "en": "Product strategy & monetization", "es": "Product strategy & monetización" },
+        { "en": "Automation with APIs & webhooks", "es": "Automatización con APIs y webhooks" },
+        { "en": "Digital launch & growth", "es": "Lanzamiento y crecimiento digital" }
+      ]
+    },
+    {
+      "numero": "06",
       "emoji": "🤝",
       "titulo": { "en": "Leadership & Clients", "es": "Liderazgo & Clientes" },
       "items": [
@@ -238,30 +261,6 @@
         { "en": "International C-level presentations", "es": "Presentaciones C-level internacionales" },
         { "en": "Cross-functional teams & stakeholders", "es": "Equipos transversales y stakeholders" },
         "Salesforce CRM"
-      ]
-    },
-    {
-      "numero": "05",
-      "emoji": "🚀",
-      "titulo": { "en": "Micro SaaS & Product", "es": "Micro SaaS & Producto" },
-      "items": [
-        { "en": "Micro-SaaS development", "es": "Desarrollo de micro-SaaS" },
-        { "en": "Product strategy & monetization", "es": "Product strategy & monetización" },
-        { "en": "Automation with APIs & webhooks", "es": "Automatización con APIs y webhooks" },
-        { "en": "Digital launch & growth", "es": "Lanzamiento y crecimiento digital" },
-        "No-code & low-code tools"
-      ]
-    },
-    {
-      "numero": "06",
-      "emoji": "🤖",
-      "titulo": { "en": "Artificial Intelligence", "es": "Inteligencia Artificial" },
-      "items": [
-        { "en": "Prompting & AI agents", "es": "Prompting & agentes con IA" },
-        { "en": "Automated LLM workflows", "es": "Workflows automatizados con LLMs" },
-        { "en": "OpenAI / Anthropic API integration", "es": "Integración APIs OpenAI / Anthropic" },
-        { "en": "AI applications in finance & business", "es": "Aplicaciones IA en finanzas y negocio" },
-        { "en": "Data analysis with ML", "es": "Análisis de datos con ML" }
       ]
     }
   ],

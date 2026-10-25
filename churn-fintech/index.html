@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Churn en billeteras digitales · Carlo Rondón</title>
+<meta name="description" content="Caso con datos simulados: un modelo de churn para una billetera digital y su traducción a decisión. El 63% de quienes abandonarán está en el 20% de mayor riesgo.">
+<meta name="author" content="Carlo Rondón">
+<link rel="canonical" href="https://carlo-rondon.com/churn-fintech/">
+<meta name="theme-color" content="#fbfbfa">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Carlo Rondón">
+<meta property="og:url" content="https://carlo-rondon.com/churn-fintech/">
+<meta property="og:title" content="Churn en billeteras: a quién retener y cuándo se paga">
+<meta property="og:description" content="Caso con datos simulados: el 63% del churn está en el 20% de clientes que el modelo marca como de mayor riesgo. Modelo, segmentos y economía de la oferta.">
+<meta property="og:image" content="https://carlo-rondon.com/churn-fintech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_PE">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Churn en billeteras: a quién retener y cuándo se paga">
+<meta name="twitter:description" content="Caso con datos simulados: modelo de churn, segmentos de riesgo y economía de la oferta.">
+<meta name="twitter:image" content="https://carlo-rondon.com/churn-fintech/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;800&display=swap">
+<style>
+/* Layout: columna editorial ~760px; aviso de datos simulados como único bloque enmarcado; cifras como fila de texto. Mismo sistema que /pagos-digitales/. */
+:root{
+  --bg:#fbfbfa; --ink:#16181d; --ink-2:#4a4f5a; --ink-3:#6e7480; --rule:#dcdee3; --grid:#eceef1;
+  --accent:#2f3ec4; --accent-soft:#2f3ec41f;
+  --n1:#2a2f3a; --n2:#5b6170; --n3:#8d93a0; --n4:#c3c7cf;
+  --neg:#a3361f;
+  --tip-bg:#16181d; --tip-fg:#fbfbfa;
+  --font:"Libre Franklin","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --s-xs:12px; --s-sm:13.5px; --s-base:16px; --s-md:19px; --s-lg:clamp(26px,5.2vw,40px); --s-num:clamp(26px,4.6vw,34px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121418; --ink:#eceef2; --ink-2:#b4b9c3; --ink-3:#8f95a1; --rule:#2c3039; --grid:#20232a;
+  --accent:#8c98ff; --accent-soft:#8c98ff26;
+  --n1:#d3d6dd; --n2:#9aa0ab; --n3:#6b717d; --n4:#3e434d;
+  --neg:#f08a70;
+  --tip-bg:#eceef2; --tip-fg:#121418; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121418; --ink:#eceef2; --ink-2:#b4b9c3; --ink-3:#8f95a1; --rule:#2c3039; --grid:#20232a;
+  --accent:#8c98ff; --accent-soft:#8c98ff26;
+  --n1:#d3d6dd; --n2:#9aa0ab; --n3:#6b717d; --n4:#3e434d;
+  --neg:#f08a70;
+  --tip-bg:#eceef2; --tip-fg:#121418; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:var(--s-base);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:44px}
+header{display:flex;flex-direction:column;gap:14px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{font-size:var(--s-sm);font-weight:600;color:var(--ink-2);text-decoration:none}
+.back:hover{color:var(--accent)}
+.eyebrow{font-size:var(--s-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.lang{font:600 var(--s-xs)/1 var(--font);letter-spacing:.06em;color:var(--ink-2);background:none;border:1px solid var(--rule);border-radius:3px;padding:8px 10px;cursor:pointer}
+.lang:hover{color:var(--ink);border-color:var(--ink-3)}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1{font-size:var(--s-lg);font-weight:800;line-height:1.12;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.dek{font-size:var(--s-md);line-height:1.45;color:var(--ink-2);margin:0;max-width:62ch}
+.dek b{color:var(--accent);font-weight:600}
+.byline{font-size:var(--s-sm);color:var(--ink-3)}
+.notice{border:1.5px dashed var(--ink-2);border-radius:4px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;font-size:var(--s-sm);line-height:1.5;color:var(--ink-2)}
+.notice .tag{flex:none;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:4px 7px;border-radius:2px;margin-top:1px}
+.notice strong{color:var(--ink)}
+h2{font-size:var(--s-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+h3{font-size:var(--s-md);font-weight:600;margin:0;line-height:1.3;text-wrap:balance}
+section{display:flex;flex-direction:column;gap:12px;min-width:0}
+.num{font-variant-numeric:tabular-nums}
+.anchors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+.anchor{padding:12px 14px 4px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.anchor+.anchor{padding-left:14px;border-left:1px solid var(--rule)}
+.anchor .v{font-size:var(--s-num);font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.anchor .v.acc{color:var(--accent)}
+.anchor .l{font-size:var(--s-sm);line-height:1.35}
+.anchor .d{font-size:var(--s-xs);line-height:1.4;color:var(--ink-3)}
+@media (max-width:640px){.anchors{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .anchor:nth-child(3){padding-left:0;border-left:0}.anchor:nth-child(n+3){border-top:1px solid var(--rule);margin-top:8px}}
+.chart{position:relative;touch-action:pan-y}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--font);font-size:11.5px;fill:var(--ink-3)}
+.caption{font-size:var(--s-xs);color:var(--ink-3);line-height:1.45;margin:0}
+.read{margin:0;color:var(--ink-2);max-width:64ch}
+.read strong{color:var(--ink);font-weight:600}
+.tip{position:absolute;pointer-events:none;background:var(--tip-bg);color:var(--tip-fg);font-size:12.5px;line-height:1.45;padding:7px 9px;border-radius:3px;white-space:nowrap;z-index:5;font-variant-numeric:tabular-nums}
+.tip b{font-weight:600}
+.imp{display:flex;flex-direction:column;gap:6px}
+.irow{display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr) 52px;gap:10px;align-items:center;font-size:var(--s-sm)}
+.irow .nm{color:var(--ink-2);line-height:1.3}
+.irow .tr{height:14px;position:relative}
+.irow .b{position:absolute;left:0;top:0;bottom:0;background:var(--n2);border-radius:0 3px 3px 0}
+.irow.top .b{background:var(--accent)}
+.irow .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.tablewrap{overflow-x:auto;border-top:2px solid var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:var(--s-sm);min-width:520px}
+.acts{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+.arow{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:var(--s-sm);color:var(--ink-2);line-height:1.45}
+.arow>span:first-child{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.arow small{font-size:11px;color:var(--ink-3)}
+.arow .seg{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2)}
+.arow.crit .seg{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.arow.high .seg{border-color:var(--accent);color:var(--accent)}
+th,td{text-align:right;padding:8px 0 8px 12px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;vertical-align:top;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+th{font-weight:600;color:var(--ink-3);font-size:var(--s-xs);letter-spacing:.03em;vertical-align:bottom}
+td.act{text-align:left;white-space:normal;min-width:190px;color:var(--ink-2)}
+td .seg{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap}
+tr.crit td .seg{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+tr.high td .seg{border-color:var(--accent);color:var(--accent)}
+.minibar{display:inline-block;height:8px;background:var(--n3);border-radius:0 2px 2px 0;vertical-align:middle;margin-left:6px}
+tr.crit .minibar,tr.high .minibar{background:var(--accent)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}}
+.cm{display:grid;grid-template-columns:auto 1fr 1fr;gap:2px;font-size:var(--s-sm);font-variant-numeric:tabular-nums}
+.cm div{padding:10px 8px;background:var(--grid);text-align:center;line-height:1.3}
+.cm .h{background:none;color:var(--ink-3);font-size:var(--s-xs);font-weight:600;display:flex;align-items:center;justify-content:center}
+.cm .tp{background:var(--accent);color:var(--bg)} .cm .tp small,.cm .tp b{color:var(--bg)}
+.cm b{display:block;font-size:18px;font-weight:800;color:var(--ink)}
+.cm small{color:var(--ink-3);font-size:11px}
+.reading{display:flex;flex-direction:column;gap:18px;border-top:2px solid var(--ink);padding-top:14px}
+.reading p{margin:6px 0 0;max-width:66ch;color:var(--ink-2)}
+.reading p strong{color:var(--ink);font-weight:600}
+footer{border-top:1px solid var(--rule);padding-top:14px;font-size:var(--s-xs);color:var(--ink-3);line-height:1.55;display:flex;flex-direction:column;gap:10px}
+footer ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:5px}
+footer code{font-size:11.5px;color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="topbar">
+    <a class="back" href="https://carlo-rondon.com/#portafolio">← Carlo Rondón</a>
+    <button class="lang" id="lang" type="button">EN</button>
+  </div>
+  <span class="eyebrow" data-i="eyebrow"></span>
+  <h1 data-i="h1"></h1>
+  <p class="dek" data-i="dek"></p>
+  <span class="byline" data-i="byline"></span>
+  <div class="notice" role="note" aria-labelledby="notice-tag"><span class="tag" id="notice-tag" data-i="nTag"></span><span data-i="notice"></span></div>
+</header>
+
+<section aria-labelledby="h-anchors">
+  <h2 id="h-anchors" data-i="h-anchors"></h2>
+  <div class="anchors" id="anchors"></div>
+</section>
+
+<section aria-labelledby="h-coh">
+  <h2 id="h-coh" data-i="h-coh"></h2>
+  <h3 data-i="coh-t"></h3>
+  <div class="chart" id="coh"></div>
+  <p class="read" data-i="coh-read"></p>
+  <p class="caption" data-i="cap-coh"></p>
+</section>
+
+<section aria-labelledby="h-imp">
+  <h2 id="h-imp" data-i="h-imp"></h2>
+  <h3 data-i="imp-t"></h3>
+  <div class="imp" id="imp" role="list"></div>
+  <p class="caption" data-i="cap-imp"></p>
+</section>
+
+<section aria-labelledby="h-seg">
+  <h2 id="h-seg" data-i="h-seg"></h2>
+  <h3 data-i="seg-t"></h3>
+  <div class="tablewrap"><table id="seg"></table></div>
+  <h3 data-i="act-t" style="margin-top:8px"></h3>
+  <div class="acts" id="acts" role="list"></div>
+  <p class="caption" data-i="cap-seg"></p>
+</section>
+
+<section aria-labelledby="h-eval">
+  <h2 id="h-eval" data-i="h-eval"></h2>
+  <div class="two">
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <h3 data-i="roc-t"></h3>
+      <div class="chart" id="roc"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <h3 data-i="cm-t"></h3>
+      <div class="cm" id="cm" role="table"></div>
+      <p class="read" id="cm-read" style="font-size:var(--s-sm)"></p>
+    </div>
+  </div>
+  <p class="caption" data-i="cap-eval"></p>
+</section>
+
+<section aria-labelledby="h-econ">
+  <h2 id="h-econ" data-i="h-econ"></h2>
+  <h3 data-i="econ-t"></h3>
+  <div class="chart" id="econ"></div>
+  <p class="read" data-i="econ-read"></p>
+  <p class="caption" data-i="cap-econ"></p>
+</section>
+
+<section class="reading" aria-labelledby="h-read">
+  <h2 id="h-read" data-i="h-read"></h2>
+  <div><h3 data-i="r1-t"></h3><p data-i="r1"></p></div>
+  <div><h3 data-i="r2-t"></h3><p data-i="r2"></p></div>
+  <div><h3 data-i="r3-t"></h3><p data-i="r3"></p></div>
+</section>
+
+<footer>
+  <strong data-i="f-t" style="color:var(--ink-2)"></strong>
+  <ul data-i="f-list"></ul>
+</footer>
+</div>
+<div class="tip" id="tip" hidden role="status" aria-live="polite"></div>
+
+<script>
+const D = {"n":60000,"test_n":18000,"base":0.0943,"auc_gb":0.824,"auc_lr":0.821,"auc_oracle":0.85,"ap_gb":0.413,"thr_share":0.2,"precision":0.297,"recall":0.631,"cm":{"tp":1071,"fp":2529,"fn":627,"tn":13773},"deciles":[{"d":1,"n":6000,"p":0.4274,"churn":0.4372,"lift":4.63,"cap":0.463},{"d":2,"n":6000,"p":0.1817,"churn":0.1578,"lift":1.67,"cap":0.631},{"d":3,"n":6000,"p":0.1055,"churn":0.1117,"lift":1.18,"cap":0.749},{"d":4,"n":6000,"p":0.0707,"churn":0.0733,"lift":0.78,"cap":0.827},{"d":5,"n":6000,"p":0.0519,"churn":0.0494,"lift":0.52,"cap":0.879},{"d":6,"n":6000,"p":0.0389,"churn":0.0356,"lift":0.38,"cap":0.917},{"d":7,"n":6000,"p":0.03,"churn":0.0267,"lift":0.28,"cap":0.945},{"d":8,"n":6000,"p":0.0229,"churn":0.0278,"lift":0.29,"cap":0.975},{"d":9,"n":6000,"p":0.0168,"churn":0.0161,"lift":0.17,"cap":0.992},{"d":10,"n":6000,"p":0.0098,"churn":0.0078,"lift":0.08,"cap":1.0}],"importance":[{"k":"trend","v":0.036,"sd":0.0014},{"k":"frequency","v":0.0339,"sd":0.002},{"k":"recency","v":0.0254,"sd":0.0018},{"k":"failed","v":0.0227,"sd":0.002},{"k":"use_cases","v":0.0182,"sd":0.0018},{"k":"tenure","v":0.0134,"sd":0.0013},{"k":"channel","v":0.0071,"sd":0.0009},{"k":"cash_out","v":0.0004,"sd":0.0003},{"k":"ticket","v":0.0001,"sd":0.0003}],"roc":[[0.0,0.0],[0.0018,0.0577],[0.004,0.096],[0.0061,0.1349],[0.0083,0.1625],[0.0116,0.1879],[0.0142,0.2055],[0.0165,0.2232],[0.0196,0.2468],[0.0228,0.268],[0.0253,0.2856],[0.0286,0.3068],[0.0333,0.3245],[0.0372,0.3422],[0.0406,0.3616],[0.0441,0.3793],[0.0467,0.4022],[0.0513,0.4217],[0.056,0.4388],[0.0602,0.4552],[0.0658,0.4747],[0.0724,0.4953],[0.0777,0.51],[0.0836,0.5259],[0.0934,0.5406],[0.1005,0.5565],[0.1094,0.5718],[0.1169,0.5866],[0.1291,0.6007],[0.1437,0.6148],[0.1529,0.6284],[0.1618,0.6419],[0.1741,0.6567],[0.185,0.6714],[0.198,0.6861],[0.2093,0.6996],[0.2184,0.7132],[0.2318,0.7297],[0.2499,0.7456],[0.2686,0.7585],[0.2806,0.7715],[0.3025,0.785],[0.3192,0.798],[0.3349,0.8121],[0.3537,0.8251],[0.379,0.8375],[0.4044,0.8498],[0.4317,0.8616],[0.4528,0.8746],[0.4823,0.8869],[0.5144,0.9011],[0.5488,0.9128],[0.5961,0.9252],[0.6358,0.9358],[0.6851,0.9482],[0.7146,0.96],[0.7754,0.9723],[0.8214,0.9841],[0.9082,0.9935],[1.0,1.0]],"roc_lr":[[0.0,0.0],[0.0018,0.0518],[0.004,0.0895],[0.006,0.1148],[0.0083,0.1372],[0.0106,0.1661],[0.0126,0.1896],[0.0151,0.2085],[0.0174,0.2291],[0.0218,0.2491],[0.0246,0.268],[0.0274,0.288],[0.0309,0.3092],[0.034,0.3251],[0.0378,0.3451],[0.041,0.3616],[0.0465,0.3793],[0.0504,0.3981],[0.0568,0.4164],[0.0607,0.434],[0.0665,0.4499],[0.0716,0.467],[0.0791,0.4817],[0.0831,0.4965],[0.0892,0.5112],[0.0958,0.5271],[0.1021,0.5418],[0.1072,0.5607],[0.1151,0.576],[0.1234,0.5913],[0.1324,0.6072],[0.1404,0.6225],[0.152,0.6396],[0.1626,0.6525],[0.1773,0.6661],[0.1908,0.6802],[0.2079,0.6949],[0.2268,0.7079],[0.2411,0.7208],[0.2593,0.7338],[0.2743,0.7479],[0.2869,0.7615],[0.3035,0.775],[0.3195,0.788],[0.3365,0.8021],[0.3617,0.8174],[0.3844,0.8298],[0.3966,0.8433],[0.4195,0.8563],[0.4453,0.8693],[0.4764,0.8816],[0.5035,0.8952],[0.5378,0.9075],[0.565,0.9205],[0.6129,0.934],[0.6525,0.947],[0.7061,0.96],[0.7513,0.9735],[0.8665,0.9859],[1.0,1.0]],"high_risk":12000,"n_top":6000,"churners_top":2623,"assumptions":{"save":0.2,"save_lo":0.1,"save_hi":0.3,"arpu":4.0,"cost":3.0,"horizon":6},"impact":{"mid":{"saved":525,"revenue":12590,"cost":18000,"net":-5410},"lo":{"saved":262,"revenue":6295,"cost":18000,"net":-11705},"hi":{"saved":787,"revenue":18886,"cost":18000,"net":886}},"offers":{"nudge":0.5,"cash":3.0},"grid":[0.0,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.3,0.32,0.34,0.36,0.38,0.4],"net_grid":{"nudge":[-3000,-1741,-482,777,2036,3295,4554,5813,7072,8331,9590,10849,12108,13368,14627,15886,17145,18404,19663,20922,22181],"cash":[-18000,-16741,-15482,-14223,-12964,-11705,-10446,-9187,-7928,-6669,-5410,-4151,-2892,-1632,-373,886,2145,3404,4663,5922,7181]},"breakeven":{"nudge":0.048,"cash":0.286},"cohorts":{"base":{"c1":[100.0,77.09,65.84,58.99,54.03,50.16,46.85,43.79,41.21,38.7,36.49,34.69,32.91],"c2":[100.0,74.33,62.74,55.47,50.14,45.91,42.85,39.89,37.69,35.43,33.23,31.51,29.71],"c3":[100.0,77.89,66.94,59.94,55.12,51.03,47.86,45.21,42.85,40.53,38.39,36.43,34.68]},"intervention":{"c1":[100.0,77.84,67.02,60.36,55.47,51.48,48.3,45.58,42.85,40.51,38.28,36.23,34.38],"c2":[100.0,75.1,63.4,56.69,51.72,47.69,44.48,41.47,38.98,36.71,34.52,32.8,31.18],"c3":[100.0,78.63,67.3,60.38,55.68,51.82,48.56,45.83,43.32,40.88,39.02,37.08,35.34]},"avg":[100.0,76.44,65.17,58.13,53.1,49.03,45.85,42.96,40.58,38.22,36.04,34.21,32.43],"avg_int":[100.0,77.19,65.91,59.14,54.29,50.33,47.11,44.29,41.72,39.37,37.27,35.37,33.63],"mixes":{"c1":[0.3,0.35,0.25,0.1],"c2":[0.2,0.25,0.45,0.1],"c3":[0.4,0.35,0.15,0.1]}},"versions":{"python":"3.13.16","numpy":"2.5.3","pandas":"3.0.5","sklearn":"1.9.1","seed":42,"model":"HistGradientBoostingClassifier v1"}};
+const V=D.versions, A=D.assumptions;
+const T={
+es:{
+ eyebrow:"Caso · Modelo de churn · Billetera digital",
+ h1:"El 63% de los clientes que abandonarán está en el 20% que el modelo marca como de mayor riesgo, un mes antes de que se vayan",
+ dek:"Con datos simulados de 60,000 clientes de una billetera, un gradient boosting ordena el riesgo de abandono con un AUC de 0.82. Pero un modelo solo vale si la acción se paga: <b>un incentivo de S/ 3 necesita rescatar al 29% de quienes iban a irse; un mensaje in-app, solo al 5%</b>.",
+ byline:"Por Carlo Rondón · Fintech & Payments Strategy",
+ nTag:"Datos simulados",
+ notice:"<strong>Todas las cifras de esta página vienen de un dataset sintético</strong> generado para el caso. No son datos de ningún empleador, cliente ni producto real, ni resultados de producción. Lo transferible es el método: definición de churn, variables, modelo, evaluación y traducción a decisión.",
+ "h-anchors":"El modelo en cifras",
+ a1l:"clientes en riesgo alto", a1d:"deciles 1 y 2 del score, sobre una base simulada de 60,000",
+ a2l:"de churn a 30 días en la base activa", a2d:"la tasa que el modelo intenta anticipar",
+ a3l:"AUC del modelo en datos de prueba", a3d:`regresión logística ${D.auc_lr.toFixed(3)} · techo teórico ${D.auc_oracle.toFixed(2)}`,
+ a4l:"clientes recuperables al mes actuando sobre el decil de mayor riesgo", a4d:`supuesto: rescate de 20% (rango ${D.impact.lo.saved}–${D.impact.hi.saved} con 10%–30%)`,
+ "h-coh":"Retención por cohorte",
+ "coh-t":"Clientes que siguen activos, % de cada cohorte mensual de altas",
+ cohLabels:{c1:"Cohorte 1 · mezcla base",c2:"Cohorte 2 · campaña pagada",c3:"Cohorte 3 · más referidos"},
+ avg:"Promedio sin intervención", avgInt:"Promedio con intervención",
+ month:"Mes",
+ "coh-read":"La pérdida se concentra al inicio: <strong>una cohorte pierde cerca de la mitad de sus clientes en los primeros cinco meses</strong>. La cohorte adquirida con campaña pagada retiene 5 puntos menos al mes 12 que la de más referidos. La intervención simulada suma 1.2 puntos al mes 12: un efecto real pero chico, porque solo se contacta al 10% de mayor riesgo y solo se rescata a una parte.",
+ "cap-coh":"Simulación: tres cohortes de 10,000 altas con distinta mezcla de canal, seguidas 12 meses. Con intervención, cada mes se contacta al 10% de mayor riesgo según un score con AUC ≈ 0.63 (más conservador que el modelo) y se rescata al 20% de quienes iban a abandonar. Toca el gráfico para ver los valores.",
+ "h-imp":"Señales",
+ "imp-t":"Qué predice el abandono: caída del AUC al desordenar cada variable",
+ feat:{trend:"Tendencia de uso (últimos 30 días vs. 60 previos)",frequency:"Frecuencia (transacciones en 30 días)",recency:"Recencia (días desde la última transacción)",failed:"Pagos fallidos (% de intentos)",use_cases:"Diversidad de usos (P2P, QR, servicios, recargas)",tenure:"Antigüedad",channel:"Canal de adquisición",cash_out:"Uso de cash-out en agentes",ticket:"Ticket promedio"},
+ "cap-imp":"Importancia por permutación en datos de prueba, 10 repeticiones. Tendencia, frecuencia y recencia están correlacionadas y se reparten parte de la señal. El ticket promedio y el cash-out casi no aportan en este dataset.",
+ "h-seg":"Segmentos y acción",
+ "seg-t":"Deciles de riesgo: tamaño, probabilidad de churn y concentración",
+ "act-t":"Acción recomendada por segmento",
+ thDec:"Decil", thSeg:"Segmento", thN:"Clientes", thP:"Prob. estimada", thC:"Churn observado", thLift:"Lift", thCap:"Churn capturado (acum.)", thAct:"Acción",
+ segs:{crit:"Crítico",high:"Alto",mid:"Medio",low:"Bajo"},
+ acts:{crit:"Contacto directo con oferta. Revisar primero pagos fallidos: si hubo fricción, resolverla antes de dar incentivo.",high:"Mensaje in-app para activar un segundo uso (QR o pago de servicios). Sin incentivo en dinero.",mid:"Comunicación de producto habitual. Monitorear si sube de decil.",low:"Sin acción. Grupo de control natural para medir efecto."},
+ "cap-seg":"Clientes escalados a la base de 60,000. Probabilidad estimada = promedio del score del modelo; churn observado = tasa real en datos de prueba. Lift = churn del decil / churn base.",
+ "h-eval":"Evaluación",
+ "roc-t":"Curva ROC en datos de prueba",
+ "cm-t":"Matriz de confusión contactando al 20% de mayor riesgo",
+ pred:"Predicho", real:"Real", churnL:"Abandona", stayL:"Se queda",
+ tpL:"aciertos", fpL:"falsas alarmas", fnL:"no detectados", tnL:"correctos",
+ cmRead:(p,r)=>`Precisión ${p}%: de cada 10 contactados, 3 iban a irse. Recall ${r}%: se detecta a 6 de cada 10 que abandonan.`,
+ gb:"Gradient boosting", lr:"Regresión logística", chance:"Azar",
+ "cap-eval":`Datos de prueba: ${D.test_n.toLocaleString("en-US")} clientes (30% del total, estratificado). El gradient boosting apenas supera a la regresión logística; en un primer despliegue conviene empezar por la logística, que es más fácil de explicar y auditar.`,
+ "h-econ":"Economía de la acción",
+ "econ-t":"Resultado neto de contactar al decil de mayor riesgo según la tasa de rescate, S/",
+ nudge:"Mensaje in-app (S/ 0.5 por contacto)", cash:"Incentivo en dinero (S/ 3 por contacto)",
+ save:"Tasa de rescate", be:"equilibrio",
+ "econ-read":"Contactar a los 6,000 clientes del decil de mayor riesgo cuesta S/ 3,000 con un mensaje in-app y S/ 18,000 con un incentivo de S/ 3. <strong>El mensaje se paga con rescatar al 5% de quienes iban a irse; el incentivo necesita 29%.</strong> Con el supuesto central de 20%, el mensaje deja S/ 9,590 y el incentivo pierde S/ 5,410. La tasa real de rescate no se conoce sin un experimento.",
+ "cap-econ":`Supuestos ilustrativos: ingreso neto de S/ ${A.arpu} por cliente activo al mes, horizonte de ${A.horizon} meses, ${D.churners_top.toLocaleString("en-US")} churners esperados en el decil 1. Toca el gráfico para ver el valor exacto.`,
+ "h-read":"Lectura",
+ "r1-t":"Qué hace el modelo",
+ r1:"Ordena a los clientes activos por su probabilidad de no transaccionar en los próximos 30 días, usando lo que ya se ve en sus datos: si usan menos que antes, hace cuántos días no pagan, cuántos usos distintos le dan a la billetera y si sus pagos fallan. <strong>El valor no está en el AUC sino en la concentración</strong>: el decil de mayor riesgo abandona 4.6 veces más que el promedio y el 20% superior reúne el 63% de todo el churn. Eso convierte un problema de toda la base en una lista de trabajo de 12,000 clientes.",
+ "r2-t":"Qué no prueba",
+ r2:"Predice quién se va, no por qué ni quién responde a una oferta. Que los pagos fallidos predigan abandono no prueba que arreglarlos lo evite; eso se mide con un experimento. Para saber a quién conviene contactar hace falta un modelo de uplift (efecto incremental), no solo de riesgo. Con 30% de precisión, 7 de cada 10 contactados no se iban a ir: si reciben dinero, es subsidio. El comportamiento cambia con el mercado (interoperabilidad, estacionalidad, una caída de servicio), así que el modelo se degrada; hay que monitorear su calibración cada mes y reentrenar. Y estos datos son sintéticos: con datos reales el AUC puede ser menor.",
+ "r3-t":"Qué implica para quien vende pagos",
+ r3:"Primero, concentrar el esfuerzo: el equipo de retención no necesita hablar con toda la base, sino con el 10%–20% que el modelo prioriza. Segundo, diseñar la oferta por segmento: el incentivo en dinero solo se justifica donde el riesgo y el valor son altos; para el resto, un mensaje que active un segundo uso cuesta seis veces menos. Tercero, <strong>medir el valor incremental desde el día uno</strong>: dejar un grupo de control sin contactar en cada decil. Sin control no hay forma de saber si la retención subió por la acción o porque esos clientes se iban a quedar igual.",
+ "f-t":"Fuentes y notas",
+ f:[
+  "<strong>Datos sintéticos e ilustrativos.</strong> Ninguna cifra corresponde a un empleador, cliente o producto real.",
+  `Dataset: ${D.n.toLocaleString("en-US")} clientes activos en la fecha de corte (al menos 1 transacción en los 30 días previos). Ventana de observación de 90 días. Una variable latente de compromiso por cliente genera frecuencia (Poisson), recencia, tendencia (30 días vs. 60 previos), diversidad de usos (binomial 1–4), ticket (lognormal), pagos fallidos (beta con cola), cash-out y antigüedad (exponencial, 1–60 meses). Canales: referido 30%, orgánico 35%, campaña pagada 25%, agente 10%.`,
+  "Churn: cero transacciones en los 30 días posteriores al corte. 30 días porque una billetera se usa varias veces al mes; ese plazo separa una pausa normal de un abandono y deja tiempo para actuar. Es ajustable (60 o 90 días en productos de menor frecuencia).",
+  `La probabilidad real de churn es una función logística conocida de las variables, con no linealidades (clientes nuevos, interacción fricción × antigüedad) y ruido. Su AUC (${D.auc_oracle.toFixed(3)}) es el techo teórico del modelo.`,
+  `Modelos: regresión logística estandarizada (baseline) y HistGradientBoostingClassifier (300 iteraciones, learning rate 0.05, 31 hojas, L2 = 1). Partición 70/30 estratificada, semilla ${V.seed}. Python ${V.python}, NumPy ${V.numpy}, pandas ${V.pandas}, scikit-learn ${V.sklearn}. Versión del modelo: v1.`,
+  "Métricas en datos de prueba: AUC-ROC, PR-AUC " + D.ap_gb.toFixed(3) + ", precisión y recall con umbral en el percentil 80 del score, lift por decil e importancia por permutación (caída de AUC, 10 repeticiones).",
+  `Economía de la acción: supuestos ilustrativos, no medidos. Ingreso neto S/ ${A.arpu} por cliente activo al mes, horizonte ${A.horizon} meses, tasa de rescate central ${A.save*100}% (sensibilidad ${A.save_lo*100}%–${A.save_hi*100}%), costo por contacto S/ 0.5 (mensaje in-app) o S/ 3 (incentivo).`,
+  "Cohortes: simulación aparte de 3 × 10,000 altas a 12 meses, con riesgo mensual que depende del compromiso y decae con la antigüedad.",
+  "El notebook que genera los datos, entrena los modelos y exporta estos resultados (churn.ipynb) acompaña la pieza como respaldo del método. El modelo no se entrena en el navegador."
+ ],
+ langBtn:"EN", langAria:"Switch to English"
+},
+en:{
+ eyebrow:"Case · Churn model · Digital wallet",
+ h1:"63% of the customers who will churn are in the 20% the model flags as highest risk, a month before they leave",
+ dek:"On simulated data for 60,000 wallet customers, a gradient boosting model ranks churn risk with an AUC of 0.82. But a model is only worth it if the action pays off: <b>a S/ 3 incentive needs to save 29% of those about to leave; an in-app message, only 5%</b>.",
+ byline:"By Carlo Rondón · Fintech & Payments Strategy",
+ nTag:"Simulated data",
+ notice:"<strong>Every figure on this page comes from a synthetic dataset</strong> built for this case. These are not data from any employer, client or real product, nor production results. What transfers is the method: churn definition, features, model, evaluation and translation into decisions.",
+ "h-anchors":"The model in figures",
+ a1l:"high-risk customers", a1d:"score deciles 1 and 2, out of a simulated base of 60,000",
+ a2l:"30-day churn in the active base", a2d:"the rate the model tries to anticipate",
+ a3l:"model AUC on test data", a3d:`logistic regression ${D.auc_lr.toFixed(3)} · theoretical ceiling ${D.auc_oracle.toFixed(2)}`,
+ a4l:"customers saved per month by acting on the highest-risk decile", a4d:`assumption: 20% save rate (range ${D.impact.lo.saved}–${D.impact.hi.saved} at 10%–30%)`,
+ "h-coh":"Retention by cohort",
+ "coh-t":"Customers still active, % of each monthly signup cohort",
+ cohLabels:{c1:"Cohort 1 · base mix",c2:"Cohort 2 · paid campaign",c3:"Cohort 3 · more referrals"},
+ avg:"Average, no intervention", avgInt:"Average, with intervention",
+ month:"Month",
+ "coh-read":"Losses concentrate early: <strong>a cohort loses about half of its customers in the first five months</strong>. The paid-campaign cohort retains 5 points less at month 12 than the referral-heavy one. The simulated intervention adds 1.2 points at month 12: a real but small effect, because only the top 10% risk is contacted and only some of them are saved.",
+ "cap-coh":"Simulation: three cohorts of 10,000 signups with different channel mix, followed for 12 months. With intervention, each month the top 10% by risk is contacted using a score with AUC ≈ 0.63 (more conservative than the model) and 20% of those about to churn are saved. Tap the chart to see values.",
+ "h-imp":"Signals",
+ "imp-t":"What predicts churn: AUC drop when each feature is shuffled",
+ feat:{trend:"Usage trend (last 30 days vs. prior 60)",frequency:"Frequency (transactions in 30 days)",recency:"Recency (days since last transaction)",failed:"Failed payments (% of attempts)",use_cases:"Use-case diversity (P2P, QR, bills, top-ups)",tenure:"Tenure",channel:"Acquisition channel",cash_out:"Agent cash-out use",ticket:"Average ticket"},
+ "cap-imp":"Permutation importance on test data, 10 repeats. Trend, frequency and recency are correlated and share part of the signal. Average ticket and cash-out add almost nothing in this dataset.",
+ "h-seg":"Segments and action",
+ "seg-t":"Risk deciles: size, churn probability and concentration",
+ "act-t":"Recommended action by segment",
+ thDec:"Decile", thSeg:"Segment", thN:"Customers", thP:"Est. probability", thC:"Observed churn", thLift:"Lift", thCap:"Churn captured (cum.)", thAct:"Action",
+ segs:{crit:"Critical",high:"High",mid:"Medium",low:"Low"},
+ acts:{crit:"Direct contact with an offer. Check failed payments first: if there was friction, fix it before giving an incentive.",high:"In-app message to activate a second use (QR or bill pay). No cash incentive.",mid:"Regular product communication. Watch for a move up a decile.",low:"No action. Natural control group to measure impact."},
+ "cap-seg":"Customers scaled to the 60,000 base. Estimated probability = average model score; observed churn = actual rate in test data. Lift = decile churn / base churn.",
+ "h-eval":"Evaluation",
+ "roc-t":"ROC curve on test data",
+ "cm-t":"Confusion matrix when contacting the top 20% by risk",
+ pred:"Predicted", real:"Actual", churnL:"Churns", stayL:"Stays",
+ tpL:"hits", fpL:"false alarms", fnL:"missed", tnL:"correct",
+ cmRead:(p,r)=>`Precision ${p}%: of every 10 contacted, 3 were about to leave. Recall ${r}%: 6 of every 10 churners are caught.`,
+ gb:"Gradient boosting", lr:"Logistic regression", chance:"Chance",
+ "cap-eval":`Test data: ${D.test_n.toLocaleString("en-US")} customers (30% of total, stratified). Gradient boosting barely beats logistic regression; for a first deployment it makes sense to start with the logistic model, which is easier to explain and audit.`,
+ "h-econ":"Economics of acting",
+ "econ-t":"Net result of contacting the highest-risk decile by save rate, S/",
+ nudge:"In-app message (S/ 0.5 per contact)", cash:"Cash incentive (S/ 3 per contact)",
+ save:"Save rate", be:"break-even",
+ "econ-read":"Contacting the 6,000 customers in the highest-risk decile costs S/ 3,000 with an in-app message and S/ 18,000 with a S/ 3 incentive. <strong>The message pays off if it saves 5% of those about to leave; the incentive needs 29%.</strong> At the central 20% assumption, the message nets S/ 9,590 and the incentive loses S/ 5,410. The real save rate is unknown without an experiment.",
+ "cap-econ":`Illustrative assumptions: net revenue of S/ ${A.arpu} per active customer per month, ${A.horizon}-month horizon, ${D.churners_top.toLocaleString("en-US")} expected churners in decile 1. Tap the chart for exact values.`,
+ "h-read":"Reading",
+ "r1-t":"What the model does",
+ r1:"It ranks active customers by their probability of not transacting in the next 30 days, using what is already visible in their data: whether they use the wallet less than before, how many days since their last payment, how many different uses they have, and whether their payments fail. <strong>The value is not in the AUC but in the concentration</strong>: the highest-risk decile churns 4.6 times more than average and the top 20% holds 63% of all churn. That turns a whole-base problem into a work list of 12,000 customers.",
+ "r2-t":"What it does not prove",
+ r2:"It predicts who leaves, not why, nor who responds to an offer. Failed payments predicting churn does not prove that fixing them prevents it; that is measured with an experiment. Knowing whom to contact requires an uplift (incremental effect) model, not just a risk model. At 30% precision, 7 of every 10 contacted were not leaving: if they get cash, it is a subsidy. Behavior shifts with the market (interoperability, seasonality, an outage), so the model degrades; calibration must be monitored monthly and the model retrained. And these data are synthetic: on real data the AUC may be lower.",
+ "r3-t":"What it means for people who sell payments",
+ r3:"First, concentrate effort: the retention team does not need to talk to the whole base, only to the 10%–20% the model prioritizes. Second, design the offer by segment: a cash incentive is justified only where risk and value are high; for the rest, a message that activates a second use costs six times less. Third, <strong>measure incremental value from day one</strong>: keep an uncontacted control group in every decile. Without a control there is no way to know whether retention rose because of the action or because those customers would have stayed anyway.",
+ "f-t":"Sources and notes",
+ f:[
+  "<strong>Synthetic, illustrative data.</strong> No figure corresponds to a real employer, client or product.",
+  `Dataset: ${D.n.toLocaleString("en-US")} customers active at the cutoff date (at least 1 transaction in the previous 30 days). 90-day observation window. A latent engagement variable per customer drives frequency (Poisson), recency, trend (30 days vs. prior 60), use-case diversity (binomial 1–4), ticket (lognormal), failed payments (beta with a tail), cash-out and tenure (exponential, 1–60 months). Channels: referral 30%, organic 35%, paid campaign 25%, agent 10%.`,
+  "Churn: zero transactions in the 30 days after the cutoff. 30 days because a wallet is used several times a month; that window separates a normal pause from churn and leaves time to act. It is adjustable (60 or 90 days for lower-frequency products).",
+  `The true churn probability is a known logistic function of the features, with non-linearities (new customers, friction × tenure interaction) and noise. Its AUC (${D.auc_oracle.toFixed(3)}) is the model's theoretical ceiling.`,
+  `Models: standardized logistic regression (baseline) and HistGradientBoostingClassifier (300 iterations, learning rate 0.05, 31 leaves, L2 = 1). 70/30 stratified split, seed ${V.seed}. Python ${V.python}, NumPy ${V.numpy}, pandas ${V.pandas}, scikit-learn ${V.sklearn}. Model version: v1.`,
+  "Test metrics: AUC-ROC, PR-AUC " + D.ap_gb.toFixed(3) + ", precision and recall with the threshold at the 80th score percentile, lift by decile and permutation importance (AUC drop, 10 repeats).",
+  `Economics of acting: illustrative, unmeasured assumptions. Net revenue S/ ${A.arpu} per active customer per month, ${A.horizon}-month horizon, central save rate ${A.save*100}% (sensitivity ${A.save_lo*100}%–${A.save_hi*100}%), cost per contact S/ 0.5 (in-app message) or S/ 3 (incentive).`,
+  "Cohorts: a separate simulation of 3 × 10,000 signups over 12 months, with monthly risk driven by engagement and decaying with tenure.",
+  "The notebook that generates the data, trains the models and exports these results (churn.ipynb) accompanies the piece as backup for the method. The model is not trained in the browser."
+ ],
+ langBtn:"ES", langAria:"Cambiar a español"
+}};
+let L="es";
+try{const s=localStorage.getItem("lang");if(s==="en"||s==="es")L=s}catch(e){}
+try{const q=new URLSearchParams(location.search).get("lang")||location.hash.slice(1);if(q==="en"||q==="es")L=q}catch(e){}
+const t=k=>T[L][k];
+const fmt=(v,d=0)=>v==null?null:v.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const NS="http://www.w3.org/2000/svg";
+function el(tag,a,p,txt){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;if(p)p.appendChild(e);return e}
+const tip=document.getElementById("tip");
+function showTip(html,cx,cy){tip.innerHTML=html;tip.hidden=false;const w=tip.offsetWidth,h=tip.offsetHeight,vw=document.documentElement.clientWidth;
+  let l=cx+window.scrollX-w/2;l=Math.max(window.scrollX+8,Math.min(l,window.scrollX+vw-w-8));
+  let tp=cy+window.scrollY-h-12;if(tp<window.scrollY+4)tp=cy+window.scrollY+16;tip.style.left=l+"px";tip.style.top=tp+"px"}
+function hideTip(){tip.hidden=true}
+function hover(svg,W,x0,x1,n,onIdx,cl){const hit=el("rect",{x:x0,y:0,width:x1-x0,height:svg.viewBox.baseVal.height,fill:"transparent"},svg);
+  const mv=ev=>{const r=svg.getBoundingClientRect();const sx=(ev.clientX-r.left)*W/r.width;let k=Math.round((sx-x0)/(x1-x0)*(n-1));k=Math.max(0,Math.min(n-1,k));onIdx(k,r)};
+  hit.addEventListener("pointermove",mv);hit.addEventListener("pointerdown",mv);hit.addEventListener("pointerleave",()=>{hideTip();if(cl)cl.setAttribute("visibility","hidden")})}
+
+function drawAnchors(){
+  const items=[[fmt(D.high_risk),false,"a1l","a1d"],[fmt(D.base*100,1)+"%",false,"a2l","a2d"],[D.auc_gb.toFixed(2),false,"a3l","a3d"],[fmt(D.impact.mid.saved),true,"a4l","a4d"]];
+  document.getElementById("anchors").innerHTML=items.map(([v,a,l,d])=>`<div class="anchor"><span class="v${a?" acc":""}">${v}</span><span class="l">${t(l)}</span><span class="d">${t(d)}</span></div>`).join("");
+}
+function drawCoh(){
+  const box=document.getElementById("coh");box.innerHTML="";const C=D.cohorts;
+  const W=Math.max(300,box.clientWidth),narrow=W<520,m={l:34,r:narrow?10:150,t:10,b:28},H=narrow?250:290;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":t("coh-t")},box);
+  const n=C.avg.length,iw=W-m.l-m.r,ih=H-m.t-m.b,x=k=>m.l+k/(n-1)*iw,y=v=>m.t+ih-v/100*ih;
+  for(let v=0;v<=100;v+=25){el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:v?css("--grid"):css("--rule")},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg,v+"%")}
+  for(let k=0;k<n;k+=narrow?3:1)el("text",{x:x(k),y:H-10,"text-anchor":"middle"},svg,k);
+  el("text",{x:W-m.r,y:H-10,"text-anchor":"end"},svg,narrow?"":"");
+  const path=a=>a.map((v,k)=>(k?"L":"M")+x(k).toFixed(1)+","+y(v).toFixed(1)).join("");
+  ["c1","c2","c3"].forEach(c=>el("path",{d:path(C.base[c]),fill:"none",stroke:css("--n4"),"stroke-width":1.5},svg));
+  el("path",{d:path(C.avg),fill:"none",stroke:css("--n1"),"stroke-width":2.2},svg);
+  el("path",{d:path(C.avg_int),fill:"none",stroke:css("--accent"),"stroke-width":2.6},svg);
+  const ends=[{txt:t("avgInt")+" "+fmt(C.avg_int[n-1],1)+"%",y:y(C.avg_int[n-1]),c:css("--accent"),w:600},{txt:t("avg")+" "+fmt(C.avg[n-1],1)+"%",y:y(C.avg[n-1]),c:css("--ink-2"),w:400}];
+  if(!narrow){ends[0].y-=7;ends[1].y+=9;ends.forEach(e=>{const tx=el("text",{x:W-m.r+8,y:e.y+4},svg,e.txt);tx.style.fill=e.c;tx.style.fontWeight=e.w})}
+  else{const lg=el("g",{},svg);[[t("avgInt"),"--accent"],[t("avg"),"--n1"],["Cohortes","--n4"]];}
+  el("text",{x:m.l,y:H+0,"text-anchor":"start"},svg,"");
+  const cl=el("line",{y1:m.t,y2:m.t+ih,stroke:css("--ink-3"),visibility:"hidden"},svg);
+  hover(svg,W,m.l,W-m.r,n,(k,r)=>{cl.setAttribute("x1",x(k));cl.setAttribute("x2",x(k));cl.setAttribute("visibility","visible");
+    const L2=t("cohLabels");let s=`<b>${t("month")} ${k}</b><br><span style="color:inherit">${t("avgInt")}: <b>${fmt(C.avg_int[k],1)}%</b></span><br>${t("avg")}: <b>${fmt(C.avg[k],1)}%</b>`;
+    ["c1","c2","c3"].forEach(c=>s+=`<br>${L2[c]}: ${fmt(C.base[c][k],1)}%`);showTip(s,r.left+x(k)*r.width/W,r.top+y(C.avg_int[k])*r.width/W)},cl);
+  if(narrow){const lg=document.createElement("div");lg.className="caption";lg.style.cssText="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px";
+    lg.innerHTML=`<span><i style="display:inline-block;width:14px;height:3px;background:var(--accent);vertical-align:middle;margin-right:6px"></i>${t("avgInt")} ${fmt(C.avg_int[n-1],1)}%</span><span><i style="display:inline-block;width:14px;height:3px;background:var(--n1);vertical-align:middle;margin-right:6px"></i>${t("avg")} ${fmt(C.avg[n-1],1)}%</span><span><i style="display:inline-block;width:14px;height:2px;background:var(--n4);vertical-align:middle;margin-right:6px"></i>${L==="es"?"Cohortes individuales":"Individual cohorts"}</span>`;box.appendChild(lg)}
+  else{const lg=document.createElement("div");lg.className="caption";lg.style.marginTop="6px";lg.innerHTML=`<i style="display:inline-block;width:14px;height:2px;background:var(--n4);vertical-align:middle;margin-right:6px"></i>${L==="es"?"Líneas grises: cohortes individuales":"Grey lines: individual cohorts"} · ${t("month")} 0–12`;box.appendChild(lg)}
+}
+function drawImp(){
+  const box=document.getElementById("imp"),mx=D.importance[0].v;
+  box.innerHTML=D.importance.map((r,k)=>`<div class="irow${k<3?" top":""}" role="listitem"><span class="nm">${t("feat")[r.k]}</span><span class="tr"><span class="b" style="width:${Math.max(.6,r.v/mx*100)}%"></span></span><span class="val">${r.v.toFixed(3)}</span></div>`).join("");
+}
+function segOf(d){return d===1?"crit":d<=3?"high":d<=5?"mid":"low"}
+function drawSeg(){
+  const mx=D.deciles[0].churn;
+  let h=`<thead><tr><th scope="col">${t("thDec")}</th><th scope="col" style="text-align:left">${t("thSeg")}</th><th scope="col">${t("thN")}</th><th scope="col">${t("thP")}</th><th scope="col">${t("thC")}</th><th scope="col">${t("thLift")}</th><th scope="col">${t("thCap")}</th></tr></thead><tbody>`;
+  let prev=null;
+  D.deciles.forEach(r=>{const s=segOf(r.d);const first=s!==prev;prev=s;
+    const span=D.deciles.filter(x=>segOf(x.d)===s).length;
+    h+=`<tr class="${s}"><td>${r.d}</td><td style="text-align:left">${first?`<span class="seg">${t("segs")[s]}</span>`:""}</td><td>${fmt(r.n)}</td><td>${fmt(r.p*100,1)}%</td><td>${fmt(r.churn*100,1)}%<span class="minibar" style="width:${Math.max(2,r.churn/mx*36)}px"></span></td><td>${fmt(r.lift,1)}×</td><td>${fmt(r.cap*100,0)}%</td></tr>`});
+  document.getElementById("seg").innerHTML=h+"</tbody>";
+  const rng={crit:"1",high:"2–3",mid:"4–5",low:"6–10"};
+  document.getElementById("acts").innerHTML=["crit","high","mid","low"].map(k=>`<div class="arow ${k}" role="listitem"><span><span class="seg">${t("segs")[k]}</span><small>${t("thDec")} ${rng[k]}</small></span><span>${t("acts")[k]}</span></div>`).join("");
+}
+function drawRoc(){
+  const box=document.getElementById("roc");box.innerHTML="";
+  const W=Math.max(260,Math.min(box.clientWidth,360)),m={l:36,r:10,t:10,b:34},S=W-m.l-m.r,H=S+m.t+m.b;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":t("roc-t")+": AUC "+D.auc_gb},box);svg.style.maxWidth=W+"px";
+  const x=v=>m.l+v*S,y=v=>m.t+S-v*S;
+  for(let v=0;v<=1.001;v+=.25){el("line",{x1:x(0),x2:x(1),y1:y(v),y2:y(v),stroke:v?css("--grid"):css("--rule")},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg,v.toFixed(2));el("text",{x:x(v),y:H-18,"text-anchor":"middle"},svg,v.toFixed(2))}
+  el("text",{x:m.l+S/2,y:H-3,"text-anchor":"middle"},svg,L==="es"?"Tasa de falsos positivos":"False positive rate");
+  el("line",{x1:x(0),y1:y(0),x2:x(1),y2:y(1),stroke:css("--ink-3"),"stroke-dasharray":"3 3"},svg);
+  const p=a=>a.map((q,k)=>(k?"L":"M")+x(q[0]).toFixed(1)+","+y(q[1]).toFixed(1)).join("");
+  el("path",{d:p(D.roc_lr),fill:"none",stroke:css("--n3"),"stroke-width":1.8},svg);
+  el("path",{d:p(D.roc),fill:"none",stroke:css("--accent"),"stroke-width":2.4},svg);
+  const t1=el("text",{x:x(.38),y:y(.62),"font-size":"12"},svg,`${t("gb")} · AUC ${D.auc_gb.toFixed(3)}`);t1.style.fill=css("--accent");t1.style.fontWeight=600;
+  const t2=el("text",{x:x(.38),y:y(.62)+16,"font-size":"12"},svg,`${t("lr")} · AUC ${D.auc_lr.toFixed(3)}`);t2.style.fill=css("--ink-2");
+  el("text",{x:x(.62),y:y(.5)+14,"font-size":"11"},svg,t("chance"));
+  const pts=D.roc;const dot=el("circle",{r:4,fill:css("--accent"),stroke:css("--bg"),"stroke-width":1.5,visibility:"hidden"},svg);
+  hover(svg,W,x(0),x(1),101,(k,r)=>{const f=k/100;let best=pts[0];pts.forEach(q=>{if(Math.abs(q[0]-f)<Math.abs(best[0]-f))best=q});
+    dot.setAttribute("cx",x(best[0]));dot.setAttribute("cy",y(best[1]));dot.setAttribute("visibility","visible");
+    showTip(`${L==="es"?"Falsos positivos":"False positive rate"}: <b>${fmt(best[0]*100,1)}%</b><br>${L==="es"?"Verdaderos positivos":"True positive rate"}: <b>${fmt(best[1]*100,1)}%</b>`,r.left+x(best[0])*r.width/W,r.top+y(best[1])*r.width/W)},dot);
+}
+function drawCm(){
+  const c=D.cm;
+  document.getElementById("cm").innerHTML=`<div class="h"></div><div class="h">${t("pred")}: ${t("churnL")}</div><div class="h">${t("pred")}: ${t("stayL")}</div>
+  <div class="h">${t("real")}: ${t("churnL")}</div><div class="tp" role="cell"><b>${fmt(c.tp)}</b><small>${t("tpL")}</small></div><div role="cell"><b>${fmt(c.fn)}</b><small>${t("fnL")}</small></div>
+  <div class="h">${t("real")}: ${t("stayL")}</div><div role="cell"><b>${fmt(c.fp)}</b><small>${t("fpL")}</small></div><div role="cell"><b>${fmt(c.tn)}</b><small>${t("tnL")}</small></div>`;
+  document.getElementById("cm-read").textContent=t("cmRead")(fmt(D.precision*100,1),fmt(D.recall*100,1));
+}
+function drawEcon(){
+  const box=document.getElementById("econ");box.innerHTML="";
+  const W=Math.max(300,box.clientWidth),narrow=W<520,m={l:narrow?52:60,r:narrow?10:16,t:14,b:36},H=narrow?250:280;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":t("econ-t")},box);
+  const g=D.grid,ng=D.net_grid,n=g.length,iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const lo=-20000,hi=40000,x=s=>m.l+(s-g[0])/(g[n-1]-g[0])*iw,y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  for(let v=lo;v<=hi;v+=10000){el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:v===0?css("--ink-3"):css("--grid"),"stroke-width":v===0?1.2:1},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg,(v>0?"+":v<0?"−":"")+fmt(Math.abs(v)/1000)+"k")}
+  for(let s=0;s<=0.401;s+=narrow?0.1:0.05)el("text",{x:x(s),y:H-18,"text-anchor":"middle"},svg,Math.round(s*100)+"%");
+  el("text",{x:m.l+iw/2,y:H-3,"text-anchor":"middle"},svg,t("save"));
+  const asm=x(A.save);el("line",{x1:asm,x2:asm,y1:m.t,y2:m.t+ih,stroke:css("--ink-3"),"stroke-dasharray":"2 3"},svg);
+  el("text",{x:asm+4,y:m.t+10,"font-size":"11"},svg,(L==="es"?"supuesto central ":"central assumption ")+A.save*100+"%");
+  const p=a=>a.map((v,k)=>(k?"L":"M")+x(g[k]).toFixed(1)+","+y(v).toFixed(1)).join("");
+  el("path",{d:p(ng.cash),fill:"none",stroke:css("--n2"),"stroke-width":2.2},svg);
+  el("path",{d:p(ng.nudge),fill:"none",stroke:css("--accent"),"stroke-width":2.6},svg);
+  [["nudge","--accent"],["cash","--n2"]].forEach(([k,c])=>{const be=D.breakeven[k];el("circle",{cx:x(be),cy:y(0),r:4.5,fill:css(c),stroke:css("--bg"),"stroke-width":1.5},svg);
+    const tx=el("text",{x:x(be)+5,y:y(0)+17,"font-size":"11.5"},svg,`${t("be")} ${fmt(be*100,1)}%`);tx.style.fill=css(c==="--accent"?"--accent":"--ink-2");tx.style.fontWeight=600});
+  const lg=document.createElement("div");lg.className="caption";lg.style.cssText="display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:6px";
+  lg.innerHTML=`<span><i style="display:inline-block;width:14px;height:3px;background:var(--accent);vertical-align:middle;margin-right:6px"></i>${t("nudge")}</span><span><i style="display:inline-block;width:14px;height:3px;background:var(--n2);vertical-align:middle;margin-right:6px"></i>${t("cash")}</span>`;box.appendChild(lg);
+  const cl=el("line",{y1:m.t,y2:m.t+ih,stroke:css("--ink-3"),visibility:"hidden"},svg);
+  hover(svg,W,m.l,W-m.r,n,(k,r)=>{cl.setAttribute("x1",x(g[k]));cl.setAttribute("x2",x(g[k]));cl.setAttribute("visibility","visible");
+    const sg=v=>(v<0?"−":"+")+"S/ "+fmt(Math.abs(v));
+    showTip(`<b>${t("save")} ${Math.round(g[k]*100)}%</b><br>${t("nudge")}: <b>${sg(ng.nudge[k])}</b><br>${t("cash")}: <b>${sg(ng.cash[k])}</b>`,r.left+x(g[k])*r.width/W,r.top+y(ng.nudge[k])*r.width/W)},cl);
+}
+function applyText(){
+  document.documentElement.lang=L;
+  document.querySelectorAll("[data-i]").forEach(e=>{const k=e.dataset.i;if(k==="f-list")e.innerHTML=t("f").map(x=>`<li>${x}</li>`).join("");else if(typeof T[L][k]==="string")e.innerHTML=T[L][k]});
+  const b=document.getElementById("lang");b.textContent=t("langBtn");b.setAttribute("aria-label",t("langAria"));
+  document.title=L==="es"?"Churn en billeteras digitales · Carlo Rondón":"Churn in digital wallets · Carlo Rondón";
+}
+function charts(){hideTip();drawCoh();drawRoc();drawEcon()}
+function render(){applyText();drawAnchors();drawImp();drawSeg();drawCm();charts()}
+document.getElementById("lang").addEventListener("click",()=>{L=L==="es"?"en":"es";try{localStorage.setItem("lang",L)}catch(e){}render()});
+let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(charts,120)});
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",charts);
+document.addEventListener("pointerdown",e=>{if(!e.target.closest(".chart"))hideTip()});
+render();
+</script>
+</body>
+</html>

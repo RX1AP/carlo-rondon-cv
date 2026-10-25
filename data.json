@@ -16,8 +16,8 @@
   },
   "metricas": [],
   "perfil": {
-    "en": "Payments is where I've made my mark. I scaled a payments fintech from fewer than 100 merchants past 40,000, lifted merchant conversion from 2% to 8%, optimized pricing and promotions for a payments business with 20,000+ active clients, and today sell the banking connectivity APIs that move corporate money in real time. I pair that commercial track record with a technical edge —data architecture, pricing models, AI automation and the stack behind them (SQL, Python, cloud, APIs, LLMs)— so I don't just run payments strategy, I build it. Six-plus years across fintech, banking and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS. My focus now is the next frontier of payments in Latin America: faster money movement, smarter pricing and products that scale.",
-    "es": "En payments es donde me he hecho un nombre. Escalé una fintech de pagos de menos de 100 comercios a más de 40,000, elevé la conversión de comercios de 2% a 8%, optimicé el pricing y las promociones de un negocio de payments con más de 20,000 clientes activos y hoy comercializo las APIs de conectividad bancaria que mueven el dinero corporativo en tiempo real. Combino esa trayectoria comercial con un diferenciador técnico —arquitectura de datos, modelos de pricing, automatización con IA y el stack detrás (SQL, Python, cloud, APIs, LLMs)— así que no solo ejecuto estrategia de payments: la construyo. Más de seis años entre fintech, banca y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS. Mi foco ahora es la próxima frontera de los pagos en Latinoamérica: dinero más rápido, pricing más inteligente y productos que escalan."
+    "en": "Payments is where I've made my mark. I scaled a payments fintech from fewer than 100 merchants past 40,000, lifted merchant conversion from 2% to 8%, optimized pricing and promotions for a payments business with 20,000+ active clients, and today sell the banking connectivity APIs that move corporate money in real time. I pair that commercial track record with a technical edge —data architecture, pricing models, AI automation and the stack behind them (SQL, Python, cloud, APIs, LLMs)— so I don't just run payments strategy, I build it. Six-plus years across fintech, banking and consulting, a postgraduate degree in management and certifications in data science and cloud analytics. My focus now is the next frontier of payments in Latin America: faster money movement, smarter pricing and products that scale.",
+    "es": "En payments es donde me he hecho un nombre. Escalé una fintech de pagos de menos de 100 comercios a más de 40,000, elevé la conversión de comercios de 2% a 8%, optimicé el pricing y las promociones de un negocio de payments con más de 20,000 clientes activos y hoy comercializo las APIs de conectividad bancaria que mueven el dinero corporativo en tiempo real. Combino esa trayectoria comercial con un diferenciador técnico —arquitectura de datos, modelos de pricing, automatización con IA y el stack detrás (SQL, Python, cloud, APIs, LLMs)— así que no solo ejecuto estrategia de payments: la construyo. Más de seis años entre fintech, banca y consultoría, postgrado en management y certificaciones en ciencia de datos y analítica en la nube. Mi foco ahora es la próxima frontera de los pagos en Latinoamérica: dinero más rápido, pricing más inteligente y productos que escalan."
   },
   "experiencia": [
     {
@@ -282,10 +282,7 @@
     { "nombre": "Data Specialist",                                     "entidad": "BBVA University",       "año": "2024", "estado": "obtenida" },
     { "nombre": "SQL for Data Science",                                "entidad": "UCLA Extension",        "año": "2022", "estado": "obtenida" },
     { "nombre": "Professional Certificate in Data Science",            "entidad": "IBM",                   "año": "2020", "estado": "obtenida" },
-    { "nombre": "Big Data & Cloud Analytics",                          "entidad": "Kedge Business School", "año": "2020", "estado": "obtenida" },
-    { "nombre": "Microsoft PL-300 · Power BI Data Analyst Associate", "entidad": "Microsoft",             "año": "2025", "estado": "en_curso" },
-    { "nombre": "Google Analytics 4",                                  "entidad": "Google Skillshop",      "año": "2025", "estado": "en_curso" },
-    { "nombre": "AWS Certified Data Engineer – Associate (DEA-C01)",  "entidad": "Amazon",                "año": "2025", "estado": "en_curso" }
+    { "nombre": "Big Data & Cloud Analytics",                          "entidad": "Kedge Business School", "año": "2020", "estado": "obtenida" }
   ],
   "idiomas": [
     { "nombre": { "en": "Spanish", "es": "Español" }, "nivel": { "en": "Native", "es": "Nativo" },              "porcentaje": 100, "nota": null },
@@ -295,6 +292,45 @@
   "proyectos": [
     {
       "numero": "01",
+      "emoji": "📈",
+      "titulo": { "en": "Digital Payments in Peru — BCRP", "es": "Pagos Digitales en Perú — BCRP" },
+      "descripcion": {
+        "en": "Interactive dashboard on BCRP data: digital payments grew 19× since 2018 — and the sharpest break came when wallets from different banks connected (Yape–Plin interoperability).",
+        "es": "Dashboard interactivo con datos del BCRP: los pagos digitales se multiplicaron por 19 desde 2018 — y el quiebre más nítido llegó cuando se conectaron las billeteras de distintos bancos (interoperabilidad Yape–Plin)."
+      },
+      "estado": "activo",
+      "skills": [{ "en": "BCRP data", "es": "Datos BCRP" }, "Data viz", { "en": "Payments analysis", "es": "Análisis de payments" }],
+      "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)",
+      "link": "/pagos-digitales/"
+    },
+    {
+      "numero": "02",
+      "emoji": "🗺️",
+      "titulo": { "en": "Financial Inclusion by Region", "es": "Inclusión Financiera por Región" },
+      "descripcion": {
+        "en": "Map and ranking by department with SBS and INEI data: more Peruvians have an account than in 2019, but the regional gap widened from 24 to 36 points. Agents reached the highlands and the Amazon; accounts did not follow.",
+        "es": "Mapa y ranking por departamento con datos de la SBS e INEI: más peruanos tienen cuenta que en 2019, pero la brecha entre regiones pasó de 24 a 36 puntos. Los agentes llegaron a la sierra y la selva; las cuentas no los siguieron."
+      },
+      "estado": "activo",
+      "skills": [{ "en": "SBS + INEI data", "es": "Datos SBS + INEI" }, "Data viz", { "en": "Regional analysis", "es": "Análisis regional" }],
+      "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)",
+      "link": "/inclusion-financiera/"
+    },
+    {
+      "numero": "03",
+      "emoji": "🔮",
+      "titulo": { "en": "Churn Prediction — Fintech", "es": "Predicción de Churn — Fintech" },
+      "descripcion": {
+        "en": "Churn model for a digital wallet, on simulated data: 63% of churn sits in the 20% of customers the model flags as highest risk. Risk segments, recommended action and when retention pays off.",
+        "es": "Modelo de churn para una billetera digital, con datos simulados: el 63% del abandono está en el 20% de clientes que el modelo marca como de mayor riesgo. Segmentos, acción recomendada y cuándo se paga retener."
+      },
+      "estado": "activo",
+      "skills": ["Python", "Scikit-learn", "Data viz"],
+      "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)",
+      "link": "/churn-fintech/"
+    },
+    {
+      "numero": "04",
       "emoji": "🎨",
       "titulo": "Latrue",
       "descripcion": {
@@ -304,58 +340,6 @@
       "estado": "activo",
       "skills": ["Editorial", "Community", { "en": "Curation", "es": "Curaduría" }],
       "gradient": "linear-gradient(135deg,#1a0808 0%,#2d1010 100%)",
-      "link": null
-    },
-    {
-      "numero": "02",
-      "emoji": "🚗",
-      "titulo": "Consulta Vehicular",
-      "descripcion": {
-        "en": "Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms.",
-        "es": "SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech."
-      },
-      "estado": "activo",
-      "skills": ["SaaS", "Python", "API"],
-      "gradient": "linear-gradient(135deg,#080f1a 0%,#101828 100%)",
-      "link": "https://consultavehicular.pe"
-    },
-    {
-      "numero": "03",
-      "emoji": "📈",
-      "titulo": { "en": "Digital Payments in Peru — BCRP", "es": "Pagos Digitales en Perú — BCRP" },
-      "descripcion": {
-        "en": "Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX.",
-        "es": "Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX."
-      },
-      "estado": "en_construccion",
-      "skills": ["Power BI", "Python", "DAX"],
-      "gradient": "linear-gradient(135deg,#080f20 0%,#10193a 100%)",
-      "link": null
-    },
-    {
-      "numero": "04",
-      "emoji": "🗺️",
-      "titulo": { "en": "Financial Inclusion by Region", "es": "Inclusión Financiera por Región" },
-      "descripcion": {
-        "en": "Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024.",
-        "es": "Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024."
-      },
-      "estado": "en_construccion",
-      "skills": ["Power BI Maps", "SQL"],
-      "gradient": "linear-gradient(135deg,#081408 0%,#102014 100%)",
-      "link": null
-    },
-    {
-      "numero": "05",
-      "emoji": "🔮",
-      "titulo": { "en": "Churn Prediction — Fintech", "es": "Predicción de Churn — Fintech" },
-      "descripcion": {
-        "en": "Predictive churn model for payments products with an executive monitoring dashboard.",
-        "es": "Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo."
-      },
-      "estado": "en_construccion",
-      "skills": ["Python", "Scikit-learn", "Power BI"],
-      "gradient": "linear-gradient(135deg,#0e0e18 0%,#161626 100%)",
       "link": null
     }
   ]

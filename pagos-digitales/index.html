@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pagos digitales en Perú, 2018–2025 · Carlo Rondón</title>
+<meta name="description" content="Los pagos digitales en Perú se multiplicaron por 19 desde 2018. Análisis con series del BCRP sobre el efecto de la interoperabilidad entre Yape y Plin.">
+<meta name="author" content="Carlo Rondón">
+<link rel="canonical" href="https://carlo-rondon.com/pagos-digitales/">
+<meta name="theme-color" content="#fbfbfa">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Carlo Rondón">
+<meta property="og:url" content="https://carlo-rondon.com/pagos-digitales/">
+<meta property="og:title" content="Pagos digitales en Perú: ×19 desde 2018">
+<meta property="og:description" content="El quiebre llegó cuando las billeteras de distintos bancos se conectaron. Dashboard con series del BCRP, 2018–2025.">
+<meta property="og:image" content="https://carlo-rondon.com/pagos-digitales/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_PE">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pagos digitales en Perú: ×19 desde 2018">
+<meta name="twitter:description" content="El quiebre llegó cuando las billeteras de distintos bancos se conectaron. Series del BCRP, 2018–2025.">
+<meta name="twitter:image" content="https://carlo-rondon.com/pagos-digitales/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;800&display=swap">
+<style>
+html,body{margin:0}[hidden]{display:none!important}
+.back{font-size:var(--s-sm);font-weight:600;color:var(--ink-2);text-decoration:none}
+.back:hover{color:var(--accent)}
+.back:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* Layout: una columna editorial de ~720px; el gráfico principal a ancho completo de la columna, cifras como fila de texto sin tarjetas. */
+:root{
+  --bg:#fbfbfa; --ink:#16181d; --ink-2:#4a4f5a; --ink-3:#7a808c; --rule:#dcdee3; --grid:#eceef1;
+  --accent:#2f3ec4; --accent-soft:#2f3ec41f;
+  --n1:#2a2f3a; --n2:#5b6170; --n3:#8d93a0; --n4:#bfc3cb;
+  --tip-bg:#16181d; --tip-fg:#fbfbfa;
+  --font:"Libre Franklin", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --s-xs:12px; --s-sm:13.5px; --s-base:16px; --s-md:19px; --s-lg:clamp(26px,5.2vw,40px); --s-num:clamp(26px,4.6vw,34px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121418; --ink:#eceef2; --ink-2:#b4b9c3; --ink-3:#868c98; --rule:#2c3039; --grid:#20232a;
+  --accent:#8c98ff; --accent-soft:#8c98ff26;
+  --n1:#d3d6dd; --n2:#9aa0ab; --n3:#6b717d; --n4:#464b56;
+  --tip-bg:#eceef2; --tip-fg:#121418; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121418; --ink:#eceef2; --ink-2:#b4b9c3; --ink-3:#868c98; --rule:#2c3039; --grid:#20232a;
+  --accent:#8c98ff; --accent-soft:#8c98ff26;
+  --n1:#d3d6dd; --n2:#9aa0ab; --n3:#6b717d; --n4:#464b56;
+  --tip-bg:#eceef2; --tip-fg:#121418; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:var(--s-base);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:44px}
+.num{font-variant-numeric:tabular-nums}
+header{display:flex;flex-direction:column;gap:14px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.eyebrow{font-size:var(--s-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.lang{font:600 var(--s-xs)/1 var(--font);letter-spacing:.06em;color:var(--ink-2);background:none;border:1px solid var(--rule);border-radius:3px;padding:7px 10px;cursor:pointer}
+.lang:hover{color:var(--ink);border-color:var(--ink-3)}
+.lang:focus-visible,.seg:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1{font-size:var(--s-lg);font-weight:800;line-height:1.12;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.dek{font-size:var(--s-md);line-height:1.45;color:var(--ink-2);margin:0;max-width:62ch}
+.dek b{color:var(--accent);font-weight:600}
+.byline{font-size:var(--s-sm);color:var(--ink-3)}
+h2{font-size:var(--s-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+h3{font-size:var(--s-md);font-weight:600;margin:0;line-height:1.3;text-wrap:balance}
+section{display:flex;flex-direction:column;gap:12px;min-width:0}
+/* cifras ancla */
+.anchors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+.anchor{padding:12px 14px 4px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.anchor+.anchor{padding-left:14px;border-left:1px solid var(--rule)}
+.anchor .v{font-size:var(--s-num);font-weight:800;line-height:1;letter-spacing:-.02em}
+.anchor .v.acc{color:var(--accent)}
+.anchor .l{font-size:var(--s-sm);line-height:1.35;color:var(--ink)}
+.anchor .d{font-size:var(--s-xs);line-height:1.4;color:var(--ink-3)}
+@media (max-width:640px){.anchors{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .anchor:nth-child(3){padding-left:0;border-left:0}.anchor:nth-child(n+3){border-top:1px solid var(--rule);margin-top:8px}}
+/* charts */
+.chart{position:relative;width:100%;touch-action:pan-y}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--font);fill:var(--ink-3);font-size:11.5px}
+.chart .t-ink{fill:var(--ink)} .chart .t-acc{fill:var(--accent);font-weight:600}
+.chart .t-strong{fill:var(--ink);font-weight:600}
+.caption{font-size:var(--s-xs);color:var(--ink-3);line-height:1.45;margin:0}
+.tip{position:absolute;pointer-events:none;background:var(--tip-bg);color:var(--tip-fg);font-size:12.5px;line-height:1.4;padding:7px 9px;border-radius:3px;white-space:nowrap;z-index:2;font-variant-numeric:tabular-nums}
+.tip b{font-weight:600}
+.tip .sw{display:inline-block;width:8px;height:8px;border-radius:1px;margin-right:6px;vertical-align:0}
+/* composición */
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:var(--s-sm);color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.bars{display:flex;flex-direction:column;gap:6px;position:relative}
+.row{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:8px}
+.row .y{font-size:var(--s-sm);color:var(--ink-2)}
+.track{display:flex;gap:2px;height:26px}
+.seg{height:100%;min-width:0;border:0;padding:0;cursor:default;display:flex;align-items:center;justify-content:center;font:600 11px/1 var(--font);font-variant-numeric:tabular-nums;overflow:hidden}
+.seg:first-child{border-radius:3px 0 0 3px}.seg:last-child{border-radius:0 3px 3px 0}
+.shift{width:100%;border-collapse:collapse;font-size:var(--s-sm)}
+.shift th,.shift td{text-align:right;padding:7px 0 7px 10px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.shift th:first-child,.shift td:first-child{text-align:left;padding-left:0}
+.shift th{font-weight:600;color:var(--ink-3);font-size:var(--s-xs);letter-spacing:.04em}
+.shift .up{color:var(--accent);font-weight:600}
+.shift .na{color:var(--ink-3);font-style:italic}
+.tablewrap{overflow-x:auto}
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
+@media (max-width:640px){.cols{grid-template-columns:minmax(0,1fr)}}
+/* lectura */
+.reading{display:flex;flex-direction:column;gap:18px;border-top:2px solid var(--ink);padding-top:14px}
+.reading p{margin:6px 0 0;max-width:66ch;color:var(--ink-2)}
+.reading p strong{color:var(--ink);font-weight:600}
+footer{border-top:1px solid var(--rule);padding-top:14px;font-size:var(--s-xs);color:var(--ink-3);line-height:1.55;display:flex;flex-direction:column;gap:10px}
+footer ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:4px}
+footer code{font-size:11.5px;color:var(--ink-2)}
+footer a{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="topbar">
+    <a class="back" href="https://carlo-rondon.com/#portafolio" data-i="back">← Carlo Rondón</a>
+    <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+  </div>
+  <span class="eyebrow" data-i="eyebrow">Pagos digitales · Perú · 2018–2025</span>
+  <h1 data-i="h1">Los pagos digitales en Perú se multiplicaron por 19 desde 2018, y el quiebre llegó cuando las billeteras de distintos bancos se conectaron</h1>
+  <p class="dek" data-i="dek"></p>
+  <span class="byline" data-i="byline">Por Carlo Rondón · análisis con series del Banco Central de Reserva del Perú</span>
+</header>
+
+<section aria-labelledby="h-anchors">
+  <h2 id="h-anchors" data-i="h-anchors">El periodo en cuatro cifras</h2>
+  <div class="anchors" id="anchors"></div>
+</section>
+
+<section aria-labelledby="h-main">
+  <h2 id="h-main" data-i="h-main">La curva</h2>
+  <h3 data-i="h-main-t">Transferencias entre billeteras de bancos distintos, millones de operaciones al mes</h3>
+  <div class="chart" id="main"></div>
+  <p class="caption" data-i="cap-main"></p>
+</section>
+
+<section aria-labelledby="h-comp">
+  <h2 id="h-comp" data-i="h-comp">Composición</h2>
+  <h3 data-i="h-comp-t">Qué ganó y qué perdió participación en el número de pagos digitales</h3>
+  <div class="legend" id="legend"></div>
+  <div class="cols">
+    <div class="bars" id="bars"></div>
+    <div class="tablewrap"><table class="shift" id="shift"></table></div>
+  </div>
+  <p class="caption" data-i="cap-comp"></p>
+</section>
+
+<section class="reading" aria-labelledby="h-read">
+  <h2 id="h-read" data-i="h-read">Lectura</h2>
+  <div><h3 data-i="r1-t"></h3><p data-i="r1"></p></div>
+  <div><h3 data-i="r2-t"></h3><p data-i="r2"></p></div>
+  <div><h3 data-i="r3-t"></h3><p data-i="r3"></p></div>
+</section>
+
+<footer>
+  <strong data-i="f-t" style="color:var(--ink-2)">Fuentes y notas</strong>
+  <ul data-i="f-list"></ul>
+</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = {"months":["2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12","2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12"],"ipd":[58.044,54.846,59.68,60.927,62.618,61.119,68.516,66.081,63.727,69.548,71.541,81.868,75.143,73.937,79.773,79.537,83.665,80.949,90.201,88.583,89.155,92.625,94.365,110.964,91.93,90.041,72.014,54.287,72.132,85.977,100.904,105.17,106.885,118.624,120.376,145.634,126.589,113.614,141.068,135.016,153.763,149.626,175.318,175.213,174.47,186.29,185.235,224.326,183.682,199.094,230.112,224.925,250.071,254.577,280.754,300.442,307.433,332.878,344.366,382.859,343.624,339.528,388.819,389.224,435.972,441.028,488.527,496.305,515.41,563.4,583.02,655.412,635.221,634.728,720.499,744.811,803.24,818.511,906.47,901.107,921.173,974.81,987.851,1098.03,999.887,972.32,1134.148,1129.228,1224.146,1204.056,1284.643,1281.178,1322.023,1388.41,1418.481,1554.614],"bill":[0,0,0,0,0,0,0,0,0,0,0,0,0.000482,0.00046,0.000448,0.000322,0.00054,0.002073,0.00362,0.006744,0.005485,0.004947,0.008881,0.008754,0.026,0.06,0.064,0.076,0.144,0.462,0.913,1.119,1.259,1.423,1.577,2.154,2.039,2.237,2.635,2.835,3.22,3.573,4.316,4.402,4.673,5.463,5.934,7.564,6.394,7.086,8.739,9.257,10.283,10.876,13.287,14.357,15.301,16.695,17.999,19.989,15.671,15.992,18.625,19.846,31.584,41.292,50.021,51.798,56.518,63.344,68.305,77.005,69.068,75.224,86.265,91.689,102.839,106.959,118.39,122.017,121.599,127.411,125.356,143.726,126.987,123.214,140.661,139.112,152.134,148.448,null,null,null,null,null,null],"comp":[{"y":2018,"ipd":778.5,"intra":279.3,"inter":26.6,"interRep":null,"td":253.0,"tc":196.1,"otros":23.5,"monto":3225884.0,"retiro":null},{"y":2019,"ipd":1038.9,"intra":393.2,"inter":35.6,"interRep":null,"td":317.7,"tc":232.8,"otros":59.6,"monto":3988783.0,"retiro":null},{"y":2020,"ipd":1164.0,"intra":586.9,"inter":70.4,"interRep":null,"td":296.1,"tc":152.6,"otros":58.0,"monto":4180378.0,"retiro":null},{"y":2021,"ipd":1940.5,"intra":1066.9,"inter":153.6,"interRep":null,"td":451.0,"tc":210.9,"otros":58.1,"monto":5502960.0,"retiro":null},{"y":2022,"ipd":3291.2,"intra":1954.4,"inter":301.1,"interRep":null,"td":637.7,"tc":338.9,"otros":59.1,"monto":5845414.0,"retiro":null},{"y":2023,"ipd":5640.3,"intra":3651.4,"inter":702.9,"interRep":null,"td":795.9,"tc":425.9,"otros":64.2,"monto":5949055.0,"retiro":null},{"y":2024,"ipd":10146.5,"intra":6970.4,"inter":1518.6,"interRep":1517.8,"td":1089.1,"tc":486.2,"otros":82.1,"monto":6465570.0,"retiro":689.1},{"y":2025,"ipd":14913.1,"intra":10327.9,"inter":2435.1,"interRep":2434.2,"td":1421.5,"tc":563.5,"otros":165.2,"monto":7177360.0,"retiro":607.1}]};
+const T = {
+es:{
+ eyebrow:"Pagos digitales · Perú · 2018–2025",
+ h1:"Los pagos digitales en Perú se multiplicaron por 19 desde 2018, y el quiebre llegó cuando las billeteras de distintos bancos se conectaron",
+ dek:"En abril de 2023 Yape y Plin empezaron a interoperar. En tres meses, las transferencias entre billeteras de bancos distintos pasaron de <b>19.8 a 50.0 millones al mes</b>. No hubo una tecnología nueva. Se eliminó un paso: preguntar en qué app tiene su cuenta el otro.",
+ byline:"Por Carlo Rondón · análisis con series del Banco Central de Reserva del Perú",
+ "h-anchors":"El periodo en cuatro cifras",
+ a1l:"pagos digitales en 2025", a1d:"×19.2 frente a 778 M en 2018",
+ a2l:"transferencias entre billeteras de bancos distintos en jun-2025, al mes", a2d:"×7.5 frente a 19.8 M en abr-2023, antes de la interoperabilidad",
+ a3l:"de los pagos digitales hechos con tarjeta en 2025", a3d:"58% en 2018 (−44 pp). En número crecieron ×4.4",
+ a4l:"monto promedio por pago digital en 2025", a4d:"S/ 4,144 en 2018 (−88%). Lo digital pasó a lo cotidiano",
+ "h-main":"La curva","h-main-t":"Transferencias entre billeteras de bancos distintos, millones de operaciones al mes",
+ ipdT:"Total de pagos digitales (IPD), millones al mes",
+ ann1:"12 abr 2023 · Yape y Plin", ann2:"interoperan para todos",
+ annMay:"may-23: +59% en un mes",
+ endNote:"serie descontinuada",
+ noData:"sin dato",
+ tipBill:"Entre billeteras", tipIpd:"Total digital",
+ "cap-main":"Mensual, ene-2019 a dic-2025. Panel superior: serie BCRP de transferencias interbancarias vía billeteras digitales (publicada hasta jun-2025; jul–dic 2025 sin dato). Panel inferior: Indicador de Pagos Digitales en su propia escala. La línea vertical marca el despliegue masivo de la interoperabilidad (12-abr-2023); el primer mes completo con interoperabilidad, mayo, es donde la curva se quiebra. Toca el gráfico para ver el valor exacto.",
+ "h-comp":"Composición","h-comp-t":"Qué ganó y qué perdió participación en el número de pagos digitales",
+ cIntra:"Transferencias en el mismo banco", cInter:"Transferencias entre bancos", cTd:"Tarjeta de débito", cTc:"Tarjeta de crédito", cOtros:"Débito directo y dinero electrónico",
+ thInst:"Instrumento", thShare:"2018 → 2025", thPp:"Cambio", thVol:"Operaciones 2025",
+ cash:"Retiros de efectivo", cashNote:"sin dato antes de 2024",
+ cashVal:"689 M → 607 M (2024 → 2025, −11.9%)",
+ "cap-comp":"Participación anual en el número de operaciones del Indicador de Pagos Digitales. Las transferencias en el mismo banco incluyen los pagos Yape→Yape y Plin→Plin; el BCRP no los separa. Entre bancos 2018–2023 se calcula como el IPD menos los demás instrumentos (ver notas). El efectivo no forma parte del IPD; se muestra aparte con lo que el BCRP publica.",
+ "h-read":"Lectura",
+ "r1-t":"Qué muestran los datos",
+ r1:"En siete años el número de pagos digitales pasó de 778 millones a 14,913 millones al año. El crecimiento vino de transferencias, no de tarjetas: las transferencias en un mismo banco subieron de 36% a 69% del total y las tarjetas cayeron de 58% a 13%, aunque siguieron creciendo en volumen. <strong>El quiebre más nítido de toda la serie está en mayo de 2023</strong>: las transferencias entre billeteras de bancos distintos saltaron 59% en un mes, el primer mes completo con Yape y Plin conectados, y se duplicaron de nuevo antes de terminar el año. Ese canal pasó de 5% a 13% de todos los pagos digitales en catorce meses.",
+ "r2-t":"Qué no muestran",
+ r2:"La curva agregada no se quiebra en 2023: el IPD ya crecía cerca de 70% anual antes de la interoperabilidad y creció 76% en promedio en los doce meses siguientes. La interoperabilidad explica la aceleración de un canal, no todo el crecimiento. Tampoco prueba causalidad por sí sola: la coincidencia en el tiempo es fuerte, pero pudieron influir otros factores que estas series no miden, como el número de usuarios o de comercios afiliados. El BCRP no separa los pagos dentro de una misma billetera, la serie de billeteras se interrumpe en jun-2025 y solo hay datos de retiros de efectivo desde 2024, así que la sustitución del efectivo no se puede medir para todo el periodo.",
+ "r3-t":"Qué implica para quien vende pagos",
+ r3:"La adopción respondió a quitar pasos, no a sumar funciones. Para quien vende medios de pago, la pregunta útil frente a un comercio o una empresa es qué fricción elimina: conciliación automática, cobro con cualquier billetera, liquidación inmediata. Y el ticket promedio cayó de S/ 4,144 a S/ 481: el volumen crece en pagos chicos y frecuentes, donde el margen por operación es mínimo y el valor está en los servicios alrededor del pago (cobranza, datos, financiamiento al comercio).",
+ "f-t":"Fuentes y notas",
+ f:[
+  "Fuente: Banco Central de Reserva del Perú, BCRPData (<a href=\"https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/sistema-de-pagos\" target=\"_blank\" rel=\"noopener\">estadisticas.bcrp.gob.pe</a>), API de series mensuales. Descarga: 5 de octubre de 2026. Periodo: enero 2018 a diciembre 2025.",
+  "Series (número de operaciones, millones): IPD <code>PN42210EM</code>; tarjetas de débito <code>PN42194EM</code>; tarjetas de crédito <code>PN42197EM</code>; transferencias intrabancarias <code>PN42200EM</code>; transferencias interbancarias <code>PN42203EM</code> (desde 2024); débitos directos <code>PN42208EM</code>; dinero electrónico <code>PN42209EM</code>; retiros de efectivo <code>PN42212EM</code> (desde 2024); transferencias interbancarias vía billeteras digitales <code>PN39960SM</code> (hasta jun-2025). Monto del IPD (millones de S/) <code>PN42181EM</code>.",
+  "Transferencias entre bancos 2018–2023: calculadas como IPD − (débito + crédito + intrabancarias + débitos directos + dinero electrónico), porque la serie publicada empieza en 2024. En 2024 y 2025 el cálculo difiere menos de 0.1% de la serie publicada.",
+  "Vacíos marcados: billeteras entre bancos jul–dic 2025; retiros de efectivo 2018–2023. No se completaron ni estimaron.",
+  "Monto promedio = monto del IPD / número de operaciones del IPD. Incluye pagos de empresas, así que el nivel es alto; lo relevante es la tendencia.",
+  "Fecha de la interoperabilidad: los datos son mensuales y muestran el quiebre en mayo de 2023. La fecha del despliegue (inicio el 31-mar-2023 con un grupo reducido; para todos los usuarios de Yape desde el 12-abr-2023) viene de declaraciones de Yape y Plin recogidas por <a href=\"https://larepublica.pe/economia/2023/04/01/bcrp-yape-y-plin-arrancaron-con-primera-etapa-de-interoperabilidad-86187\" target=\"_blank\" rel=\"noopener\">La República</a>, no del BCRP."
+ ],
+ months:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],
+ langBtn:"EN", langAria:"Switch to English"
+},
+en:{
+ eyebrow:"Digital payments · Peru · 2018–2025",
+ h1:"Digital payments in Peru grew 19-fold since 2018, and the break came when wallets from different banks were connected",
+ dek:"In April 2023 Yape and Plin became interoperable. Within three months, transfers between wallets of different banks went from <b>19.8 to 50.0 million a month</b>. No new technology was involved. One step was removed: asking which app the other person uses.",
+ byline:"By Carlo Rondón · analysis of Central Reserve Bank of Peru data",
+ "h-anchors":"The period in four figures",
+ a1l:"digital payments in 2025", a1d:"×19.2 vs 778 M in 2018",
+ a2l:"monthly transfers between wallets of different banks, Jun-2025", a2d:"×7.5 vs 19.8 M in Apr-2023, before interoperability",
+ a3l:"of digital payments made by card in 2025", a3d:"58% in 2018 (−44 pp). In count they grew ×4.4",
+ a4l:"average value per digital payment in 2025", a4d:"S/ 4,144 in 2018 (−88%). Digital became everyday",
+ "h-main":"The curve","h-main-t":"Transfers between wallets of different banks, million transactions per month",
+ ipdT:"Total digital payments (IPD), million per month",
+ ann1:"12 Apr 2023 · Yape and Plin", ann2:"interoperable for everyone",
+ annMay:"May-23: +59% in one month",
+ endNote:"series discontinued",
+ noData:"no data",
+ tipBill:"Between wallets", tipIpd:"Total digital",
+ "cap-main":"Monthly, Jan-2019 to Dec-2025. Top panel: BCRP series of interbank transfers via digital wallets (published through Jun-2025; Jul–Dec 2025 no data). Bottom panel: Digital Payments Indicator on its own scale. The vertical line marks the full rollout of interoperability (12-Apr-2023); the first full month, May, is where the curve breaks. Tap the chart for exact values.",
+ "h-comp":"Composition","h-comp-t":"What gained and lost share of the number of digital payments",
+ cIntra:"Transfers within the same bank", cInter:"Transfers between banks", cTd:"Debit card", cTc:"Credit card", cOtros:"Direct debit and e-money",
+ thInst:"Instrument", thShare:"2018 → 2025", thPp:"Change", thVol:"2025 transactions",
+ cash:"Cash withdrawals", cashNote:"no data before 2024",
+ cashVal:"689 M → 607 M (2024 → 2025, −11.9%)",
+ "cap-comp":"Annual share of the number of transactions in the Digital Payments Indicator. Same-bank transfers include Yape→Yape and Plin→Plin payments; the BCRP does not split them out. Between-bank transfers for 2018–2023 are computed as IPD minus the other instruments (see notes). Cash is not part of the IPD; it is shown separately with what the BCRP publishes.",
+ "h-read":"Reading",
+ "r1-t":"What the data show",
+ r1:"In seven years, digital payments went from 778 million to 14,913 million a year. Growth came from transfers, not cards: same-bank transfers rose from 36% to 69% of the total and cards fell from 58% to 13%, though they kept growing in volume. <strong>The sharpest break in the whole series is May 2023</strong>: transfers between wallets of different banks jumped 59% in one month, the first full month with Yape and Plin connected, and doubled again before year-end. That channel went from 5% to 13% of all digital payments in fourteen months.",
+ "r2-t":"What they do not show",
+ r2:"The aggregate curve does not break in 2023: the IPD was already growing about 70% a year before interoperability and grew 76% on average in the following twelve months. Interoperability explains the acceleration of one channel, not all of the growth. Nor does timing alone prove causality: the coincidence is strong, but other factors these series do not measure, such as the number of users or merchants, may have played a part. The BCRP does not separate payments within the same wallet, the wallet series stops in Jun-2025, and cash-withdrawal data start only in 2024, so cash substitution cannot be measured over the full period.",
+ "r3-t":"What it means for people who sell payments",
+ r3:"Adoption responded to removing steps, not to adding features. For anyone selling payments, the useful question for a merchant or a corporate client is which friction it removes: automatic reconciliation, collecting from any wallet, instant settlement. And the average ticket fell from S/ 4,144 to S/ 481: volume is growing in small, frequent payments, where margin per transaction is minimal and the value sits in the services around the payment (collections, data, merchant credit).",
+ "f-t":"Sources and notes",
+ f:[
+  "Source: Central Reserve Bank of Peru, BCRPData (<a href=\"https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/sistema-de-pagos\" target=\"_blank\" rel=\"noopener\">estadisticas.bcrp.gob.pe</a>), monthly series API. Downloaded: 5 October 2026. Period: January 2018 to December 2025.",
+  "Series (number of transactions, millions): IPD <code>PN42210EM</code>; debit cards <code>PN42194EM</code>; credit cards <code>PN42197EM</code>; intrabank transfers <code>PN42200EM</code>; interbank transfers <code>PN42203EM</code> (from 2024); direct debits <code>PN42208EM</code>; e-money <code>PN42209EM</code>; cash withdrawals <code>PN42212EM</code> (from 2024); interbank transfers via digital wallets <code>PN39960SM</code> (through Jun-2025). IPD value (S/ millions) <code>PN42181EM</code>.",
+  "Between-bank transfers 2018–2023: computed as IPD − (debit + credit + intrabank + direct debits + e-money), because the published series starts in 2024. In 2024 and 2025 the calculation differs from the published series by less than 0.1%.",
+  "Gaps marked: between-bank wallet transfers Jul–Dec 2025; cash withdrawals 2018–2023. Not filled or estimated.",
+  "Average value = IPD value / IPD number of transactions. It includes business payments, so the level is high; the trend is what matters.",
+  "Interoperability date: the data are monthly and show the break in May 2023. The rollout date (started 31-Mar-2023 with a small group; open to all Yape users from 12-Apr-2023) comes from Yape and Plin statements reported by <a href=\"https://larepublica.pe/economia/2023/04/01/bcrp-yape-y-plin-arrancaron-con-primera-etapa-de-interoperabilidad-86187\" target=\"_blank\" rel=\"noopener\">La República</a>, not from the BCRP."
+ ],
+ months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+ langBtn:"ES", langAria:"Cambiar a español"
+}};
+let L = "es";
+try{ const s=localStorage.getItem("lang"); if(s==="en"||s==="es") L=s; }catch(e){}
+try{ const q=new URLSearchParams(location.search).get("lang")||location.hash.slice(1); if(q==="en"||q==="es") L=q; }catch(e){}
+const t = k => T[L][k];
+const fmt = (v,d=0) => v==null ? null : v.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tip = document.getElementById("tip");
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+function mlabel(i){const [y,m]=D.months[i].split("-");return t("months")[+m-1]+" "+y}
+function showTip(html,x,y,box){tip.innerHTML=html;tip.hidden=false;const r=box.getBoundingClientRect();const w=tip.offsetWidth,h=tip.offsetHeight;
+  let left=r.left+window.scrollX+x+12; if(left+w>window.scrollX+document.documentElement.clientWidth-8) left=r.left+window.scrollX+x-w-12;
+  left=Math.max(window.scrollX+8,left); tip.style.left=left+"px"; tip.style.top=(r.top+window.scrollY+y-h-10)+"px";}
+function hideTip(){tip.hidden=true}
+
+function niceMax(v,steps){const raw=v/steps;const p=Math.pow(10,Math.floor(Math.log10(raw)));const n=[1,2,2.5,5,10].find(k=>k*p>=raw);return n*p*steps}
+
+/* ---------- Main chart ---------- */
+function drawMain(){
+  const box=document.getElementById("main"); box.innerHTML="";
+  const W=Math.max(300,box.clientWidth), narrow=W<520;
+  const m={l:narrow?34:40,r:narrow?10:18,t:18,b:22};
+  const h1=narrow?230:280, gap=narrow?46:50, h2=narrow?90:104;
+  const H=m.t+h1+gap+h2+m.b;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":t("h-main-t")},box);
+  const start=12; // ene-2019
+  const n=D.months.length, iw=W-m.l-m.r;
+  const x=i=>m.l+(i-start)/(n-1-start)*iw;
+  // top
+  const bMax=niceMax(160,4), y1=v=>m.t+h1-v/bMax*h1;
+  for(let k=0;k<=4;k++){const v=bMax/4*k;el("line",{x1:m.l,x2:W-m.r,y1:y1(v),y2:y1(v),stroke:k?css("--grid"):css("--rule"),"stroke-width":1},svg);el("text",{x:m.l-6,y:y1(v)+4,"text-anchor":"end"},svg,fmt(v))}
+  // bottom
+  const top2=m.t+h1+gap, iMax=niceMax(1600,2), y2=v=>top2+h2-v/iMax*h2;
+  el("text",{x:m.l,y:top2-12,class:"t-strong","font-size":"12.5"},svg,t("ipdT"));
+  for(let k=0;k<=2;k++){const v=iMax/2*k;el("line",{x1:m.l,x2:W-m.r,y1:y2(v),y2:y2(v),stroke:k?css("--grid"):css("--rule"),"stroke-width":1},svg);el("text",{x:m.l-6,y:y2(v)+4,"text-anchor":"end"},svg,fmt(v))}
+  // x ticks
+  for(let y=2019;y<=2025;y++){const i=(y-2018)*12; const xx=x(i);
+    el("line",{x1:xx,x2:xx,y1:m.t+h1,y2:m.t+h1+4,stroke:css("--rule")},svg);
+    el("line",{x1:xx,x2:xx,y1:top2+h2,y2:top2+h2+4,stroke:css("--rule")},svg);
+    el("text",{x:xx+2,y:top2+h2+16},svg,narrow?"’"+String(y).slice(2):y);
+    el("text",{x:xx+2,y:m.t+h1+16},svg,narrow?"’"+String(y).slice(2):y);}
+  // milestone 12-abr-2023: index of Apr 2023 + 11/30
+  const iA=(2023-2018)*12+3+11/30, xm=x(iA);
+  el("rect",{x:xm,y:m.t,width:W-m.r-xm,height:h1,fill:css("--accent-soft")},svg);
+  el("line",{x1:xm,x2:xm,y1:m.t-6,y2:top2+h2,stroke:css("--accent"),"stroke-width":1.5,"stroke-dasharray":"3 3"},svg);
+  el("text",{x:xm-7,y:m.t+8,"text-anchor":"end",class:"t-acc","font-size":"12"},svg,t("ann1"));
+  el("text",{x:xm-7,y:m.t+23,"text-anchor":"end",class:"t-acc","font-size":"12"},svg,t("ann2"));
+  // series top (pre & post in accent, pre lighter weight)
+  let dPre="",dPost="";const iCut=(2023-2018)*12+3; let lastB=null;
+  for(let i=start;i<n;i++){const v=D.bill[i];if(v==null)continue;const p=`${x(i).toFixed(1)},${y1(v).toFixed(1)}`;
+    if(i<=iCut)dPre+=(dPre?"L":"M")+p; if(i>=iCut)dPost+=(dPost?"L":"M")+p; lastB=i;}
+  el("path",{d:dPre,fill:"none",stroke:css("--ink-3"),"stroke-width":2,"stroke-linejoin":"round"},svg);
+  el("path",{d:dPost,fill:"none",stroke:css("--accent"),"stroke-width":2.5,"stroke-linejoin":"round"},svg);
+  // may-23 marker
+  const iM=iCut+1; el("circle",{cx:x(iM),cy:y1(D.bill[iM]),r:4.5,fill:css("--accent"),stroke:css("--bg"),"stroke-width":2},svg);
+  el("text",{x:x(iM)-9,y:y1(D.bill[iM])-9,"text-anchor":"end",class:"t-acc","font-size":"11.5"},svg,t("annMay"));
+  // endpoint
+  el("circle",{cx:x(lastB),cy:y1(D.bill[lastB]),r:4,fill:css("--accent"),stroke:css("--bg"),"stroke-width":2},svg);
+  el("text",{x:x(lastB)-6,y:y1(D.bill[lastB])-10,"text-anchor":"end",class:"t-strong","font-size":"12"},svg,fmt(D.bill[lastB],1)+" M");
+  // gap marker for missing months
+  const gx=x(lastB+1), gw=x(n-1)-gx;
+  el("rect",{x:gx,y:m.t,width:gw,height:h1,fill:"none",stroke:css("--ink-3"),"stroke-dasharray":"2 3","stroke-width":1},svg);
+  el("text",{x:gx+gw/2,y:m.t+h1-8,"text-anchor":"middle","font-size":"10.5",transform:`rotate(-90 ${gx+gw/2} ${m.t+h1-8})`,"dx":"0"},svg,t("noData"));
+  // ipd line
+  let dI="";for(let i=start;i<n;i++)dI+=(dI?"L":"M")+`${x(i).toFixed(1)},${y2(D.ipd[i]).toFixed(1)}`;
+  el("path",{d:dI+`L${x(n-1)},${y2(0)}L${x(start)},${y2(0)}Z`,fill:css("--grid"),stroke:"none"},svg);
+  el("path",{d:dI,fill:"none",stroke:css("--n1"),"stroke-width":2,"stroke-linejoin":"round"},svg);
+  el("circle",{cx:x(n-1),cy:y2(D.ipd[n-1]),r:3.5,fill:css("--n1"),stroke:css("--bg"),"stroke-width":2},svg);
+  el("text",{x:x(n-1)-6,y:y2(D.ipd[n-1])+4,"text-anchor":"end",class:"t-strong","font-size":"12"},svg,fmt(D.ipd[n-1],0)+" M");
+  // hover layer
+  const cross=el("g",{visibility:"hidden"},svg);
+  const cl=el("line",{y1:m.t,y2:top2+h2,stroke:css("--ink-3"),"stroke-width":1},cross);
+  const c1=el("circle",{r:4.5,fill:css("--accent"),stroke:css("--bg"),"stroke-width":2},cross);
+  const c2=el("circle",{r:4,fill:css("--n1"),stroke:css("--bg"),"stroke-width":2},cross);
+  const hit=el("rect",{x:m.l,y:0,width:iw,height:H,fill:"transparent"},svg);
+  function move(ev){const r=svg.getBoundingClientRect();const sx=(ev.clientX-r.left)*W/r.width;
+    let i=Math.round(start+(sx-m.l)/iw*(n-1-start));i=Math.max(start,Math.min(n-1,i));
+    const xx=x(i);cl.setAttribute("x1",xx);cl.setAttribute("x2",xx);
+    const b=D.bill[i];if(b!=null){c1.setAttribute("cx",xx);c1.setAttribute("cy",y1(b));c1.setAttribute("visibility","visible")}else c1.setAttribute("visibility","hidden");
+    c2.setAttribute("cx",xx);c2.setAttribute("cy",y2(D.ipd[i]));cross.setAttribute("visibility","visible");
+    const bt=b==null?`<i>${t("noData")}</i>`:`<b>${fmt(b,1)} M</b>`;
+    showTip(`<b>${mlabel(i)}</b><br><span class="sw" style="background:${css("--accent")}"></span>${t("tipBill")}: ${bt}<br><span class="sw" style="background:${css("--n1")}"></span>${t("tipIpd")}: <b>${fmt(D.ipd[i],1)} M</b>`, xx*r.width/W, (b!=null?y1(b):m.t+h1/2)*r.width/W, svg);}
+  hit.addEventListener("pointermove",move);hit.addEventListener("pointerdown",move);
+  hit.addEventListener("pointerleave",()=>{cross.setAttribute("visibility","hidden");hideTip()});
+}
+
+/* ---------- Anchors ---------- */
+function drawAnchors(){
+  const c=D.comp, a=c[0], z=c[c.length-1];
+  const cardsShare=(z.td+z.tc)/z.ipd*100;
+  const items=[
+    [fmt(z.ipd,0)+" M",false,"a1l","a1d"],
+    [fmt(148.4,1)+" M",true,"a2l","a2d"],
+    [Math.round(cardsShare)+"%",false,"a3l","a3d"],
+    ["S/ "+fmt(z.monto/z.ipd,0),false,"a4l","a4d"]];
+  document.getElementById("anchors").innerHTML=items.map(([v,acc,l,d])=>`<div class="anchor"><span class="v num${acc?" acc":""}">${v}</span><span class="l">${t(l)}</span><span class="d">${t(d)}</span></div>`).join("");
+}
+
+/* ---------- Composition ---------- */
+const CATS=[["intra","--n1","cIntra"],["inter","--accent","cInter"],["td","--n2","cTd"],["tc","--n3","cTc"],["otros","--n4","cOtros"]];
+function textOn(v){return (v==="--n1"||v==="--accent"||v==="--n2")?css("--bg"):css("--ink")}
+function drawComp(){
+  document.getElementById("legend").innerHTML=CATS.map(([k,c,l])=>`<span><i style="background:var(${c})"></i>${t(l)}</span>`).join("");
+  const bars=document.getElementById("bars"); bars.innerHTML="";
+  D.comp.forEach(r=>{
+    const row=document.createElement("div");row.className="row";
+    row.innerHTML=`<span class="y num">${r.y}</span>`;
+    const tr=document.createElement("div");tr.className="track";
+    CATS.forEach(([k,c,l])=>{const p=r[k]/r.ipd*100;const s=document.createElement("button");s.type="button";s.className="seg";
+      s.style.flex=`${p} 1 0`;s.style.background=`var(${c})`;s.style.color=textOn(c);
+      if((k==="intra"||k==="inter"||k==="td")&&p>=9) s.textContent=Math.round(p)+"%";
+      const html=`<b>${r.y} · ${t(l)}</b><br>${fmt(p,1)}% · ${fmt(r[k],1)} M`;
+      s.setAttribute("aria-label",`${r.y}, ${t(l)}: ${fmt(p,1)}%, ${fmt(r[k],1)} M`);
+      const sh=()=>{const rb=bars.getBoundingClientRect(),rs=s.getBoundingClientRect();showTip(html,rs.left-rb.left+rs.width/2,rs.top-rb.top,bars)};
+      s.addEventListener("pointerenter",sh);s.addEventListener("focus",sh);s.addEventListener("pointerdown",sh);
+      s.addEventListener("pointerleave",hideTip);s.addEventListener("blur",hideTip);
+      tr.appendChild(s)});
+    row.appendChild(tr);bars.appendChild(row)});
+  const a=D.comp[0],z=D.comp[D.comp.length-1];
+  let h=`<thead><tr><th>${t("thInst")}</th><th>${t("thShare")}</th><th>${t("thPp")}</th></tr></thead><tbody>`;
+  CATS.forEach(([k,c,l])=>{const p0=a[k]/a.ipd*100,p1=z[k]/z.ipd*100,dp=p1-p0;
+    h+=`<tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:1px;background:var(${c});margin-right:6px"></span>${t(l)}</td><td>${fmt(p0,1)}% → ${fmt(p1,1)}%</td><td class="${dp>0?"up":""}">${dp>0?"+":"−"}${fmt(Math.abs(dp),1)} pp</td></tr>`});
+  h+=`<tr><td>${t("cash")}</td><td colspan="2" class="na">${t("cashNote")}; ${t("cashVal")}</td></tr></tbody>`;
+  document.getElementById("shift").innerHTML=h;
+}
+
+function applyText(){
+  document.documentElement.lang=L;
+  document.querySelectorAll("[data-i]").forEach(e=>{const k=e.dataset.i;if(k==="f-list"){e.innerHTML=t("f").map(x=>`<li>${x}</li>`).join("")}else if(T[L][k]!=null){e.innerHTML=T[L][k]}});
+  const b=document.getElementById("lang");b.textContent=t("langBtn");b.setAttribute("aria-label",t("langAria"));
+  document.title=L==="es"?"Pagos digitales en Perú, 2018–2025 · Carlo Rondón":"Digital payments in Peru, 2018–2025 · Carlo Rondón";
+}
+function render(){applyText();drawAnchors();drawMain();drawComp()}
+document.getElementById("lang").addEventListener("click",()=>{L=L==="es"?"en":"es";try{localStorage.setItem("lang",L)}catch(e){}hideTip();render()});
+let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{hideTip();drawMain()},120)});
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",render);
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+document.addEventListener("pointerdown",e=>{if(!e.target.closest(".chart,.bars"))hideTip()});
+render();
+</script>
+</body>
+</html>

@@ -410,6 +410,30 @@ strong {{ color: var(--cream); font-weight: 700; }}
 }}
 .lang-btn.active {{ background: var(--cream-2); color: #000; }}
 .lang-btn:hover:not(.active) {{ color: var(--cream); }}
+/* ─── INTERACTIVITY ─── */
+.nav-pill a.active {{ color: var(--cream); }}
+.scroll-progress {{
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--muted), var(--cream-2));
+  z-index: 101; transition: width 0.08s linear;
+}}
+.comp-card, .proj-card {{
+  position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s;
+}}
+.comp-card::before, .proj-card::before {{
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  background: radial-gradient(circle 200px at var(--mx,50%) var(--my,50%), rgba(225,224,204,0.12), transparent 60%);
+}}
+.comp-card:hover, .proj-card:hover {{ transform: translateY(-4px); border-color: rgba(222,219,200,0.2); }}
+.comp-card:hover::before, .proj-card:hover::before {{ opacity: 1; }}
+.comp-items li, .skill-tag {{ transition: color 0.2s, border-color 0.2s, background 0.2s; }}
+.skill-tag:hover {{ color: var(--cream); border-color: rgba(222,219,200,0.25); background: rgba(255,255,255,0.06); }}
+@media (prefers-reduced-motion: reduce) {{
+  .comp-card:hover, .proj-card:hover {{ transform: none; }}
+  .scroll-progress {{ transition: none; }}
+}}
 
 .section-label {{
   font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -572,6 +596,8 @@ strong {{ color: var(--cream); font-weight: 700; }}
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollbar"></div>
 
 <!-- NAV -->
 <nav class="nav-pill">
@@ -794,6 +820,48 @@ onVisible('.lbar-fill', function (el) {{
 function toggleAcc(btn) {{
   btn.closest('.acc-card').classList.toggle('open');
 }}
+
+/* ─── SCROLL PROGRESS ─── */
+(function () {{
+  const bar = document.getElementById('scrollbar');
+  if (!bar) return;
+  function upd() {{
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }}
+  window.addEventListener('scroll', upd, {{ passive: true }});
+  window.addEventListener('resize', upd);
+  upd();
+}})();
+
+/* ─── SCROLLSPY (nav active section) ─── */
+(function () {{
+  const links = [...document.querySelectorAll('.nav-pill a[href^="#"]')];
+  if (!links.length) return;
+  const map = links.map(a => ({{ a, sec: document.querySelector(a.getAttribute('href')) }})).filter(x => x.sec);
+  const obs = new IntersectionObserver(entries => {{
+    entries.forEach(e => {{
+      if (e.isIntersecting) {{
+        links.forEach(l => l.classList.remove('active'));
+        const hit = map.find(x => x.sec === e.target);
+        if (hit) hit.a.classList.add('active');
+      }}
+    }});
+  }}, {{ rootMargin: '-45% 0px -50% 0px' }});
+  map.forEach(x => obs.observe(x.sec));
+}})();
+
+/* ─── CARD SPOTLIGHT (mouse-follow) ─── */
+(function () {{
+  document.querySelectorAll('.comp-card, .proj-card').forEach(card => {{
+    card.addEventListener('pointermove', e => {{
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }});
+  }});
+}})();
 </script>
 </body>
 </html>"""

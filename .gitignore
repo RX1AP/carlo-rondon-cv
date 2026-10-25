@@ -7,3 +7,6 @@ Thumbs.db
 *.egg-info/
 dist/
 build/__pycache__/
+
+# Marca personal — material interno, no se publica
+marca/

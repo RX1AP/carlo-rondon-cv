@@ -101,6 +101,30 @@ strong { color: var(--cream); font-weight: 700; }
 }
 .lang-btn.active { background: var(--cream-2); color: #000; }
 .lang-btn:hover:not(.active) { color: var(--cream); }
+/* ─── INTERACTIVITY ─── */
+.nav-pill a.active { color: var(--cream); }
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--muted), var(--cream-2));
+  z-index: 101; transition: width 0.08s linear;
+}
+.comp-card, .proj-card {
+  position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s;
+}
+.comp-card::before, .proj-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  background: radial-gradient(circle 200px at var(--mx,50%) var(--my,50%), rgba(225,224,204,0.12), transparent 60%);
+}
+.comp-card:hover, .proj-card:hover { transform: translateY(-4px); border-color: rgba(222,219,200,0.2); }
+.comp-card:hover::before, .proj-card:hover::before { opacity: 1; }
+.comp-items li, .skill-tag { transition: color 0.2s, border-color 0.2s, background 0.2s; }
+.skill-tag:hover { color: var(--cream); border-color: rgba(222,219,200,0.25); background: rgba(255,255,255,0.06); }
+@media (prefers-reduced-motion: reduce) {
+  .comp-card:hover, .proj-card:hover { transform: none; }
+  .scroll-progress { transition: none; }
+}
 
 .section-label {
   font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -264,6 +288,8 @@ strong { color: var(--cream); font-weight: 700; }
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollbar"></div>
+
 <!-- NAV -->
 <nav class="nav-pill">
   <a href="#trayectoria" data-en="Experience" data-es="Trayectoria">Experience</a>
@@ -293,7 +319,7 @@ strong { color: var(--cream); font-weight: 700; }
 <section id="trayectoria">
   <p class="section-label"><span data-en="Professional experience" data-es="Trayectoria profesional">Professional experience</span></p>
   <div class="bio-wrap">
-    <p class="bio-text" id="bio-text" data-en="Payments is where I've made my mark. I scaled a payments fintech from fewer than 100 merchants past 40,000, lifted merchant conversion from 2% to 8%, optimized pricing and promotions for a payments business with 20,000+ active clients, and today sell the banking connectivity APIs that move corporate money in real time. I pair that commercial track record with a technical edge —data architecture, pricing models, AI automation and the stack behind them (SQL, Python, cloud, APIs, LLMs)— so I don't just run payments strategy, I build it. Six-plus years across fintech, banking and consulting, a postgraduate degree in management and certifications in data science and data engineering on AWS. My focus now is the next frontier of payments in Latin America: faster money movement, smarter pricing and products that scale." data-es="En payments es donde me he hecho un nombre. Escalé una fintech de pagos de menos de 100 comercios a más de 40,000, elevé la conversión de comercios de 2% a 8%, optimicé el pricing y las promociones de un negocio de payments con más de 20,000 clientes activos y hoy comercializo las APIs de conectividad bancaria que mueven el dinero corporativo en tiempo real. Combino esa trayectoria comercial con un diferenciador técnico —arquitectura de datos, modelos de pricing, automatización con IA y el stack detrás (SQL, Python, cloud, APIs, LLMs)— así que no solo ejecuto estrategia de payments: la construyo. Más de seis años entre fintech, banca y consultoría, postgrado en management y certificaciones en ciencia de datos e ingeniería de datos en AWS. Mi foco ahora es la próxima frontera de los pagos en Latinoamérica: dinero más rápido, pricing más inteligente y productos que escalan."></p>
+    <p class="bio-text" id="bio-text" data-en="Payments is where I've made my mark. I scaled a payments fintech from fewer than 100 merchants past 40,000, lifted merchant conversion from 2% to 8%, optimized pricing and promotions for a payments business with 20,000+ active clients, and today sell the banking connectivity APIs that move corporate money in real time. I pair that commercial track record with a technical edge —data architecture, pricing models, AI automation and the stack behind them (SQL, Python, cloud, APIs, LLMs)— so I don't just run payments strategy, I build it. Six-plus years across fintech, banking and consulting, a postgraduate degree in management and certifications in data science and cloud analytics. My focus now is the next frontier of payments in Latin America: faster money movement, smarter pricing and products that scale." data-es="En payments es donde me he hecho un nombre. Escalé una fintech de pagos de menos de 100 comercios a más de 40,000, elevé la conversión de comercios de 2% a 8%, optimicé el pricing y las promociones de un negocio de payments con más de 20,000 clientes activos y hoy comercializo las APIs de conectividad bancaria que mueven el dinero corporativo en tiempo real. Combino esa trayectoria comercial con un diferenciador técnico —arquitectura de datos, modelos de pricing, automatización con IA y el stack detrás (SQL, Python, cloud, APIs, LLMs)— así que no solo ejecuto estrategia de payments: la construyo. Más de seis años entre fintech, banca y consultoría, postgrado en management y certificaciones en ciencia de datos y analítica en la nube. Mi foco ahora es la próxima frontera de los pagos en Latinoamérica: dinero más rápido, pricing más inteligente y productos que escalan."></p>
   </div>
   <div id="accordion-list">
     
@@ -645,27 +671,6 @@ strong { color: var(--cream); font-weight: 700; }
             </div>
             <span class="cert-badge cert-badge--ok">✓</span>
           </div>
-          <div class="cert-item">
-            <div class="cert-info">
-              <span class="cert-nombre">Microsoft PL-300 · Power BI Data Analyst Associate</span>
-              <span class="cert-entidad">Microsoft · 2025</span>
-            </div>
-            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
-          </div>
-          <div class="cert-item">
-            <div class="cert-info">
-              <span class="cert-nombre">Google Analytics 4</span>
-              <span class="cert-entidad">Google Skillshop · 2025</span>
-            </div>
-            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
-          </div>
-          <div class="cert-item">
-            <div class="cert-info">
-              <span class="cert-nombre">AWS Certified Data Engineer – Associate (DEA-C01)</span>
-              <span class="cert-entidad">Amazon · 2025</span>
-            </div>
-            <span class="cert-badge cert-badge--curso" data-en="In progress" data-es="En curso">In progress</span>
-          </div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
@@ -722,8 +727,47 @@ strong { color: var(--cream); font-weight: 700; }
     <p class="section-label"><span data-en="Portfolio" data-es="Portafolio">Portfolio</span></p>
     <div class="proj-grid">
       
-      <div class="proj-card cs" data-delay-idx="01" style="background:linear-gradient(135deg,#1a0808 0%,#2d1010 100%)">
+      <div class="proj-card cs" data-delay-idx="01" style="background:linear-gradient(135deg,#080f20 0%,#10193a 100%)">
         <div class="proj-num">01</div>
+        <div class="proj-emoji">📈</div>
+        <h3 class="proj-title" data-en="Digital Payments in Peru — BCRP" data-es="Pagos Digitales en Perú — BCRP">Digital Payments in Peru — BCRP</h3>
+        <p class="proj-desc" data-en="Interactive dashboard on BCRP data: digital payments grew 19× since 2018 — and the sharpest break came when wallets from different banks connected (Yape–Plin interoperability)." data-es="Dashboard interactivo con datos del BCRP: los pagos digitales se multiplicaron por 19 desde 2018 — y el quiebre más nítido llegó cuando se conectaron las billeteras de distintos bancos (interoperabilidad Yape–Plin).">Interactive dashboard on BCRP data: digital payments grew 19× since 2018 — and the sharpest break came when wallets from different banks connected (Yape–Plin interoperability).</p>
+        <div class="proj-footer">
+          <div class="skills-row"><span class="skill-tag" data-en="BCRP data" data-es="Datos BCRP">BCRP data</span><span class="skill-tag" data-en="Data viz" data-es="Data viz">Data viz</span><span class="skill-tag" data-en="Payments analysis" data-es="Análisis de payments">Payments analysis</span></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
+            <a href="/pagos-digitales/" target="_blank" class="proj-link" data-en="View project ↗" data-es="Ver proyecto ↗">View project ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card cs" data-delay-idx="02" style="background:linear-gradient(135deg,#081408 0%,#102014 100%)">
+        <div class="proj-num">02</div>
+        <div class="proj-emoji">🗺️</div>
+        <h3 class="proj-title" data-en="Financial Inclusion by Region" data-es="Inclusión Financiera por Región">Financial Inclusion by Region</h3>
+        <p class="proj-desc" data-en="Map and ranking by department with SBS and INEI data: more Peruvians have an account than in 2019, but the regional gap widened from 24 to 36 points. Agents reached the highlands and the Amazon; accounts did not follow." data-es="Mapa y ranking por departamento con datos de la SBS e INEI: más peruanos tienen cuenta que en 2019, pero la brecha entre regiones pasó de 24 a 36 puntos. Los agentes llegaron a la sierra y la selva; las cuentas no los siguieron.">Map and ranking by department with SBS and INEI data: more Peruvians have an account than in 2019, but the regional gap widened from 24 to 36 points. Agents reached the highlands and the Amazon; accounts did not follow.</p>
+        <div class="proj-footer">
+          <div class="skills-row"><span class="skill-tag" data-en="SBS + INEI data" data-es="Datos SBS + INEI">SBS + INEI data</span><span class="skill-tag" data-en="Data viz" data-es="Data viz">Data viz</span><span class="skill-tag" data-en="Regional analysis" data-es="Análisis regional">Regional analysis</span></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
+            <a href="/inclusion-financiera/" target="_blank" class="proj-link" data-en="View project ↗" data-es="Ver proyecto ↗">View project ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card cs" data-delay-idx="03" style="background:linear-gradient(135deg,#0e0e18 0%,#161626 100%)">
+        <div class="proj-num">03</div>
+        <div class="proj-emoji">🔮</div>
+        <h3 class="proj-title" data-en="Churn Prediction — Fintech" data-es="Predicción de Churn — Fintech">Churn Prediction — Fintech</h3>
+        <p class="proj-desc" data-en="Churn model for a digital wallet, on simulated data: 63% of churn sits in the 20% of customers the model flags as highest risk. Risk segments, recommended action and when retention pays off." data-es="Modelo de churn para una billetera digital, con datos simulados: el 63% del abandono está en el 20% de clientes que el modelo marca como de mayor riesgo. Segmentos, acción recomendada y cuándo se paga retener.">Churn model for a digital wallet, on simulated data: 63% of churn sits in the 20% of customers the model flags as highest risk. Risk segments, recommended action and when retention pays off.</p>
+        <div class="proj-footer">
+          <div class="skills-row"><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="Scikit-learn" data-es="Scikit-learn">Scikit-learn</span><span class="skill-tag" data-en="Data viz" data-es="Data viz">Data viz</span></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
+            <a href="/churn-fintech/" target="_blank" class="proj-link" data-en="View project ↗" data-es="Ver proyecto ↗">View project ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card cs" data-delay-idx="04" style="background:linear-gradient(135deg,#1a0808 0%,#2d1010 100%)">
+        <div class="proj-num">04</div>
         <div class="proj-emoji">🎨</div>
         <h3 class="proj-title" data-en="Latrue" data-es="Latrue">Latrue</h3>
         <p class="proj-desc" data-en="Social project: a digital magazine boosting emerging Latin American art. 150+ artists supported across the region with editorial content, outreach and community." data-es="Proyecto social: revista digital que impulsa el arte emergente latinoamericano. Más de 150 artistas apoyados en toda la región con contenido editorial, difusión y comunidad.">Social project: a digital magazine boosting emerging Latin American art. 150+ artists supported across the region with editorial content, outreach and community.</p>
@@ -731,58 +775,6 @@ strong { color: var(--cream); font-weight: 700; }
           <div class="skills-row"><span class="skill-tag" data-en="Editorial" data-es="Editorial">Editorial</span><span class="skill-tag" data-en="Community" data-es="Community">Community</span><span class="skill-tag" data-en="Curation" data-es="Curaduría">Curation</span></div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
             <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
-            
-          </div>
-        </div>
-      </div>
-      <div class="proj-card cs" data-delay-idx="02" style="background:linear-gradient(135deg,#080f1a 0%,#101828 100%)">
-        <div class="proj-num">02</div>
-        <div class="proj-emoji">🚗</div>
-        <h3 class="proj-title" data-en="Consulta Vehicular" data-es="Consulta Vehicular">Consulta Vehicular</h3>
-        <p class="proj-desc" data-en="Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms." data-es="SaaS de verificación vehicular en Perú. Consulta en segundos el historial, estado legal y datos técnicos de cualquier vehículo integrando registros oficiales. Útil para compradores, concesionarias y plataformas fintech.">Vehicle-verification SaaS for Peru. Check any vehicle's history, legal status and technical data in seconds by integrating official registries. Useful for buyers, dealerships and fintech platforms.</p>
-        <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag" data-en="SaaS" data-es="SaaS">SaaS</span><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="API" data-es="API">API</span></div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--live" data-en="Live" data-es="Live">Live</span>
-            <a href="https://consultavehicular.pe" target="_blank" class="proj-link" data-en="View project ↗" data-es="Ver proyecto ↗">View project ↗</a>
-          </div>
-        </div>
-      </div>
-      <div class="proj-card cs" data-delay-idx="03" style="background:linear-gradient(135deg,#080f20 0%,#10193a 100%)">
-        <div class="proj-num">03</div>
-        <div class="proj-emoji">📈</div>
-        <h3 class="proj-title" data-en="Digital Payments in Peru — BCRP" data-es="Pagos Digitales en Perú — BCRP">Digital Payments in Peru — BCRP</h3>
-        <p class="proj-desc" data-en="Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX." data-es="Dashboard de adopción 2018–2025 con datos del BCRP. Impacto de la interoperabilidad Yape-Plin. Time intelligence con DAX.">Adoption dashboard 2018–2025 with BCRP data. Impact of Yape-Plin interoperability. Time intelligence with DAX.</p>
-        <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag" data-en="Power BI" data-es="Power BI">Power BI</span><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="DAX" data-es="DAX">DAX</span></div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
-            
-          </div>
-        </div>
-      </div>
-      <div class="proj-card cs" data-delay-idx="04" style="background:linear-gradient(135deg,#081408 0%,#102014 100%)">
-        <div class="proj-num">04</div>
-        <div class="proj-emoji">🗺️</div>
-        <h3 class="proj-title" data-en="Financial Inclusion by Region" data-es="Inclusión Financiera por Región">Financial Inclusion by Region</h3>
-        <p class="proj-desc" data-en="Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024." data-es="Brechas de acceso bancario y billeteras digitales por departamento. Fuentes INEI + SBS 2019–2024.">Banking-access and digital-wallet gaps by department. Sources: INEI + SBS 2019–2024.</p>
-        <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag" data-en="Power BI Maps" data-es="Power BI Maps">Power BI Maps</span><span class="skill-tag" data-en="SQL" data-es="SQL">SQL</span></div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
-            
-          </div>
-        </div>
-      </div>
-      <div class="proj-card cs" data-delay-idx="05" style="background:linear-gradient(135deg,#0e0e18 0%,#161626 100%)">
-        <div class="proj-num">05</div>
-        <div class="proj-emoji">🔮</div>
-        <h3 class="proj-title" data-en="Churn Prediction — Fintech" data-es="Predicción de Churn — Fintech">Churn Prediction — Fintech</h3>
-        <p class="proj-desc" data-en="Predictive churn model for payments products with an executive monitoring dashboard." data-es="Modelo predictivo de abandono en productos de payments con dashboard de monitoreo ejecutivo.">Predictive churn model for payments products with an executive monitoring dashboard.</p>
-        <div class="proj-footer">
-          <div class="skills-row"><span class="skill-tag" data-en="Python" data-es="Python">Python</span><span class="skill-tag" data-en="Scikit-learn" data-es="Scikit-learn">Scikit-learn</span><span class="skill-tag" data-en="Power BI" data-es="Power BI">Power BI</span></div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="proj-status proj-status--wip" data-en="Under construction" data-es="En construcción">Under construction</span>
             
           </div>
         </div>
@@ -923,6 +915,48 @@ onVisible('.lbar-fill', function (el) {
 function toggleAcc(btn) {
   btn.closest('.acc-card').classList.toggle('open');
 }
+
+/* ─── SCROLL PROGRESS ─── */
+(function () {
+  const bar = document.getElementById('scrollbar');
+  if (!bar) return;
+  function upd() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', upd, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
+})();
+
+/* ─── SCROLLSPY (nav active section) ─── */
+(function () {
+  const links = [...document.querySelectorAll('.nav-pill a[href^="#"]')];
+  if (!links.length) return;
+  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) })).filter(x => x.sec);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const hit = map.find(x => x.sec === e.target);
+        if (hit) hit.a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  map.forEach(x => obs.observe(x.sec));
+})();
+
+/* ─── CARD SPOTLIGHT (mouse-follow) ─── */
+(function () {
+  document.querySelectorAll('.comp-card, .proj-card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+})();
 </script>
 </body>
 </html>
